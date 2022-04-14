@@ -3,7 +3,10 @@ import LoginCompanyForm from '../../components/LoginCompanyForm/LoginCompanyForm
 
 const LoginCompanyPage = () => {
   return (
-    <LoginCompanyForm></LoginCompanyForm>
+    <div>
+      <LoginCompanyForm></LoginCompanyForm>
+      <p>Hola</p>
+    </div>
   )
 }
 
