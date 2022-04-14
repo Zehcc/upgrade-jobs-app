@@ -21,8 +21,6 @@ const RegisterUserForm = () => {
         <input type='password' name='password' placeholder='Escribe aqui tu contraseña'{...register("password", { required: true})} />
         <button>Register</button>
       </form>
-
-
     </div>
   )
 }
