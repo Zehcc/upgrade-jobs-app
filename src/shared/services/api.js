@@ -6,7 +6,7 @@ export const APIHeaders = {
     'Access-Control-Allow-Origin': '*',
     'Autorization': {
         toString() {
-            return `Beared ${localStorage.getItem('token')}`
+            return `Bearer ${localStorage.getItem('token')}`
         }
     }
 };

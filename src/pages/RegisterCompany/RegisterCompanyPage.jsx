@@ -3,7 +3,7 @@ import RegisterCompanyForm from '../../components/RegisterCompanyForm/RegisterCo
 
 const RegisterCompanyPage = () => {
   return (
-    <RegisterCompanyForm></RegisterCompanyForm>
+    <RegisterCompanyForm/>
   )
 }
 
