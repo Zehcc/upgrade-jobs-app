@@ -1,10 +1,23 @@
+import { Router, Routes } from "react-router-dom";
+import IsAuthCompanyProvider from "./Shared/Contexts/IsAuthCompanyContext";
+import IsAuthUserProvider from "./Shared/Contexts/IsAuthUserContext";
 import "./styles/main.scss";
 
 function App() {
   return (
-    <div className="App">
+    <IsAuthCompanyProvider>
+    <IsAuthUserProvider>
+      <div className="App">
+        <Router>
+          <Routes>
+    
       <h1>Nuevo proyecto</h1>
-    </div>
+   
+          </Routes>
+        </Router>
+      </div>
+    </IsAuthUserProvider>
+    </IsAuthCompanyProvider>
   );
 }
 
