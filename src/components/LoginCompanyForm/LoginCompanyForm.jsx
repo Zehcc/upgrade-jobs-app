@@ -2,7 +2,7 @@ import React from 'react'
 
 const LoginCompanyForm = () => {
   return (
-    <div>LoginCompanyForm</div>
+    <div>Hola</div>
   )
 }
 
