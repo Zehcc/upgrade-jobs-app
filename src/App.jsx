@@ -9,10 +9,7 @@ function App() {
     <IsAuthCompanyProvider>
     <IsAuthUserProvider>
       <div className="App">
-
-    
       <LoginCompanyPage />
-
       </div>
     </IsAuthUserProvider>
     </IsAuthCompanyProvider>
@@ -20,4 +17,3 @@ function App() {
 }
 
 export default App;
-
