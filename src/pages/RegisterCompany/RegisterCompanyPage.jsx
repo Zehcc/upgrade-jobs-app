@@ -1,10 +1,10 @@
 import React from 'react'
 import RegisterCompanyForm from '../../components/RegisterCompanyForm/RegisterCompanyForm'
 
-const RegisterCompany = () => {
+const RegisterCompanyPage = () => {
   return (
     <RegisterCompanyForm></RegisterCompanyForm>
   )
 }
 
-export default RegisterCompany
+export default RegisterCompanyPage
