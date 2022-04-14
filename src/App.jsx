@@ -7,7 +7,6 @@ import "./styles/main.scss";
 
 function App() {
   return (
-    <div>
       <IsAuthCompanyProvider>
         <IsAuthUserProvider>
           <div className="App">
@@ -16,7 +15,6 @@ function App() {
           </div>
         </IsAuthUserProvider>
       </IsAuthCompanyProvider>
-    </div>
   );
 }
 

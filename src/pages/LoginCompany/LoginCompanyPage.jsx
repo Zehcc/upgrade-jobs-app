@@ -5,7 +5,6 @@ const LoginCompanyPage = () => {
   return (
     <div>
       <LoginCompanyForm></LoginCompanyForm>
-      <p>Hola</p>
     </div>
   )
 }
