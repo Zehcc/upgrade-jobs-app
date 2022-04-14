@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const LoginCompanyForm = () => {
-  return (
-    <div>LoginCompanyForm</div>
-  )
-}
+  return <div>hola</div>;
+};
 
-export default LoginCompanyForm
+export default LoginCompanyForm;
