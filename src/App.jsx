@@ -1,6 +1,8 @@
 import { Router, Routes } from "react-router-dom";
-import IsAuthCompanyProvider from "./Shared/Contexts/IsAuthCompanyContext";
-import IsAuthUserProvider from "./Shared/Contexts/IsAuthUserContext";
+import LandingPage from "./pages/LandingPage/LandingPage";
+import LoginCompanyPage from "./pages/LoginCompany/LoginCompanyPage";
+import IsAuthCompanyProvider from "./shared/contexts/IsAuthCompanyContext";
+import IsAuthUserProvider from "./shared/contexts/IsAuthUserContext";
 import "./styles/main.scss";
 
 function App() {
@@ -8,13 +10,8 @@ function App() {
     <IsAuthCompanyProvider>
     <IsAuthUserProvider>
       <div className="App">
-        <Router>
-          <Routes>
-    
-      <h1>Nuevo proyecto</h1>
-   
-          </Routes>
-        </Router>
+      <LandingPage></LandingPage>
+      <LoginCompanyPage />
       </div>
     </IsAuthUserProvider>
     </IsAuthCompanyProvider>
@@ -22,4 +19,3 @@ function App() {
 }
 
 export default App;
-
