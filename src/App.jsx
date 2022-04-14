@@ -1,25 +1,19 @@
-import { Router, Routes } from "react-router-dom";
-import IsAuthCompanyProvider from "./Shared/Contexts/IsAuthCompanyContext";
-import IsAuthUserProvider from "./Shared/Contexts/IsAuthUserContext";
-import "./styles/main.scss";
+import {Router, Routes} from 'react-router-dom';
+import LandingPage from './pages/LandingPage/LandingPage';
+import IsAuthCompanyProvider from './shared/contexts/IsAuthCompanyContext';
+import IsAuthUserProvider from './shared/contexts/IsAuthUserContext';
+import './styles/main.scss';
 
 function App() {
   return (
     <IsAuthCompanyProvider>
-    <IsAuthUserProvider>
-      <div className="App">
-        <Router>
-          <Routes>
-    
-      <h1>Nuevo proyecto</h1>
-   
-          </Routes>
-        </Router>
-      </div>
-    </IsAuthUserProvider>
+      <IsAuthUserProvider>
+        <div className='App'>
+          <LandingPage />
+        </div>
+      </IsAuthUserProvider>
     </IsAuthCompanyProvider>
   );
 }
 
 export default App;
-
