@@ -7,14 +7,16 @@ import "./styles/main.scss";
 
 function App() {
   return (
-    <IsAuthCompanyProvider>
-    <IsAuthUserProvider>
-      <div className="App">
-      <LandingPage></LandingPage>
-      <LoginCompanyPage />
-      </div>
-    </IsAuthUserProvider>
-    </IsAuthCompanyProvider>
+    <div>
+      <IsAuthCompanyProvider>
+        <IsAuthUserProvider>
+          <div className="App">
+            <LandingPage></LandingPage>
+            <LoginCompanyPage />
+          </div>
+        </IsAuthUserProvider>
+      </IsAuthCompanyProvider>
+    </div>
   );
 }
 
