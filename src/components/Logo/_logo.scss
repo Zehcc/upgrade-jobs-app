@@ -16,7 +16,7 @@
     position: fixed;
     top: 44%;
     animation-name: meteorfall;
-    animation-duration: 4s;
+    animation-duration: 3.5s;
   }
 
   h2 {
@@ -24,12 +24,12 @@
     font-size: 1.9rem;
     color: #1d1d1d;
     animation-name: appears;
-    animation-duration: 6s;
+    animation-duration: 5.5s;
   }
 }
 
 @keyframes meteorfall {
-  30% {
+  0% {
     top: 0%;
     right: -10%;
     opacity: 1;
@@ -40,7 +40,7 @@
   90% {
     opacity: 1;
     top: 60%;
-    right: 45%;
+    right: 42%;
   }
 }
 
