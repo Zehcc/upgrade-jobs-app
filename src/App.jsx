@@ -1,20 +1,31 @@
-import { Router, Routes } from "react-router-dom";
+import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import LandingPage from "./pages/LandingPage/LandingPage";
-import LoginCompanyPage from "./pages/LoginCompany/LoginCompanyPage";
+import RegisterCompanyPage from "./pages/RegisterCompany/RegisterCompanyPage";
+import RegisterUserPage from "./pages/RegisterUser/RegisterUserPage";
+import LoginPage from "./pages/Login/LoginPage";
 import IsAuthCompanyProvider from "./shared/contexts/IsAuthCompanyContext";
 import IsAuthUserProvider from "./shared/contexts/IsAuthUserContext";
+
 import "./styles/main.scss";
 
 function App() {
   return (
+      <div className="App">
       <IsAuthCompanyProvider>
         <IsAuthUserProvider>
-          <div className="App">
-            <LandingPage></LandingPage>
-            <LoginCompanyPage />
-          </div>
+          <Router>
+            <Routes>
+              <Route path="/inicio" element={<LandingPage/>} />
+              <Route path="/login" element ={<LoginPage/>}/>
+              <Route path="/registerCompany" element={<RegisterCompanyPage/>}/>
+              <Route path="/registerUser" element={<RegisterUserPage/>}/>
+              <Route path="*" element={<Navigate to="inicio"/>} />
+            </Routes>
+          </Router>
         </IsAuthUserProvider>
       </IsAuthCompanyProvider>
+      </div>
+
   );
 }
 
