@@ -10,15 +10,19 @@ const LoginUserPage = () => {
     setUserType(type)
   }
   return (
-    <>
-    <button onClick={()=> chooseType('user')}>Soy usuario</button>
-    <button onClick={()=> chooseType('company')}>Soy empresa</button>
-    {userType === 'user' ? <LoginUserForm/>
-    : <LoginCompanyForm/>}
-    
-    
-    
-    </>
+    <div className='login-container'>
+      <div className='img-container'>
+        <img src="/login2.jpg" alt="Img" />
+      </div>
+      <div className='button-type-container'>
+        {userType === 'user' ? 
+          <p>¿No eres usuario? <button className='choose-type-btn' onClick={()=> chooseType('company')}>Haz click aquí</button> para ir al Login de empresas</p>
+        : <p>¿No eres empresa? <button className='choose-type-btn'  onClick={()=> chooseType('user')}>Haz click aquí</button> para ir al Login de usuarios</p>
+       }
+      </div>
+      {userType === 'user' ? <LoginUserForm/>
+      : <LoginCompanyForm/>}
+    </div>
   )
 }
 

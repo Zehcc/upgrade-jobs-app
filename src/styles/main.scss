@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 @import './base/_mixins.scss';
 @import './base/_variables.scss';
+@import '../pages/Login/_loginPage.scss';
+@import '../components/RegisterUserForm/_registerUserForm.scss';
 
 * {
   font-family: 'Poppins', 'Open Sans', sans-serif;
@@ -10,4 +12,17 @@
 
 a {
   text-decoration: none;
+}
+
+.register-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  h4 {
+    text-align: center;
+    color: #6e54fd;
+    padding: 0 50px;
+  }
 }
