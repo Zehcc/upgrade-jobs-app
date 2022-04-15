@@ -3,7 +3,7 @@ import RegisterUserForm from '../../components/RegisterUserForm/RegisterUserForm
 
 const RegisterUserPage = () => {
   return (
-    <RegisterUserForm></RegisterUserForm>
+    <RegisterUserForm/>
   )
 }
 
