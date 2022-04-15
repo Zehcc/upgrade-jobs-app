@@ -3,7 +3,10 @@ import RegisterCompanyForm from '../../components/RegisterCompanyForm/RegisterCo
 
 const RegisterCompanyPage = () => {
   return (
-    <RegisterCompanyForm/>
+    <div className='register-page'>
+      <h4>Rellena todos los campos para completar el registro</h4>
+      <RegisterCompanyForm/>
+    </div>
   )
 }
 
