@@ -8,22 +8,25 @@ import IsAuthUserProvider from './shared/contexts/IsAuthUserContext';
 import OffersPage from './pages/OffersPage/OffersPage';
 
 import './styles/main.scss';
+import ProfileProvider from './shared/contexts/ProfileContext';
 
 function App() {
   return (
     <div className='App'>
       <IsAuthCompanyProvider>
         <IsAuthUserProvider>
-          <Router>
-            <Routes>
-              <Route path='/inicio' element={<LandingPage />} />
-              <Route path='/login' element={<LoginPage />} />
-              <Route path='/registerCompany' element={<RegisterCompanyPage />} />
-              <Route path='/registerUser' element={<RegisterUserPage />} />
-              <Route path='*' element={<Navigate to='inicio' />} />
-              <Route path='/offers' element={<OffersPage />} />
-            </Routes>
-          </Router>
+          <ProfileProvider>
+            <Router>
+              <Routes>
+                <Route path='/inicio' element={<LandingPage />} />
+                <Route path='/login' element={<LoginPage />} />
+                <Route path='/registerCompany' element={<RegisterCompanyPage />} />
+                <Route path='/registerUser' element={<RegisterUserPage />} />
+                <Route path='*' element={<Navigate to='inicio' />} />
+                <Route path='/offers' element={<OffersPage />} />
+              </Routes>
+            </Router>
+          </ProfileProvider>
         </IsAuthUserProvider>
       </IsAuthCompanyProvider>
     </div>
