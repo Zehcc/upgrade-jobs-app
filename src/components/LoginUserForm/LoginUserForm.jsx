@@ -29,7 +29,7 @@ const LoginUserForm = () => {
   return (
     <>
       <div className="login-form-container">
-        <form  onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <input
             type="email"
             name="email"
@@ -42,13 +42,13 @@ const LoginUserForm = () => {
             placeholder="🔐 Password"
             {...register("password", { required: true })}
           />
-          <button>Sign in</button>
+          <button>Entrar</button>
         </form>
       </div>
       <div className="register-div">
         <p>¿Aún no estas registrado?</p>
         <Link to="/registerUser">
-          <button>Sign up!</button>
+          <button>Aqui puedes registrarte!</button>
         </Link>
       </div>
     </>

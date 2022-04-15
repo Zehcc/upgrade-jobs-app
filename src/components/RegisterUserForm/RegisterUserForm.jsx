@@ -1,12 +1,14 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { API } from "../../shared/services/api";
-
+import { useNavigate } from "react-router-dom";
 const RegisterUserForm = () => {
+  let navigate = useNavigate()
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     API.post("/users/register", JSON.stringify(data)).then((response) => {
       console.log(response);
+      navigate("/login")
     });
   };
   return (
@@ -30,7 +32,7 @@ const RegisterUserForm = () => {
           placeholder="Contraseña"
           {...register("password", { required: true })}
         />
-        <button>Sing up</button>
+        <button>Resgístrate!</button>
       </form>
     </div>
   );

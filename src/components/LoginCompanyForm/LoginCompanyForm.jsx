@@ -35,7 +35,7 @@ const LoginCompanyForm = () => {
   return (
     <>
       <div className="login-form-container">
-        <form  onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <input
             type="text"
             name="cif"
@@ -48,13 +48,13 @@ const LoginCompanyForm = () => {
             placeholder="🔐 Password"
             {...register("password", { require: true })}
           />
-          <button>Sign in</button>
+          <button>Entrar</button>
         </form>
       </div>
       <div className="register-div">
         <p>¿Aún no estas registrado?</p>
         <Link to="/registerCompany">
-          <button className="sign-up">Sign up</button>
+          <button className="sign-up">Aqui puedes registrarte</button>
         </Link>
       </div>
     </>

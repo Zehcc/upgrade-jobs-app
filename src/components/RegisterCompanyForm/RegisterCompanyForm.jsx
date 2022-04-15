@@ -31,7 +31,7 @@ const RegisterCompanyForm = () => {
           placeholder="Contraseña"
           {...register("password", { required: true })}
         />
-        <button type="submit">Sing up</button>
+        <button type="submit">Registrate!</button>
       </form>
     </div>
   );
