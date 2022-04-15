@@ -2,15 +2,17 @@ import {useForm} from 'react-hook-form';
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {API} from '../../shared/services/api';
+import { useIsAuthUserContext } from '../../shared/contexts/IsAuthUserContext';
 
 const LoginUserForm = () => {
   const {register, handleSubmit} = useForm();
+  const {setIsAuthUser} = useIsAuthUserContext()
 
   const onSubmit = (data) => {
     API.post('/users/login', data).then((response) => {
       console.log(response);
-      /* localStorage.setItem('token', response.data)
-        setIsAuthCompany(response.data) */
+      localStorage.setItem('token', response.data[0])
+      setIsAuthUser(response.data[0])
     });
   };
 
