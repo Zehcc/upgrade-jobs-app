@@ -9,6 +9,8 @@ import OffersPage from './pages/OffersPage/OffersPage';
 
 import './styles/main.scss';
 import ProfileProvider from './shared/contexts/ProfileContext';
+import UserProfilePage from './pages/UserProfile/UserProfilePage';
+import CompanyProfilePage from './pages/CompanyProfile/CompanyProfilePage';
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
                 <Route path='/registerUser' element={<RegisterUserPage />} />
                 <Route path='*' element={<Navigate to='inicio' />} />
                 <Route path='/offers' element={<OffersPage />} />
+                <Route path= '/userProfile/:id' element={<UserProfilePage/>}/>
+                <Route path= '/companyProfile/:id' element={<CompanyProfilePage/>}/>
               </Routes>
             </Router>
           </ProfileProvider>

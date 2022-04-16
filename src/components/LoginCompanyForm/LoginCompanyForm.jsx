@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { API } from "../../shared/services/api";
 import { useIsAuthCompanyContext } from "../../shared/contexts/IsAuthCompanyContext";
@@ -7,6 +7,7 @@ import { useProfileContext } from "../../shared/contexts/ProfileContext";
 
 const LoginCompanyForm = () => {
   const { register, handleSubmit } = useForm();
+  let navigate = useNavigate();
   const { setIsAuthCompany } = useIsAuthCompanyContext();
   const { companyProfile, setCompanyProfile } = useProfileContext();
 
@@ -26,8 +27,9 @@ const LoginCompanyForm = () => {
           location: response.data[1].location,
           web: response.data[1].web,
           employees: response.data[1].employees,
-        },
+        }
       });
+      navigate(`/companyProfile/${companyProfile.id}`)
       console.log(companyProfile);
     });
   };

@@ -9,11 +9,10 @@ const LoginUserForm = () => {
   const { register, handleSubmit } = useForm();
   let navigate = useNavigate();
   const { setIsAuthUser } = useIsAuthUserContext();
-  const { setUserProfile } = useProfileContext();
+  const { userProfile, setUserProfile } = useProfileContext();
 
   const onSubmit = (data) => {
     API.post("/users/login", data).then((response) => {
-      console.log(response);
       localStorage.setItem("token", response.data[0]);
       setIsAuthUser(response.data[0]);
       setUserProfile({
@@ -22,10 +21,9 @@ const LoginUserForm = () => {
         email: response.data[1].email,
         img: response.data[1].img,
       });
-      navigate("/offers");
+      navigate(`/userProfile/${userProfile.id}`)
     });
   };
-
   return (
     <>
       <div className="login-form-container">
