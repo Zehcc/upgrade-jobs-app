@@ -13,7 +13,6 @@ const LoginCompanyForm = () => {
 
   const onSubmit = (data) => {
     API.post("/companies/login", data).then((response) => {
-      console.log(response);
       localStorage.setItem("token", response.data[0]);
       setIsAuthCompany(response.data[0]);
       setCompanyProfile({
@@ -22,11 +21,11 @@ const LoginCompanyForm = () => {
         email: response.data[1].email,
         cif: response.data[1].cif,
         info: {
-          description: response.data[1].description,
-          img: response.data[1].img,
-          location: response.data[1].location,
-          web: response.data[1].web,
-          employees: response.data[1].employees,
+          description: response.data[1].info.description,
+          img: response.data[1].info.img,
+          location: response.data[1].info.location,
+          web: response.data[1].info.web,
+          employees: response.data[1].info.employees,
         }
       });
       navigate(`/companyProfile/${companyProfile.id}`)
