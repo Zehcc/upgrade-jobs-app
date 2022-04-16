@@ -20,6 +20,7 @@ const LoginUserForm = () => {
         name: response.data[1].name,
         email: response.data[1].email,
         img: response.data[1].img,
+        cv: response.data[1].cv
       });
       navigate(`/userProfile/${userProfile.id}`)
     });
