@@ -1,0 +1,54 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
+
+h4 {
+  text-align: center;
+  color: #6e54fd;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 25px 0;
+
+  ::placeholder {
+    text-align: center;
+  }
+
+  input {
+    width: 150%;
+    text-align: center;
+    height: 30px;
+    margin: 2px 0;
+  }
+
+  button {
+    margin-top: 10px;
+    width: 150%;
+    background-color: #6e54fd;
+    color: white;
+    border: none;
+    height: 30px;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .description {
+    display: flex;
+    flex-wrap: wrap;
+    width: 133%;
+    text-align: center;
+    height: 300px;
+    margin: 2px 0;
+    padding: 15px;
+  }
+}

@@ -42,6 +42,9 @@ const CompanyOffers = () => {
       <Link to="/createOffer">
         <button>Nueva oferta</button>
       </Link>
+      <Link to={`/companyProfile/${companyProfile.id}`} >
+      <button>Perfil</button>
+      </Link>
     </div>
   );
 };

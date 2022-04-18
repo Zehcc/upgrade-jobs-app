@@ -12,7 +12,7 @@ import ProfileProvider from './shared/contexts/ProfileContext';
 import UserProfilePage from './pages/UserProfile/UserProfilePage';
 import CompanyProfilePage from './pages/CompanyProfile/CompanyProfilePage';
 import CompanyOffers from './pages/CompanyOffers/CompanyOffers';
-import CreaterOfferPage from './pages/CreateOffer/CreaterOfferPage';
+import CreateOfferPage from './pages/CreateOffer/CreateOfferPage';
 
 function App() {
   return (
@@ -31,7 +31,7 @@ function App() {
                 <Route path= '/userProfile/:id' element={<UserProfilePage/>}/>
                 <Route path= '/companyProfile/:id' element={<CompanyProfilePage/>}/>
                 <Route path= '/companyOffers' element={<CompanyOffers/>}/>
-                <Route path= '/createOffer' element ={<CreaterOfferPage/>}/>
+                <Route path= '/createOffer' element ={<CreateOfferPage/>}/>
               </Routes>
             </Router>
           </ProfileProvider>
