@@ -40,22 +40,22 @@ const LoginCompanyForm = () => {
           <input
             type='text'
             name='cif'
-            placeholder='📝 Cif'
+            placeholder='📝                         CIF'
             {...register('cif', {require: true})}
           />
           <input
             type='password'
             name='password'
-            placeholder='🔐 Password'
+            placeholder='🔐                   Password'
             {...register('password', {require: true})}
           />
-          <button>Sign in</button>
+          <button>Entrar</button>
         </form>
       </div>
       <div className='register-div'>
         <p>¿Aún no estas registrado?</p>
         <Link to='/registerCompany'>
-          <button className='sign-up'>Sign up</button>
+          <button className='sign-up'>Registrarse</button>
         </Link>
       </div>
     </>

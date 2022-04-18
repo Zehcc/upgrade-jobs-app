@@ -24,7 +24,7 @@ const LoginUserPage = () => {
             <button className='choose-type-btn' onClick={() => chooseType('company')}>
               Haz click aquí
             </button>{' '}
-            para ir al Login de empresas
+            para ir al login de empresas
           </p>
         ) : (
           <p>
@@ -32,7 +32,7 @@ const LoginUserPage = () => {
             <button className='choose-type-btn' onClick={() => chooseType('user')}>
               Haz click aquí
             </button>{' '}
-            para ir al Login de usuarios
+            para ir al login de usuarios
           </p>
         )}
       </div>
