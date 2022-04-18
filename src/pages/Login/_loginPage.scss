@@ -32,7 +32,8 @@ form {
   align-items: center;
   margin: 25px 0;
   ::placeholder {
-    text-align: center;
+    text-align: left;
+    text-indent: 5px;
   }
   input {
     width: 150%;
