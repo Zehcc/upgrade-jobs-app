@@ -6,7 +6,7 @@ import { API } from '../../shared/services/api';
 
 const CreaterOfferPage = () => {
 
-    const {companyProfile, setCompanyProfile} = useProfileContext();
+    const {companyProfile} = useProfileContext();
     const { register, handleSubmit } = useForm();
     let navigate = useNavigate();
     const onSubmit = (data) => {

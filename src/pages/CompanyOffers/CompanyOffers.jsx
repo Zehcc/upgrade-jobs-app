@@ -4,7 +4,7 @@ import { useProfileContext } from '../../shared/contexts/ProfileContext'
 
 const CompanyOffers = () => {
 
-    const {companyProfile, setCompanyProfile} = useProfileContext();
+    const {companyProfile} = useProfileContext();
     localStorage.setItem('profile', JSON.stringify(companyProfile))
     console.log(companyProfile)
   return (

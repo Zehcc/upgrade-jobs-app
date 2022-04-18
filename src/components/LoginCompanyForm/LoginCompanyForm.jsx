@@ -9,7 +9,7 @@ const LoginCompanyForm = () => {
   const { register, handleSubmit } = useForm();
   let navigate = useNavigate();
   const { setIsAuthCompany } = useIsAuthCompanyContext();
-  const { companyProfile, setCompanyProfile } = useProfileContext();
+  const {  setCompanyProfile } = useProfileContext();
 
   const onSubmit = (data) => {
     API.post("/companies/login", data).then((response) => {
