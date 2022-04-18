@@ -33,14 +33,17 @@ const CompanyOffers = () => {
         <ul>
         {companyProfile.offers.map((offer)=> {
           return (
-            <li key={offer._id}>
-              <CompanyOffer offer={offer}/>
-            </li>
+            
+              <CompanyOffer key={offer._id} offer={offer}/>
+            
           )
         })}
         </ul>
       <Link to="/createOffer">
         <button>Nueva oferta</button>
+      </Link>
+      <Link to={`/companyProfile/${companyProfile.id}`} >
+      <button>Perfil</button>
       </Link>
     </div>
   );

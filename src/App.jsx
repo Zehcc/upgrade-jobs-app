@@ -13,7 +13,7 @@ import ProfileProvider from './shared/contexts/ProfileContext';
 import UserProfilePage from './pages/UserProfile/UserProfilePage';
 import CompanyProfilePage from './pages/CompanyProfile/CompanyProfilePage';
 import CompanyOffers from './pages/CompanyOffers/CompanyOffers';
-import CreaterOfferPage from './pages/CreateOffer/CreaterOfferPage';
+import CreateOfferPage from './pages/CreateOffer/CreateOfferPage';
 
 function App() {
   return (
