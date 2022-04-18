@@ -1,19 +1,19 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { API } from "../../shared/services/api";
-import { useIsAuthCompanyContext } from "../../shared/contexts/IsAuthCompanyContext";
-import { useProfileContext } from "../../shared/contexts/ProfileContext";
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { API } from '../../shared/services/api';
+import { useIsAuthCompanyContext } from '../../shared/contexts/IsAuthCompanyContext';
+import { useProfileContext } from '../../shared/contexts/ProfileContext';
 
 const LoginCompanyForm = () => {
   const { register, handleSubmit } = useForm();
+  let navigate = useNavigate();
   const { setIsAuthCompany } = useIsAuthCompanyContext();
-  const { companyProfile, setCompanyProfile } = useProfileContext();
+  const { setCompanyProfile } = useProfileContext();
 
   const onSubmit = (data) => {
-    API.post("/companies/login", data).then((response) => {
-      console.log(response);
-      localStorage.setItem("token", response.data[0]);
+    API.post('/companies/login', data).then((response) => {
+      localStorage.setItem('token', response.data[0]);
       setIsAuthCompany(response.data[0]);
       setCompanyProfile({
         id: response.data[1]._id,
@@ -21,40 +21,41 @@ const LoginCompanyForm = () => {
         email: response.data[1].email,
         cif: response.data[1].cif,
         info: {
-          description: response.data[1].description,
-          img: response.data[1].img,
-          location: response.data[1].location,
-          web: response.data[1].web,
-          employees: response.data[1].employees,
+          description: response.data[1].info.description,
+          img: response.data[1].info.img,
+          location: response.data[1].info.location,
+          web: response.data[1].info.web,
+          employees: response.data[1].info.employees,
         },
+        offers: [response.data[1].offers],
       });
-      console.log(companyProfile);
+      navigate('/companyOffers');
     });
   };
 
   return (
     <>
-      <div className="login-form-container">
+      <div className='login-form-container'>
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
-            type="text"
-            name="cif"
-            placeholder="📝 Cif"
-            {...register("cif", { require: true })}
+            type='text'
+            name='cif'
+            placeholder='📝                         CIF'
+            {...register('cif', { require: true })}
           />
           <input
-            type="password"
-            name="password"
-            placeholder="🔐 Password"
-            {...register("password", { require: true })}
+            type='password'
+            name='password'
+            placeholder='🔐                   Password'
+            {...register('password', { require: true })}
           />
           <button>Entrar</button>
         </form>
       </div>
-      <div className="register-div">
+      <div className='register-div'>
         <p>¿Aún no estas registrado?</p>
-        <Link to="/registerCompany">
-          <button className="sign-up">Aqui puedes registrarte</button>
+        <Link to='/registerCompany'>
+          <button className='sign-up'>Registrarse</button>
         </Link>
       </div>
     </>
