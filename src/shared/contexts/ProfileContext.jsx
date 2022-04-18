@@ -16,7 +16,7 @@ const ProfileProvider = ({children}) => {
         img: ''
     })
 
-    const [companyProfile, setCompanyProfile] = useState(
+    const [companyProfile, setCompanyProfile] = useState(JSON.parse(localStorage.getItem('profile')) ||
         {
             id: '',
             name: '',
