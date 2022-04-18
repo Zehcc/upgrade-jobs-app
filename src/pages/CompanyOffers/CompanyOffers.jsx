@@ -24,26 +24,23 @@ const CompanyOffers = () => {
           offers: response.data.offers,
         });
       })
-      .then(localStorage.setItem("profile", JSON.stringify(companyProfile)));
+      .then(
+        localStorage.setItem("companyProfile", JSON.stringify(companyProfile))
+      );
   }, []);
 
   return (
     <div>
-      
-        <ul>
-        {companyProfile.offers.map((offer)=> {
-          return (
-            
-              <CompanyOffer key={offer._id} offer={offer}/>
-            
-          )
+      <ul>
+        {companyProfile.offers.map((offer) => {
+          return <CompanyOffer key={offer._id} offer={offer} />;
         })}
-        </ul>
+      </ul>
       <Link to="/createOffer">
         <button>Nueva oferta</button>
       </Link>
-      <Link to={`/companyProfile/${companyProfile.id}`} >
-      <button>Perfil</button>
+      <Link to={`/companyProfile/${companyProfile.id}`}>
+        <button>Perfil</button>
       </Link>
     </div>
   );

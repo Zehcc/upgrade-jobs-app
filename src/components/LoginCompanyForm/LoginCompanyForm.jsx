@@ -2,14 +2,14 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { API } from "../../shared/services/api";
-import { useIsAuthCompanyContext } from "../../shared/contexts/IsAuthCompanyContext";
+import { useIsAuthContext } from "../../shared/contexts/IsAuthContext";
 import { useProfileContext } from "../../shared/contexts/ProfileContext";
 
 const LoginCompanyForm = () => {
   const { register, handleSubmit } = useForm();
   let navigate = useNavigate();
-  const { setIsAuthCompany } = useIsAuthCompanyContext();
-  const {  setCompanyProfile } = useProfileContext();
+  const { setIsAuthCompany } = useIsAuthContext();
+  const { setCompanyProfile } = useProfileContext();
 
   const onSubmit = (data) => {
     API.post("/companies/login", data).then((response) => {
@@ -27,16 +27,16 @@ const LoginCompanyForm = () => {
           web: response.data[1].info.web,
           employees: response.data[1].info.employees,
         },
-        offers: [response.data[1].offers]
+        offers: [response.data[1].offers],
       });
-      navigate('/companyOffers')
+      navigate("/companyOffers");
     });
   };
 
   return (
     <>
       <div className="login-form-container">
-        <form  onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <input
             type="text"
             name="cif"
