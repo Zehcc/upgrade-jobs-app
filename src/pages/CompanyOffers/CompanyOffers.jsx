@@ -33,9 +33,9 @@ const CompanyOffers = () => {
         <ul>
         {companyProfile.offers.map((offer)=> {
           return (
-            <li key={offer._id}>
-              <CompanyOffer offer={offer}/>
-            </li>
+            
+              <CompanyOffer key={offer._id} offer={offer}/>
+            
           )
         })}
         </ul>
