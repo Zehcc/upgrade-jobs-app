@@ -1,61 +1,61 @@
 .login-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 
-    .choose-type-btn {
-        border: none;
-        background-color: white;
-        color: #6e54fd;
-        font-size: 16px;
-    }
+  .choose-type-btn {
+    border: none;
+    background-color: white;
+    color: #6e54fd;
+    font-size: 1rem;
+  }
 
-    .img-container {
-        width: 100%;
-        text-align: center;
-        img {
-            width: 80%;
-        }
+  .img-container {
+    width: 100%;
+    text-align: center;
+    img {
+      width: 80%;
     }
+  }
 
-    .button-type-container {
-        text-align: center;
-        padding: 0 35px;
-    }
+  .button-type-container {
+    text-align: center;
+    padding: 0 35px;
+  }
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 25px 0;
-    ::placeholder {
-        text-align: center;
-    }
-    input {
-      width: 150%;
-      text-align: center;
-      height: 30px;
-      margin: 2px 0;
-    }
-    button {
-        margin-top: 10px;
-        width: 150%;
-        background-color: #6e54fd;
-        color: white;
-        border: none;
-        height: 30px;
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 25px 0;
+  ::placeholder {
+    text-align: center;
+  }
+  input {
+    width: 150%;
+    text-align: center;
+    height: 30px;
+    margin: 2px 0;
+  }
+  button {
+    margin-top: 10px;
+    width: 150%;
+    background-color: #6e54fd;
+    color: white;
+    border: none;
+    height: 30px;
+  }
 }
 
 .register-div {
-    text-align: center;
-    button {
-        border: none;
-        background-color: white;
-        color: #6e54fd;
-        font-size: 16px;
-    }
+  text-align: center;
+  button {
+    border: none;
+    background-color: white;
+    color: #6e54fd;
+    font-size: 1rem;
+  }
 }
