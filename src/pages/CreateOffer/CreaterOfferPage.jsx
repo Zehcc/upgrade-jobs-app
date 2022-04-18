@@ -19,8 +19,6 @@ const CreaterOfferPage = () => {
                 console.log(offer)
                 API.patch(`/companies/${companyProfile.id}`, offer ).then(navigate('/companyOffers')) 
             })
-            
-            
         })  
         
     }
