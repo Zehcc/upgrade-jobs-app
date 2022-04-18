@@ -2,7 +2,7 @@ import React from 'react'
 
 const CompanyOffer = ({offer}) => {
   return (
-    <div>{offer.title}</div>
+    <li>{offer.title}</li>
   )
 }
 
