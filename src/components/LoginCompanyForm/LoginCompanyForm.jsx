@@ -9,7 +9,7 @@ const LoginCompanyForm = () => {
   const {register, handleSubmit} = useForm();
   let navigate = useNavigate();
   const {setIsAuthCompany} = useIsAuthCompanyContext();
-  const {companyProfile, setCompanyProfile} = useProfileContext();
+  const {setCompanyProfile} = useProfileContext();
 
   const onSubmit = (data) => {
     API.post('/companies/login', data).then((response) => {
@@ -27,9 +27,9 @@ const LoginCompanyForm = () => {
           web: response.data[1].info.web,
           employees: response.data[1].info.employees,
         },
+        offers: [response.data[1].offers],
       });
-      navigate(`/companyProfile/${companyProfile.id}`);
-      console.log(companyProfile);
+      navigate('/companyOffers');
     });
   };
 
