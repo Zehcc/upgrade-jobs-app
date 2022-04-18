@@ -26,10 +26,10 @@ const LoginCompanyForm = () => {
           location: response.data[1].info.location,
           web: response.data[1].info.web,
           employees: response.data[1].info.employees,
-        }
+        },
+        offers: [response.data[1].offers]
       });
-      navigate(`/companyProfile/${companyProfile.id}`)
-      console.log(companyProfile);
+      navigate('/companyOffers')
     });
   };
 
