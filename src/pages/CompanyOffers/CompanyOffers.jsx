@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import CompanyOffer from "../../components/CompanyOffer/CompanyOffer";
+import CompanyNavbar from "../../shared/components/CompanyNavbar/CompanyNavbar";
 import { useProfileContext } from "../../shared/contexts/ProfileContext";
 import { API } from "../../shared/services/api";
 
@@ -30,18 +31,16 @@ const CompanyOffers = () => {
   }, []);
 
   return (
-    <div>
-      <ul>
+    <div className="company-offers-page">
+      <CompanyNavbar />
+      <Link to="/createOffer">
+        <button>Nueva oferta</button>
+      </Link>
+      <ul className="company-offers-list">
         {companyProfile.offers.map((offer) => {
           return <CompanyOffer key={offer._id} offer={offer} />;
         })}
       </ul>
-      <Link to="/createOffer">
-        <button>Nueva oferta</button>
-      </Link>
-      <Link to={`/companyProfile/${companyProfile.id}`}>
-        <button>Perfil</button>
-      </Link>
     </div>
   );
 };

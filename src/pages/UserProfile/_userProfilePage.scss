@@ -1,7 +1,18 @@
-.profile-form-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+.profile-img-container {
+  margin-top: 20px;
+  text-align: center;
+  width: 100%;
+  img {
+    width: 200px;
+    border-radius: 150px;
+  }
 }
-
+.profile-form-container {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  label {
+    width: 150%;
+    padding-left: 10px;
+  }
+}
