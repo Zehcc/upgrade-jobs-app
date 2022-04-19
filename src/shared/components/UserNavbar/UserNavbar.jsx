@@ -1,21 +1,20 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { useProfileContext } from '../../contexts/ProfileContext'
+import React from "react";
+import { Link } from "react-router-dom";
+import { useProfileContext } from "../../contexts/ProfileContext";
 
 const UserNavbar = () => {
-    const {userProfile} = useProfileContext()
+  const { userProfile } = useProfileContext();
   return (
-    <nav>
-    
-        <Link to='/offers'>
-        <div>Ofertas</div>
-        </Link>
-        <div>Mis candidaturas</div>
-        <Link to={`/userProfile/${userProfile.id}`}>
-        <div>Perfil</div>
-        </Link>
+    <nav className="user-navbar">
+      <Link to="/offers">
+        <div className="nav-item">Ofertas</div>
+      </Link>
+      <div className="nav-item">Candidaturas</div>
+      <Link to={`/userProfile/${userProfile.id}`}>
+        <div className="nav-item">Perfil</div>
+      </Link>
     </nav>
-  )
-}
+  );
+};
 
-export default UserNavbar
+export default UserNavbar;

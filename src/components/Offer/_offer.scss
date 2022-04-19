@@ -1,0 +1,27 @@
+.offer-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 2px solid #6e54fd;
+
+  .offer-img-container {
+    width: 20%;
+    img {
+      width: 100%;
+      padding: 0 20px;
+    }
+  }
+
+  .offer-text-container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h4 {
+      color: black;
+    }
+  }
+}
