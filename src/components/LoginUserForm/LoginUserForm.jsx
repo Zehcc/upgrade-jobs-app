@@ -5,15 +5,17 @@ import { API } from "../../shared/services/api";
 import { useIsAuthContext } from "../../shared/contexts/IsAuthContext";
 import { useProfileContext } from "../../shared/contexts/ProfileContext";
 
+
 const LoginUserForm = () => {
-  const { register, handleSubmit } = useForm();
+  const {register, handleSubmit} = useForm();
   let navigate = useNavigate();
   const { setIsAuthUser } = useIsAuthContext();
   const { setUserProfile } = useProfileContext();
 
+
   const onSubmit = (data) => {
-    API.post("/users/login", data).then((response) => {
-      localStorage.setItem("token", response.data[0]);
+    API.post('/users/login', data).then((response) => {
+      localStorage.setItem('token', response.data[0]);
       setIsAuthUser(response.data[0]);
       setUserProfile({
         id: response.data[1]._id,
@@ -29,26 +31,27 @@ const LoginUserForm = () => {
   return (
     <>
       <div className="login-form-container">
+
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
-            type="email"
-            name="email"
-            placeholder="📧 Email"
-            {...register("email", { required: true })}
+            type='email'
+            name='email'
+            placeholder='📧                       Email'
+            {...register('email', {required: true})}
           />
           <input
-            type="password"
-            name="password"
-            placeholder="🔐 Password"
-            {...register("password", { required: true })}
+            type='password'
+            name='password'
+            placeholder='🔐                   Password'
+            {...register('password', {required: true})}
           />
-          <button>Sign in</button>
+          <button>Entrar</button>
         </form>
       </div>
-      <div className="register-div">
+      <div className='register-div'>
         <p>¿Aún no estas registrado?</p>
-        <Link to="/registerUser">
-          <button>Sign up!</button>
+        <Link to='/registerUser'>
+          <button>Registrarse</button>
         </Link>
       </div>
     </>
