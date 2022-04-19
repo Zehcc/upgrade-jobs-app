@@ -2,6 +2,7 @@ import React from "react";
 
 const CompanyOffer = ({ offer }) => {
   return (
+    offer &&
     <li className="offer-container">
       <div className="offer-text-container">
         <h4>{offer.title}</h4>
