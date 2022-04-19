@@ -1,9 +1,6 @@
 import React from "react";
-import { useProfileContext } from "../../shared/contexts/ProfileContext";
 
 const CompanyOffer = ({ offer }) => {
-  const { companyProfile } = useProfileContext();
-  console.log(offer, 'oferta')
   return (
     offer &&
     <li className="offer-container">
