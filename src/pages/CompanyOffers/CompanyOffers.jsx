@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import CompanyOffer from "../../components/CompanyOffer/CompanyOffer";
 import CompanyNavbar from "../../shared/components/CompanyNavbar/CompanyNavbar";
@@ -7,6 +7,7 @@ import { API } from "../../shared/services/api";
 
 const CompanyOffers = () => {
   const { companyProfile, setCompanyProfile } = useProfileContext();
+  const [offers, setOffers] = useState([])
   useEffect(() => {
     API.get(`/companies/${companyProfile.id}`)
       .then((response) => {
@@ -24,6 +25,7 @@ const CompanyOffers = () => {
           },
           offers: response.data.offers,
         });
+        setOffers(response.data.offers)
       })
       .then(
         localStorage.setItem("companyProfile", JSON.stringify(companyProfile))
@@ -36,11 +38,12 @@ const CompanyOffers = () => {
       <Link to="/createOffer">
         <button>Nueva oferta</button>
       </Link>
+      {offers.length &&
       <ul className="company-offers-list">
-        {companyProfile.offers.map((item) => {
-          return <CompanyOffer key={item._id} offer={item} />;
+        {offers.map((offer) => {
+          return <CompanyOffer key={offer._id} offer={offer} />;
         })}
-      </ul>
+      </ul>}
     </div>
   );
 };
