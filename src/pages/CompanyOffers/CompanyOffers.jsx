@@ -37,8 +37,8 @@ const CompanyOffers = () => {
         <button>Nueva oferta</button>
       </Link>
       <ul className="company-offers-list">
-        {companyProfile.offers.map((offer) => {
-          return <CompanyOffer key={offer._id} offer={offer} />;
+        {companyProfile.offers.map((item) => {
+          return <CompanyOffer key={item._id} offer={item} />;
         })}
       </ul>
     </div>
