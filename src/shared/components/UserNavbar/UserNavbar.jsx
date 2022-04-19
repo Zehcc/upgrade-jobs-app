@@ -9,7 +9,9 @@ const UserNavbar = () => {
       <Link to="/offers">
         <div className="nav-item">Ofertas</div>
       </Link>
+      <Link to= {`/candidatures/${userProfile.id}`}>
       <div className="nav-item">Candidaturas</div>
+      </Link>
       <Link to={`/userProfile/${userProfile.id}`}>
         <div className="nav-item">Perfil</div>
       </Link>

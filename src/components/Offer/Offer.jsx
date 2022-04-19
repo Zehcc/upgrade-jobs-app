@@ -1,8 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Offer = ({ offer }) => {
   console.log(offer);
   return (
+    <Link to={`/detailedOffer/${offer._id}`}>
     <li className="offer-container">
       <div className="offer-img-container">
         <img src={offer.company.info.img} alt={offer.company._id} />
@@ -13,6 +15,7 @@ const Offer = ({ offer }) => {
         <p>{offer.company.info.location}</p>
       </div>
     </li>
+    </Link>
   );
 };
 
