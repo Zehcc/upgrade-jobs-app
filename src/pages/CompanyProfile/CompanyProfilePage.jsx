@@ -62,7 +62,7 @@ const CompanyProfilePage = () => {
             type="text"
             name="info.img"
             placeholder="imagen"
-            defaultValue={companyProfile.info.imagen}
+            defaultValue={companyProfile.info.img}
             {...register("info.img", { required: false })}
           />
           <label>Descripción</label>
