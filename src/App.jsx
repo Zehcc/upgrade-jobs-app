@@ -29,8 +29,7 @@ function App() {
                 <Route path='/userProfile/:id' element={<UserProfilePage />} />
                 <Route path='/companyProfile/:id' element={<CompanyProfilePage />} />
                 <Route path='/companyOffers' element={<CompanyOffers />} />
-                <Route path='/createOffer' element={<CreaterOfferPage />} />
-                <Route path='/ApplicationSent' element={<UserApplicationSent />} />
+                <Route path='/createOffer' element={<CreateOfferPage />} />
               </Routes>
             </Router>
           </ProfileProvider>
