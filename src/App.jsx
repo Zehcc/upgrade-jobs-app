@@ -12,6 +12,8 @@ import CompanyProfilePage from './pages/CompanyProfile/CompanyProfilePage';
 import CompanyOffers from './pages/CompanyOffers/CompanyOffers';
 import UserApplicationSent from './pages/UserApplicationSent/UserApplicationSent';
 import CreateOfferPage from './pages/CreateOffer/CreateOfferPage';
+import CandidaturesPage from './pages/Candidatures/CandidaturesPage';
+import DetailedOfferPage from './pages/DetailedOfferPage/DetailedOfferPage';
 
 
 function App() {
@@ -33,6 +35,9 @@ function App() {
                 <Route path='/companyOffers' element={<CompanyOffers />} />
                 <Route path='/createOffer' element={<CreateOfferPage/>} />
                 <Route path='/ApplicationSent' element={<UserApplicationSent/>} />
+                <Route path='/candidatures/:id' element={<CandidaturesPage/>}/>
+                <Route path='/detailedOffer/:id' element={<DetailedOfferPage/>}/>
+
               </Routes>
             </Router>
           </ProfileProvider>
