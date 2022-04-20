@@ -11,9 +11,22 @@
   display: flex;
   justify-content: center;
   height: 100vh;
-  margin-top: -30px;
+  
   label {
-    width: 150%;
-    padding-left: 10px;
+    width: 100%;
+    margin:3px;
+  }
+  input{
+    width: 100%;
+    margin:3px;
+  }
+  button{
+    width: 100%;
+  }
+  ::-webkit-file-upload-button {
+    background-color: #6e54fd;
+    color: white;
+    border: none;
+    height: 30px;
   }
 }

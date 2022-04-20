@@ -11,6 +11,7 @@ const CompanyOffers = () => {
   useEffect(() => {
     API.get(`/companies/${companyProfile.id}`)
       .then((response) => {
+
         setCompanyProfile({
           id: response.data._id,
           name: response.data.name,
