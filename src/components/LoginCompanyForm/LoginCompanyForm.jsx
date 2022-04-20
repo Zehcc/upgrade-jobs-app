@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -6,17 +5,15 @@ import { API } from "../../shared/services/api";
 import { useIsAuthContext } from "../../shared/contexts/IsAuthContext";
 import { useProfileContext } from "../../shared/contexts/ProfileContext";
 
-
 const LoginCompanyForm = () => {
-  const {register, handleSubmit} = useForm();
+  const { register, handleSubmit } = useForm();
   let navigate = useNavigate();
   const { setIsAuthCompany } = useIsAuthContext();
-  const { setCompanyProfile } = useProfileContext();
-
+  const { companyProfile, setCompanyProfile } = useProfileContext();
 
   const onSubmit = (data) => {
-    API.post('/companies/login', data).then((response) => {
-      localStorage.setItem('token', response.data[0]);
+    API.post("/companies/login", data).then((response) => {
+      localStorage.setItem("token", response.data[0]);
       setIsAuthCompany(response.data[0]);
       setCompanyProfile({
         id: response.data[1]._id,
@@ -38,20 +35,19 @@ const LoginCompanyForm = () => {
 
   return (
     <>
-      <div className="login-form-container">
-
+      <div className='login-form-container'>
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
             type='text'
             name='cif'
             placeholder='📝                         CIF'
-            {...register('cif', {require: true})}
+            {...register("cif", { require: true })}
           />
           <input
             type='password'
             name='password'
             placeholder='🔐                   Password'
-            {...register('password', {require: true})}
+            {...register("password", { require: true })}
           />
           <button>Entrar</button>
         </form>
