@@ -9,10 +9,11 @@ const LoginCompanyForm = () => {
   const { register, handleSubmit } = useForm();
   let navigate = useNavigate();
   const { setIsAuthCompany } = useIsAuthContext();
-  const { companyProfile, setCompanyProfile } = useProfileContext();
+  const { setCompanyProfile } = useProfileContext();
 
   const onSubmit = (data) => {
     API.post("/companies/login", data).then((response) => {
+      console.log(response.data);
       localStorage.setItem("token", response.data[0]);
       setIsAuthCompany(response.data[0]);
       setCompanyProfile({
@@ -41,12 +42,14 @@ const LoginCompanyForm = () => {
             type='text'
             name='cif'
             placeholder='📝                         CIF'
+            className='login-input'
             {...register("cif", { require: true })}
           />
           <input
             type='password'
             name='password'
             placeholder='🔐                   Password'
+            className='login-input'
             {...register("password", { require: true })}
           />
           <button>Entrar</button>

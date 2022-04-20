@@ -9,6 +9,7 @@ const CompanyProfilePage = () => {
   const { companyProfile, setCompanyProfile } = useProfileContext();
   const onSubmit = (data) => {
     API.patch(`/companies/${companyProfile.id}`, data).then((response) => {
+
       setCompanyProfile({
         id: companyProfile.id,
         name: data.name,

@@ -43,9 +43,9 @@ const UserProfilePage = () => {
             defaultValue={userProfile.email}
             {...register("email", { required: true })}
           />
-          <label>Imagen</label>
+          <label>Foto</label>
           <input
-            type="text"
+            type="file"
             name="img"
             placeholder="Elige tu foto de perfil"
             defaultValue={userProfile.img}
@@ -53,7 +53,7 @@ const UserProfilePage = () => {
           />
           <label>CV</label>
           <input
-            type="text"
+            type="file"
             name="cv"
             placeholder="Sube tu cv.pdf"
             defaultValue={userProfile.cv}

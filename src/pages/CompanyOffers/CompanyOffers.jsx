@@ -11,6 +11,7 @@ const CompanyOffers = () => {
   useEffect(() => {
     API.get(`/companies/${companyProfile.id}`)
       .then((response) => {
+
         setCompanyProfile({
           id: response.data._id,
           name: response.data.name,
@@ -39,11 +40,11 @@ const CompanyOffers = () => {
         <button>Nueva oferta</button>
       </Link>
       {offers.length &&
-      <ul className="company-offers-list">
-        {offers.map((offer) => {
-          return <CompanyOffer key={offer._id} offer={offer} />;
-        })}
-      </ul>}
+        <ul className="company-offers-list">
+          {offers.map((offer) => {
+            return <CompanyOffer key={offer._id} offer={offer} />;
+          })}
+        </ul>}
     </div>
   );
 };
