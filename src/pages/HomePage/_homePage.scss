@@ -1,0 +1,24 @@
+.main-home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    background-color: white;
+
+    &__img{
+        width:100%;
+        height: 500px;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &__content{
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        height: 300px;
+        width: 100%;
+    }
+    
+}

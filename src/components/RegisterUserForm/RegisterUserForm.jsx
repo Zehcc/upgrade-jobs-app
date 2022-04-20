@@ -1,15 +1,20 @@
-import React from 'react';
-import {useForm} from 'react-hook-form';
-import {API} from '../../shared/services/api';
 
+import React from "react";
+import { useForm } from "react-hook-form";
+import { API } from "../../shared/services/api";
+import { useNavigate } from "react-router-dom";
 const RegisterUserForm = () => {
-  const {register, handleSubmit} = useForm();
+  let navigate = useNavigate()
+  const { register, handleSubmit } = useForm();
+
   const onSubmit = (data) => {
     API.post('/users/register', JSON.stringify(data)).then((response) => {
       console.log(response);
+      navigate("/login")
     });
   };
   return (
+
     <form onSubmit={handleSubmit(onSubmit)} className='register-form-container'>
       <input
         type='text'
@@ -34,6 +39,7 @@ const RegisterUserForm = () => {
       />
       <button className='signup-button'>Registrarse</button>
     </form>
+
   );
 };
 

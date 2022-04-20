@@ -1,6 +1,9 @@
-import React from 'react';
-import {useForm} from 'react-hook-form';
-import {API} from '../../shared/services/api';
+
+import React from "react";
+import { useForm } from "react-hook-form";
+import { Navigate } from "react-router-dom";
+import { API } from "../../shared/services/api";
+
 
 const RegisterCompanyForm = () => {
   const {register, handleSubmit} = useForm();
@@ -8,9 +11,11 @@ const RegisterCompanyForm = () => {
   const onSubmit = (data) => {
     API.post('companies/register', data).then((response) => {
       console.log(response.data);
+      Navigate("/login");
     });
   };
   return (
+
     <form className='register-form-container' onSubmit={handleSubmit(onSubmit)}>
       <input
         type='text'
@@ -37,6 +42,7 @@ const RegisterCompanyForm = () => {
         Registrarse
       </button>
     </form>
+
   );
 };
 
