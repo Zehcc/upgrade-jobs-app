@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import CompanyNavbar from "../../shared/components/CompanyNavbar/CompanyNavbar";
 import { useProfileContext } from "../../shared/contexts/ProfileContext";
 import { API } from "../../shared/services/api";
 
@@ -25,75 +26,81 @@ const CompanyProfilePage = () => {
   };
 
   return (
-    <div className="profile-form-container">
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label>Nombre</label>
-        <input
-          type="text"
-          name="name"
-          placeholder="Escribe tu nombre"
-          defaultValue={companyProfile.name}
-          {...register("name", { required: true })}
-        />
-        <label>CIF</label>
-        <input
-          type="text"
-          name="cif"
-          placeholder="CIF"
-          defaultValue={companyProfile.cif}
-          {...register("cif", { required: false })}
-        />
-        <label>Email</label>
-        <input
-          type="email"
-          name="email"
-          placeholder="Escribe tu email"
-          defaultValue={companyProfile.email}
-          {...register("email", { required: true })}
-        />
-        <label>Imagen</label>
-        <input
-          type="text"
-          name="info.img"
-          placeholder="imagen"
-          defaultValue={companyProfile.info.imagen}
-          {...register("info.img", { required: false })}
-        />
-        <label>Descripción</label>
-        <input
-          type="text"
-          name="info.description"
-          placeholder="description"
-          defaultValue={companyProfile.info.description}
-          {...register("info.description", { required: false })}
-        />
-        <label>Localización</label>
-        <input
-          type="text"
-          name="info.location"
-          placeholder="location"
-          defaultValue={companyProfile.info.location}
-          {...register("info.location", { required: false })}
-        />
-        <label>Web</label>
-        <input
-          type="url"
-          name="info.web"
-          placeholder="web"
-          defaultValue={companyProfile.info.web}
-          {...register("info.web", { required: false })}
-        />
-        <label>Empleados</label>
-        <input
-          type="number"
-          name="info.employees"
-          placeholder="employees"
-          defaultValue={companyProfile.info.employees}
-          {...register("info.employees", { required: false })}
-        />
-        <button>Guardar cambios</button>
-      </form>
-    </div>
+    <>
+      <CompanyNavbar />
+      <div className="company-logo-container">
+        <img src={companyProfile.info.img} alt={companyProfile.name} />
+      </div>
+      <div className="profile-form-container">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <label>Nombre</label>
+          <input
+            type="text"
+            name="name"
+            placeholder="Escribe tu nombre"
+            defaultValue={companyProfile.name}
+            {...register("name", { required: true })}
+          />
+          <label>CIF</label>
+          <input
+            type="text"
+            name="cif"
+            placeholder="CIF"
+            defaultValue={companyProfile.cif}
+            {...register("cif", { required: false })}
+          />
+          <label>Email</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="Escribe tu email"
+            defaultValue={companyProfile.email}
+            {...register("email", { required: true })}
+          />
+          <label>Imagen</label>
+          <input
+            type="text"
+            name="info.img"
+            placeholder="imagen"
+            defaultValue={companyProfile.info.img}
+            {...register("info.img", { required: false })}
+          />
+          <label>Descripción</label>
+          <input
+            type="text"
+            name="info.description"
+            placeholder="description"
+            defaultValue={companyProfile.info.description}
+            {...register("info.description", { required: false })}
+          />
+          <label>Localización</label>
+          <input
+            type="text"
+            name="info.location"
+            placeholder="location"
+            defaultValue={companyProfile.info.location}
+            {...register("info.location", { required: false })}
+          />
+          <label>Web</label>
+          <input
+            type="url"
+            name="info.web"
+            placeholder="web"
+            defaultValue={companyProfile.info.web}
+            {...register("info.web", { required: false })}
+          />
+          <label>Empleados</label>
+          <input
+            type="number"
+            name="info.employees"
+            placeholder="employees"
+            defaultValue={companyProfile.info.employees}
+            {...register("info.employees", { required: false })}
+          />
+          <button>Guardar cambios</button>
+        </form>
+      </div>
+    </>
   );
 };
 

@@ -1,0 +1,16 @@
+.user-navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #6e54fd;
+  height: 30px;
+  position: sticky;
+  top: 0px;
+
+  .nav-item {
+    color: white;
+    cursor: pointer;
+  }
+}

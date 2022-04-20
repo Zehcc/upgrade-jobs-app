@@ -1,11 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import CompanyOffer from "../../components/CompanyOffer/CompanyOffer";
+import CompanyNavbar from "../../shared/components/CompanyNavbar/CompanyNavbar";
 import { useProfileContext } from "../../shared/contexts/ProfileContext";
 import { API } from "../../shared/services/api";
 
 const CompanyOffers = () => {
   const { companyProfile, setCompanyProfile } = useProfileContext();
+  const [offers, setOffers] = useState([])
   useEffect(() => {
     API.get(`/companies/${companyProfile.id}`)
       .then((response) => {
@@ -23,27 +25,25 @@ const CompanyOffers = () => {
           },
           offers: response.data.offers,
         });
+        setOffers(response.data.offers)
       })
-      .then(localStorage.setItem("profile", JSON.stringify(companyProfile)));
+      .then(
+        localStorage.setItem("companyProfile", JSON.stringify(companyProfile))
+      );
   }, []);
 
   return (
-    <div>
-      <ul>
-        {companyProfile.offers.map((offer) => {
-          return (
-
-            <CompanyOffer key={offer._id} offer={offer} />
-
-          )
-        })}
-      </ul>
+    <div className="company-offers-page">
+      <CompanyNavbar />
       <Link to="/createOffer">
         <button>Nueva oferta</button>
       </Link>
-      <Link to={`/companyProfile/${companyProfile.id}`} >
-        <button>Perfil</button>
-      </Link>
+      {offers.length &&
+        <ul className="company-offers-list">
+          {offers.map((offer) => {
+            return <CompanyOffer key={offer._id} offer={offer} />;
+          })}
+        </ul>}
     </div>
   );
 };

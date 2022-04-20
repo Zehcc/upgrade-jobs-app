@@ -1,15 +1,32 @@
+<<<<<<< HEAD
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { API } from '../../shared/services/api';
 import { useIsAuthCompanyContext } from '../../shared/contexts/IsAuthCompanyContext';
 import { useProfileContext } from '../../shared/contexts/ProfileContext';
+=======
+
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { API } from "../../shared/services/api";
+import { useIsAuthContext } from "../../shared/contexts/IsAuthContext";
+import { useProfileContext } from "../../shared/contexts/ProfileContext";
+
+>>>>>>> 38a30b130cd396387120965ef82a5f8c450c9ad3
 
 const LoginCompanyForm = () => {
   const { register, handleSubmit } = useForm();
   let navigate = useNavigate();
+<<<<<<< HEAD
   const { setIsAuthCompany } = useIsAuthCompanyContext();
   const { setCompanyProfile } = useProfileContext();
+=======
+  const { setIsAuthCompany } = useIsAuthContext();
+  const { setCompanyProfile } = useProfileContext();
+
+>>>>>>> 38a30b130cd396387120965ef82a5f8c450c9ad3
 
   const onSubmit = (data) => {
     API.post('/companies/login', data).then((response) => {
@@ -29,13 +46,14 @@ const LoginCompanyForm = () => {
         },
         offers: [response.data[1].offers],
       });
-      navigate('/companyOffers');
+      navigate("/companyOffers");
     });
   };
 
   return (
     <>
-      <div className='login-form-container'>
+      <div className="login-form-container">
+
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
             type='text'
