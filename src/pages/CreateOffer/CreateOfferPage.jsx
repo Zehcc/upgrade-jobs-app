@@ -50,7 +50,7 @@ const CreateOfferPage = () => {
           {...register("vacants", { require: true })}
         />
         <textarea
-        className="description"
+          className="description"
           type="text"
           name="description"
           placeholder="Descripción"

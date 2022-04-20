@@ -1,15 +1,14 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { API } from "../../shared/services/api";
-
 const RegisterCompanyForm = () => {
+  let navigate = useNavigate();
   const { register, handleSubmit } = useForm();
-
   const onSubmit = (data) => {
-    API.post("companies/register", data).then((response) => {
-      console.log(response.data);
-      Navigate("/login");
+    API.post("companies/register", JSON.stringify(data)).then((response) => {
+      console.log(response);
+      navigate("/login");
     });
   };
   return (

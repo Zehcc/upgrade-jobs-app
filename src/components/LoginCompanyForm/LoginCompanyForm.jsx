@@ -16,6 +16,7 @@ const LoginCompanyForm = () => {
 
   const onSubmit = (data) => {
     API.post('/companies/login', data).then((response) => {
+      console.log(response.data);
       localStorage.setItem('token', response.data[0]);
       setIsAuthCompany(response.data[0]);
       setCompanyProfile({
@@ -30,7 +31,6 @@ const LoginCompanyForm = () => {
           web: response.data[1].info.web,
           employees: response.data[1].info.employees,
         },
-        offers: [response.data[1].offers],
       });
       navigate("/companyOffers");
     });
