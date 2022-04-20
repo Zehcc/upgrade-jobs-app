@@ -6,7 +6,7 @@ import {useIsAuthContext} from '../../shared/contexts/IsAuthContext';
 import {useProfileContext} from '../../shared/contexts/ProfileContext';
 
 const LoginCompanyForm = () => {
-  const {register, handleSubmit} = useForm();
+  const { register, handleSubmit } = useForm();
   let navigate = useNavigate();
   const {setIsAuthCompany} = useIsAuthContext();
   const {setCompanyProfile} = useProfileContext();
@@ -41,15 +41,19 @@ const LoginCompanyForm = () => {
             type='text'
             name='cif'
             placeholder='📝                         CIF'
+
             className='login-input'
             {...register('cif', {require: true})}
+
           />
           <input
             type='password'
             name='password'
             placeholder='🔐                   Password'
+
             className='login-input'
             {...register('password', {require: true})}
+
           />
           <button>Entrar</button>
         </form>

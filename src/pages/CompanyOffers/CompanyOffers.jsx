@@ -39,11 +39,11 @@ const CompanyOffers = () => {
         <button>Nueva oferta</button>
       </Link>
       {offers.length &&
-      <ul className="company-offers-list">
-        {offers.map((offer) => {
-          return <CompanyOffer key={offer._id} offer={offer} />;
-        })}
-      </ul>}
+        <ul className="company-offers-list">
+          {offers.map((offer) => {
+            return <CompanyOffer key={offer._id} offer={offer} />;
+          })}
+        </ul>}
     </div>
   );
 };
