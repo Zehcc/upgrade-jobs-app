@@ -1,18 +1,15 @@
-
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { API } from "../../shared/services/api";
-import { useIsAuthContext } from "../../shared/contexts/IsAuthContext";
-import { useProfileContext } from "../../shared/contexts/ProfileContext";
-
+import React from 'react';
+import {Link, useNavigate} from 'react-router-dom';
+import {useForm} from 'react-hook-form';
+import {API} from '../../shared/services/api';
+import {useIsAuthContext} from '../../shared/contexts/IsAuthContext';
+import {useProfileContext} from '../../shared/contexts/ProfileContext';
 
 const LoginCompanyForm = () => {
   const { register, handleSubmit } = useForm();
   let navigate = useNavigate();
-  const { setIsAuthCompany } = useIsAuthContext();
-  const { setCompanyProfile } = useProfileContext();
-
+  const {setIsAuthCompany} = useIsAuthContext();
+  const {setCompanyProfile} = useProfileContext();
 
   const onSubmit = (data) => {
     API.post('/companies/login', data).then((response) => {
@@ -32,26 +29,31 @@ const LoginCompanyForm = () => {
           employees: response.data[1].info.employees,
         },
       });
-      navigate("/companyOffers");
+      navigate('/companyOffers');
     });
   };
 
   return (
     <>
-      <div className="login-form-container">
-
+      <div className='login-form-container'>
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
             type='text'
             name='cif'
             placeholder='📝                         CIF'
-            {...register('cif', { require: true })}
+
+            className='login-input'
+            {...register('cif', {require: true})}
+
           />
           <input
             type='password'
             name='password'
             placeholder='🔐                   Password'
-            {...register('password', { require: true })}
+
+            className='login-input'
+            {...register('password', {require: true})}
+
           />
           <button>Entrar</button>
         </form>

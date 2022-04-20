@@ -1,0 +1,16 @@
+.register-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+
+  .register-input {
+    height: 40px;
+    font-size: 0.9rem;
+  }
+
+  .signup-button {
+    height: 40px;
+    font-size: 0.9rem;
+  }
+}
