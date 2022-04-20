@@ -6,18 +6,15 @@ import LoginPage from './pages/Login/LoginPage';
 import IsAuthCompanyProvider from './shared/contexts/IsAuthCompanyContext';
 import IsAuthUserProvider from './shared/contexts/IsAuthUserContext';
 import OffersPage from './pages/OffersPage/OffersPage';
-<<<<<<< HEAD
-import HomePage from './pages/HomePage/HomePage';
-=======
 import UserApplicationSent from './pages/UserApplicationSent/UserApplicationSent';
 
->>>>>>> d62df76e5d22b042747eefeaaa91bc2b4e9b94bd
 import './styles/main.scss';
 import ProfileProvider from './shared/contexts/ProfileContext';
 import UserProfilePage from './pages/UserProfile/UserProfilePage';
 import CompanyProfilePage from './pages/CompanyProfile/CompanyProfilePage';
 import CompanyOffers from './pages/CompanyOffers/CompanyOffers';
 import CreateOfferPage from './pages/CreateOffer/CreateOfferPage';
+import HomePage from './pages/HomePage/HomePage';
 
 function App() {
   return (
@@ -37,7 +34,7 @@ function App() {
                 <Route path='/userProfile/:id' element={<UserProfilePage />} />
                 <Route path='/companyProfile/:id' element={<CompanyProfilePage />} />
                 <Route path='/companyOffers' element={<CompanyOffers />} />
-                <Route path='/createOffer' element={<CreaterOfferPage />} />
+                <Route path='/createOffer' element={<CreateOfferPage />} />
                 <Route path='/ApplicationSent' element={<UserApplicationSent />} />
               </Routes>
             </Router>

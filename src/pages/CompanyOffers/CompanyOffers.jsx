@@ -29,21 +29,20 @@ const CompanyOffers = () => {
 
   return (
     <div>
-      
-        <ul>
-        {companyProfile.offers.map((offer)=> {
+      <ul>
+        {companyProfile.offers.map((offer) => {
           return (
-            
-              <CompanyOffer key={offer._id} offer={offer}/>
-            
+
+            <CompanyOffer key={offer._id} offer={offer} />
+
           )
         })}
-        </ul>
+      </ul>
       <Link to="/createOffer">
         <button>Nueva oferta</button>
       </Link>
       <Link to={`/companyProfile/${companyProfile.id}`} >
-      <button>Perfil</button>
+        <button>Perfil</button>
       </Link>
     </div>
   );
