@@ -12,7 +12,7 @@ h4 {
   color: #6e54fd;
 }
 
-form {
+.create-offer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,7 +22,7 @@ form {
     text-align: center;
   }
 
-  input {
+  &-input {
     width: 150%;
     text-align: center;
     height: 30px;
