@@ -38,6 +38,8 @@ form {
   flex-direction: column;
   align-items: center;
   margin: 25px 0;
+  gap: 0.5rem;
+
   ::placeholder {
     text-align: left;
     text-indent: 5px;
@@ -45,7 +47,7 @@ form {
   input {
     width: 150%;
     text-align: center;
-    height: 30px;
+    height: 40px;
     margin: 2px 0;
     border: 1px solid rgba(0, 0, 0, 0.2);
 
@@ -60,7 +62,7 @@ form {
     background-color: #6e54fd;
     color: white;
     border: none;
-    height: 30px;
+    height: 40px;
   }
 }
 
