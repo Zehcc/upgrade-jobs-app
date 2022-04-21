@@ -1,10 +1,66 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useProfileContext } from "../../shared/contexts/ProfileContext";
+import { API } from "../../shared/services/api";
 
-const DetailedOffer = ({detailedOffer}) => {
-    console.log(detailedOffer)
+const DetailedOffer = () => {
+  const { userProfile } = useProfileContext();
+  let navigate = useNavigate();
+  const [detailedOffer, setDetailedOffer] = useState({});
+  const { id } = useParams();
+  useEffect(() => {
+    API.get(`offers/${id}`).then((response) => {
+      setDetailedOffer(response.data);
+    });
+  }, [id]);
+  const exists = userProfile.candidatures.find(
+    (candidature) => candidature === id
+  );
+  const sendInscription = () => {
+    const updatedCandidates = [userProfile.id, ...detailedOffer.candidates];
+    const candidatesDB = {
+      candidates: updatedCandidates,
+    };
+    const updatedCandidatures = [
+      detailedOffer._id,
+      ...userProfile.candidatures,
+    ];
+    const candidaturesDB = {
+      candidatures: updatedCandidatures,
+    };
+    API.patch(`/offers/${detailedOffer._id}`, candidatesDB);
+    API.patch(`/users/${userProfile.id}`, candidaturesDB).then(
+      navigate("/offers")
+    );
+  };
+
   return (
-    <div>{detailedOffer.title}</div>
-  )
-}
+    <div className='detailed-container'>
+      <div className='offer-header'>
+        {detailedOffer.company && (
+          <div className='img-container'>
+            <img
+              src={detailedOffer.company.info.img}
+              alt={detailedOffer.company.name}
+            />
+          </div>
+        )}
+        <div className='text-container'>
+          <h3>{detailedOffer.title}</h3>
+          <p>{detailedOffer.location}</p>
+          <p>Vacantes: {detailedOffer.vacants}</p>
+        </div>
+      </div>
+      <div className='offer-description'>
+        <p>{detailedOffer.description}</p>
+      </div>
+      {!exists ? (
+        <button onClick={sendInscription}>Inscribirme</button>
+      ) : (
+        <p>Ya inscrito</p>
+      )}
+    </div>
+  );
+};
 
-export default DetailedOffer
+export default DetailedOffer;

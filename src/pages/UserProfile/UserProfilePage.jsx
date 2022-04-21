@@ -8,15 +8,15 @@ const UserProfilePage = () => {
   const { register, handleSubmit } = useForm();
   const { userProfile, setUserProfile } = useProfileContext();
   const onSubmit = (data) => {
-    API.patch(`/users/${userProfile.id}`, data).then((response) => {
+    API.patch(`/users/${userProfile.id}`, data).then(
       setUserProfile({
         id: userProfile.id,
         name: data.name,
         email: data.email,
         img: data.img,
         cv: data.cv,
-      });
-    });
+      })
+    );
   };
 
   return (
@@ -45,7 +45,7 @@ const UserProfilePage = () => {
           />
           <label>Foto</label>
           <input
-            type='file'
+            type='text'
             name='img'
             placeholder='Elige tu foto de perfil'
             defaultValue={userProfile.img}
@@ -53,7 +53,7 @@ const UserProfilePage = () => {
           />
           <label>CV</label>
           <input
-            type='file'
+            type='text'
             name='cv'
             placeholder='Sube tu cv.pdf'
             defaultValue={userProfile.cv}

@@ -1,0 +1,39 @@
+.detailed-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 20px 0;
+
+  .offer-header {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+
+    .img-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30%;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .text-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 70%;
+    }
+  }
+
+  .offer-description {
+    margin: 20px 0;
+    padding: 0 25px;
+    text-align: center;
+  }
+}
