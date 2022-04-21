@@ -1,13 +1,14 @@
-import React from 'react'
-import RegisterCompanyForm from '../../components/RegisterCompanyForm/RegisterCompanyForm'
+import React from 'react';
+import RegisterCompanyForm from '../../components/RegisterCompanyForm/RegisterCompanyForm';
 
 const RegisterCompanyPage = () => {
   return (
     <div className='register-page'>
-      <h4>Rellena todos los campos para completar el registro</h4>
-      <RegisterCompanyForm/>
+      <img className='register-page-img' src='/assets/Signup.png' alt='Sign up' />
+      <h4>Regístrate como empresa</h4>
+      <RegisterCompanyForm />
     </div>
-  )
-}
+  );
+};
 
-export default RegisterCompanyPage
+export default RegisterCompanyPage;

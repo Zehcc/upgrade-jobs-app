@@ -4,11 +4,9 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  h3 {
-    text-align: center;
-    color: #6e54fd;
-    padding: 0 50px;
-    font-size: 1.3rem;
-    margin-bottom: 5px;
+
+  &-img {
+    width: 80%;
+    margin-bottom: 10px;
   }
 }

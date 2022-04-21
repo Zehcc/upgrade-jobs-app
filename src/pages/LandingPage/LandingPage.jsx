@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import Logo from "../../components/Logo/Logo";
-import "./_landingPage.scss";
+import React, {useEffect} from 'react';
+import {useNavigate} from 'react-router-dom';
+import Logo from '../../components/Logo/Logo';
+import './_landingPage.scss';
 
 const LandingPage = () => {
   let navigate = useNavigate();
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigate("/login");
+      navigate('/login');
     }, 6000);
     return () => clearTimeout(timer);
   }, []);
