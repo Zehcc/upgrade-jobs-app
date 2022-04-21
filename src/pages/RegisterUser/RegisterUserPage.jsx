@@ -4,7 +4,8 @@ import RegisterUserForm from '../../components/RegisterUserForm/RegisterUserForm
 const RegisterUserPage = () => {
   return (
     <div className='register-page'>
-      <h3>Rellena todos los campos para completar el registro</h3>
+      <img className='register-page-img' src='/assets/Signup.png' alt='Sign up' />
+      <h4>Regístrate como usuario</h4>
       <RegisterUserForm />
     </div>
   );

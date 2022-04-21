@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, {useEffect} from 'react';
+import {useNavigate} from 'react-router-dom';
 import Logo from '../../components/Logo/Logo';
 import './_landingPage.scss';
 
@@ -8,17 +8,15 @@ const LandingPage = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigate('/home');
+      navigate('/login');
     }, 6000);
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <Link to='/home'>
-      <div className='landing-page'>
-        <Logo />
-      </div>
-    </Link>
+    <div className='landing-page'>
+      <Logo />
+    </div>
   );
 };
 

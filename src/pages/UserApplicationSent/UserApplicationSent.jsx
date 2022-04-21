@@ -26,9 +26,7 @@ const UserApplicationSent = () => {
 
   return (
     <div className='application-page'>
-      <div className='image-container'>
-        <img src='/assets/confirmed.png' alt='Application Sent' />
-      </div>
+      <img className='image-container' src='/assets/confirmed.png' alt='Application Sent' />
       <div className='message-container'>
         <div className='message'>
           <h2 className='message-title'>{message}</h2>
@@ -36,8 +34,8 @@ const UserApplicationSent = () => {
             Tu CV se ha enviado correctamente para la vacante de VACANTE
           </p>
         </div>
-        <Link className='see-offer' to='#'>
-          <button className='see-offer_button'>Ver Oferta</button>
+        <Link className='see-offer-button' to='#'>
+          Ver Oferta
         </Link>
         <Link className='see-all-offers' to='/offers'>
           <button className='see-all-offers_button'>Volver a todas las ofertas</button>

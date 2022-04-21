@@ -1,47 +1,47 @@
-
-import React from "react";
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { API } from "../../shared/services/api";
+import React from 'react';
+import {useForm} from 'react-hook-form';
+import {Link, useNavigate} from 'react-router-dom';
+import {API} from '../../shared/services/api';
 
 const RegisterCompanyForm = () => {
-  const { register, handleSubmit } = useForm();
+  const {register, handleSubmit} = useForm();
   let navigate = useNavigate();
   const onSubmit = (data) => {
     API.post('companies/register', data).then((response) => {
       console.log(response.data);
-      navigate("/login");
+      navigate('/login');
     });
   };
   return (
-
     <form className='register-form-container' onSubmit={handleSubmit(onSubmit)}>
       <input
         type='text'
         name='cif'
-        placeholder='📝                         CIF'
+        placeholder='📝                           CIF'
         className='register-input'
-        {...register('cif', { required: true })}
+        {...register('cif', {required: true})}
       />
       <input
         type='email'
         name='email'
-        placeholder='📧                       Email'
+        placeholder='📧                         Email'
         className='register-input'
-        {...register('email', { required: true })}
+        {...register('email', {required: true})}
       />
       <input
         type='password'
         name='password'
-        placeholder='🔐                   Password'
+        placeholder='🔐                   Contraseña'
         className='register-input'
-        {...register('password', { required: true })}
+        {...register('password', {required: true})}
       />
       <button className='signup-button' type='submit'>
         Registrarse
       </button>
+      <Link className='back-button' to='/login'>
+        Volver
+      </Link>
     </form>
-
   );
 };
 
