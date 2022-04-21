@@ -22,40 +22,40 @@ const UserProfilePage = () => {
   return (
     <>
       <UserNavbar />
-      <div className="profile-img-container">
+      <div className='profile-img-container'>
         <img src={userProfile.img} alt={userProfile.id} />
       </div>
-      <div className="profile-form-container">
+      <div className='profile-form-container'>
         <form onSubmit={handleSubmit(onSubmit)}>
           <label>Nombre</label>
           <input
-            type="text"
-            name="name"
-            placeholder="Escribe tu nombre"
+            type='text'
+            name='name'
+            placeholder='Escribe tu nombre'
             defaultValue={userProfile.name}
             {...register("name", { required: true })}
           />
           <label>Email</label>
           <input
-            type="email"
-            name="email"
-            placeholder="Escribe tu email"
+            type='email'
+            name='email'
+            placeholder='Escribe tu email'
             defaultValue={userProfile.email}
             {...register("email", { required: true })}
           />
           <label>Foto</label>
           <input
-            type="file"
-            name="img"
-            placeholder="Elige tu foto de perfil"
+            type='file'
+            name='img'
+            placeholder='Elige tu foto de perfil'
             defaultValue={userProfile.img}
             {...register("img", { required: false })}
           />
           <label>CV</label>
           <input
-            type="file"
-            name="cv"
-            placeholder="Sube tu cv.pdf"
+            type='file'
+            name='cv'
+            placeholder='Sube tu cv.pdf'
             defaultValue={userProfile.cv}
             {...register("cv", { required: false })}
           />
