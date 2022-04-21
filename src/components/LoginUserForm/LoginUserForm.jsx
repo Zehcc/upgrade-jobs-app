@@ -35,6 +35,7 @@ const LoginUserForm = () => {
             name='email'
             placeholder='📧                        Email'
             {...register('email', {required: true})}
+
           />
           <input
             type='password'
@@ -47,7 +48,7 @@ const LoginUserForm = () => {
       </div>
       <div className='register-div'>
         <p>¿Aún no estas registrado?</p>
-        <Link to='/registerUser'>
+        <Link to='/home'>
           <button>Registrarse</button>
         </Link>
       </div>

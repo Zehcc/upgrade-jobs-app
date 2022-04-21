@@ -57,7 +57,7 @@ const LoginCompanyForm = () => {
       </div>
       <div className='register-div'>
         <p>¿Aún no estas registrado?</p>
-        <Link to='/registerCompany'>
+        <Link to='/home'>
           <button className='sign-up'>Registrarse</button>
         </Link>
       </div>

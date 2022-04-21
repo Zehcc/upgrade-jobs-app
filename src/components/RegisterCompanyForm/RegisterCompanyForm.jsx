@@ -3,11 +3,27 @@ import {useForm} from 'react-hook-form';
 import {Link, useNavigate} from 'react-router-dom';
 import {API} from '../../shared/services/api';
 
+
 const RegisterCompanyForm = () => {
   const {register, handleSubmit} = useForm();
   let navigate = useNavigate();
   const onSubmit = (data) => {
-    API.post('companies/register', data).then((response) => {
+    console.log(data);
+    const companyToDB = {
+      id: "",
+      name: "",
+      email: data.email,
+      password: data.password,
+      cif: data.cif,
+      info: {
+        description: "",
+        img: "",
+        location: "",
+        web: "",
+        employees: "",
+      },
+    };
+    API.post("companies/register", companyToDB).then((response) => {
       console.log(response.data);
       navigate('/login');
     });
