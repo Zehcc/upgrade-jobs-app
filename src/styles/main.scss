@@ -1,3 +1,4 @@
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 @import "./base/_mixins.scss";
 @import "./base/_variables.scss";
@@ -17,6 +18,8 @@
 @import "../pages/HomePage/_homePage.scss";
 @import "../components/UserGuide/_userGuide.scss";
 @import "../pages/DetailedOfferPage/_detailedOfferPage.scss";
+@import "../pages/OffersPage/_offersPage.scss";
+
 
 * {
   font-family: "Poppins", "Open Sans", sans-serif;
