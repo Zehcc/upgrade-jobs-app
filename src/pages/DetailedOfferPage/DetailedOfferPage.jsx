@@ -3,6 +3,7 @@ import DetailedOffer from "../../components/DetailedOffer/DetailedOffer";
 import UserNavbar from "../../shared/components/UserNavbar/UserNavbar";
 
 const DetailedOfferPage = () => {
+
   return (
     <div>
       <UserNavbar />
