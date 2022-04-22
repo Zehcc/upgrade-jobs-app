@@ -1,16 +1,10 @@
-import { React } from "react";
-import GuideHome from "../../components/GuideHome/GuideHome";
+import {React} from 'react';
+import UserGuide from '../../components/UserGuide/UserGuide';
 
 export default function App() {
-
-    return (
-        <div className="main-home">
-            <div className="main-home__img">
-                <img src='/assets/home.png' alt="Img"></img>
-            </div>
-            <div className="main-home__content">
-                <GuideHome></GuideHome>
-            </div>
-        </div>
-    );
+  return (
+    <div className='main-home'>
+      <UserGuide />
+    </div>
+  );
 }

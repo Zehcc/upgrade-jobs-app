@@ -8,15 +8,26 @@ import { API } from "../../shared/services/api";
 
 const OffersPage = () => {
   const [offers, setOffers] = useState([]);
-  const { userProfile } = useProfileContext();
   const [filteredOffers, setFilteredOffers] = useState([]);
+  const { userProfile, setUserProfile } = useProfileContext();
 
   useEffect(() => {
-    localStorage.setItem("userProfile", JSON.stringify(userProfile));
     API.get("/offers").then((response) => {
       setOffers(response.data);
     });
-  }, [userProfile]);
+    API.get(`users/${userProfile.id}`)
+      .then((response) => {
+        setUserProfile({
+          id: response.data._id,
+          name: response.data.name,
+          email: response.data.email,
+          img: response.data.img,
+          cv: response.data.cv,
+          candidatures: response.data.candidatures,
+        });
+      })
+      .then(localStorage.setItem("userProfile", JSON.stringify(userProfile)));
+  }, []);
   return (
     <>
       <UserNavbar />
