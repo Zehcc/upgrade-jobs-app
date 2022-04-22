@@ -43,7 +43,7 @@ const RegisterUserForm = () => {
       />
       <button className='signup-button'>Registrarse</button>
       <Link className='back-button' to='/login'>
-        Volver
+        Log in
       </Link>
     </form>
   );

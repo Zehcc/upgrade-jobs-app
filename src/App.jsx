@@ -22,6 +22,7 @@ import DetailedOfferPage from "./pages/DetailedOfferPage/DetailedOfferPage";
 import HomePage from "./pages/HomePage/HomePage";
 import DetailedCandidaturePage from "./pages/DetailedCandidaturePage/DetailedCandidaturePage";
 
+
 function App() {
   return (
     <div className='App'>
@@ -29,7 +30,7 @@ function App() {
         <ProfileProvider>
           <Router>
             <Routes>
-              <Route path='/wait' element={<LandingPage />} />
+              <Route path='/loading' element={<LandingPage />} />
               <Route path='/login' element={<LoginPage />} />
               <Route path='/home' element={<HomePage />} />
               <Route
@@ -37,7 +38,7 @@ function App() {
                 element={<RegisterCompanyPage />}
               />
               <Route path='/registerUser' element={<RegisterUserPage />} />
-              <Route path='*' element={<Navigate to='wait' />} />
+              <Route path='*' element={<Navigate to='loading' />} />
               <Route path='/offers' element={<OffersPage />} />
               <Route path='/userProfile/:id' element={<UserProfilePage />} />
               <Route
@@ -59,6 +60,7 @@ function App() {
                 path='detailedCandidature/:id'
                 element={<DetailedCandidaturePage />}
               />
+
             </Routes>
           </Router>
         </ProfileProvider>

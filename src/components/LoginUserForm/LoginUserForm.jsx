@@ -34,7 +34,8 @@ const LoginUserForm = () => {
             type='email'
             name='email'
             placeholder='📧                        Email'
-            {...register("email", { required: true })}
+            {...register('email', {required: true})}
+
           />
           <input
             type='password'
