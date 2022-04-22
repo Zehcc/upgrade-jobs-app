@@ -4,15 +4,15 @@ import { useProfileContext } from "../../shared/contexts/ProfileContext";
 
 const CandidaturesPage = () => {
   const { userProfile } = useProfileContext();
-  console.log(userProfile);
-
   return (
     <div>
       <UserNavbar />
       <ul>
         {userProfile.candidatures.length ? (
           userProfile.candidatures.map((candidature) => {
-            return <Candidature key={candidature} id={candidature} />;
+            return (
+              <Candidature key={candidature.id} candidature={candidature} />
+            );
           })
         ) : (
           <h1>Aun no tienes ninguna candidatura</h1>
