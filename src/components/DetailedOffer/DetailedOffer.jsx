@@ -14,7 +14,7 @@ const DetailedOffer = () => {
     });
   }, [id]);
   const exists = userProfile.candidatures.find(
-    (candidature) => candidature === id
+    (candidature) => candidature.id === id
   );
   const sendInscription = () => {
     const updatedCandidates = [userProfile.id, ...detailedOffer.candidates];
@@ -22,7 +22,7 @@ const DetailedOffer = () => {
       candidates: updatedCandidates,
     };
     const updatedCandidatures = [
-      detailedOffer._id,
+      { id: detailedOffer._id, state: "" },
       ...userProfile.candidatures,
     ];
     const candidaturesDB = {

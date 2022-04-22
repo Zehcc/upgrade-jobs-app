@@ -17,6 +17,7 @@ const OffersPage = () => {
     });
     API.get(`users/${userProfile.id}`)
       .then((response) => {
+        console.log(response, "respuestaDB");
         setUserProfile({
           id: response.data._id,
           name: response.data.name,
@@ -31,16 +32,16 @@ const OffersPage = () => {
   return (
     <>
       <UserNavbar />
-      <div className="main-offersPage">
+      <div className='main-offersPage'>
         <OffersFilter offers={offers} setFilteredOffers={setFilteredOffers} />
         <ul>
-          {filteredOffers.length ?
-            filteredOffers.map((offer) => {
-              return <FilteredOffers key={offer._id} offer={offer} />;
-            }) :
-            offers.map((offer) => {
-              return <Offer key={offer._id} offer={offer} />;
-            })}
+          {filteredOffers.length
+            ? filteredOffers.map((offer) => {
+                return <FilteredOffers key={offer._id} offer={offer} />;
+              })
+            : offers.map((offer) => {
+                return <Offer key={offer._id} offer={offer} />;
+              })}
         </ul>
       </div>
     </>
