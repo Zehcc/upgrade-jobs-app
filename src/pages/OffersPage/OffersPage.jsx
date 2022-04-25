@@ -17,7 +17,6 @@ const OffersPage = () => {
     });
     API.get(`users/${userProfile.id}`)
       .then((response) => {
-        console.log(response, "respuestaDB");
         setUserProfile({
           id: response.data._id,
           name: response.data.name,

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { API } from "../../shared/services/api";
 
 const Candidature = ({ candidature }) => {
-  console.log(candidature, "candidatura");
   const [offer, setOffer] = useState();
   useEffect(() => {
     API.get(`/offers/${candidature.id}`).then((response) => {

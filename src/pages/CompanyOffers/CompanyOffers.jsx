@@ -7,11 +7,10 @@ import { API } from "../../shared/services/api";
 
 const CompanyOffers = () => {
   const { companyProfile, setCompanyProfile } = useProfileContext();
-  const [offers, setOffers] = useState([])
+  const [offers, setOffers] = useState([]);
   useEffect(() => {
     API.get(`/companies/${companyProfile.id}`)
       .then((response) => {
-
         setCompanyProfile({
           id: response.data._id,
           name: response.data.name,
@@ -26,7 +25,7 @@ const CompanyOffers = () => {
           },
           offers: response.data.offers,
         });
-        setOffers(response.data.offers)
+        setOffers(response.data.offers);
       })
       .then(
         localStorage.setItem("companyProfile", JSON.stringify(companyProfile))
@@ -34,17 +33,18 @@ const CompanyOffers = () => {
   }, []);
 
   return (
-    <div className="company-offers-page">
+    <div className='company-offers-page'>
       <CompanyNavbar />
-      <Link to="/createOffer">
+      <Link to='/createOffer'>
         <button>Nueva oferta</button>
       </Link>
-      {offers.length &&
-        <ul className="company-offers-list">
+      {offers.length && (
+        <ul className='company-offers-list'>
           {offers.map((offer) => {
             return <CompanyOffer key={offer._id} offer={offer} />;
           })}
-        </ul>}
+        </ul>
+      )}
     </div>
   );
 };

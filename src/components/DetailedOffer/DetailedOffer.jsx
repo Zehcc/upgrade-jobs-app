@@ -22,7 +22,7 @@ const DetailedOffer = () => {
       candidates: updatedCandidates,
     };
     const updatedCandidatures = [
-      { id: detailedOffer._id, state: "" },
+      { id: detailedOffer._id, state: "Inscrito" },
       ...userProfile.candidatures,
     ];
     const candidaturesDB = {
