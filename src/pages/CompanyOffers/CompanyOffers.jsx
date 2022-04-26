@@ -36,7 +36,7 @@ const CompanyOffers = () => {
     <div className='company-offers-page'>
       <CompanyNavbar />
       <Link to='/createOffer'>
-        <button>Nueva oferta</button>
+        <button className="new">Nueva oferta</button>
       </Link>
       {offers.length && (
         <ul className='company-offers-list'>

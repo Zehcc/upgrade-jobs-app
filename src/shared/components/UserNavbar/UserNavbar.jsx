@@ -8,7 +8,7 @@ const UserNavbar = () => {
   const handleButtonClick = () => {
     setIsOpen(!isOpen);
   };
-  console.log(isOpen);
+
 
   const { userProfile } = useProfileContext();
   return (

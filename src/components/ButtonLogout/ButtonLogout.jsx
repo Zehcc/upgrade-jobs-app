@@ -6,6 +6,8 @@ const ButtonLogout = () => {
     let navigate = useNavigate();
     const logOut = () => {
         localStorage.removeItem('token');
+        localStorage.removeItem('userProfile');
+        localStorage.removeItem('companyProfile');
         navigate('/login');
     }
     return (
