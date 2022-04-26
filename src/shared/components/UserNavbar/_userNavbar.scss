@@ -12,5 +12,53 @@
   .nav-item {
     color: white;
     cursor: pointer;
+   
   }
 }
+.dropdown{
+  position: relative;
+  display: inline-block;
+  
+  
+}
+.dropbtn{
+  background-color: #6e54fd;
+  color: white;
+  cursor: pointer;
+  height: 30px;
+  border: none;
+  
+  
+}
+.dropdown-submenu{
+  background-color: #6e54fd;
+  position: absolute;
+  list-style: none;
+  display: none;
+  width: 100%;
+   
+}
+.dropdown-submenu.show{
+  
+  text-decoration: none;
+  display: block;
+}
+ul {
+    
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+li {
+  padding: 8px 12px;
+  
+}
+
+li:hover {
+  background-color: rgba(0, 0, 0, 0.14);
+  cursor: pointer;
+}
+

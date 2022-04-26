@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import FilteredOffers from "../../components/FilteredOffers/FilteredOffers";
 import Offer from "../../components/Offer/Offer";
 import OffersFilter from "../../components/OffersFilter/OffersFilter";
 import UserNavbar from "../../shared/components/UserNavbar/UserNavbar";
@@ -36,7 +35,7 @@ const OffersPage = () => {
         <ul>
           {filteredOffers.length ?
             filteredOffers.map((offer) => {
-              return <FilteredOffers key={offer._id} offer={offer} />;
+              return <Offer key={offer._id} offer={offer} />;
             }) :
             offers.map((offer) => {
               return <Offer key={offer._id} offer={offer} />;
