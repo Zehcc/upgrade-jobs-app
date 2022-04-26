@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useProfileContext } from "../../shared/contexts/ProfileContext";
 import { API } from "../../shared/services/api";
 
 const DetailedCandidature = () => {
   const [detailedCandidature, setDetailedCandidature] = useState({});
+  const { userProfile } = useProfileContext();
   const { id } = useParams();
+  const thisCandidature = userProfile.candidatures.find(
+    (candidature) => candidature.id === id
+  );
   useEffect(() => {
     API.get(`offers/${id}`).then((response) => {
       setDetailedCandidature(response.data);
@@ -25,6 +30,7 @@ const DetailedCandidature = () => {
           <h3>{detailedCandidature.title}</h3>
           <p>{detailedCandidature.location}</p>
           <p>Vacantes: {detailedCandidature.vacants}</p>
+          {thisCandidature && <p>Estado: {thisCandidature.state}</p>}
         </div>
       </div>
       <div className='offer-description'>

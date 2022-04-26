@@ -30,9 +30,10 @@ const OffersPage = () => {
   return (
     <>
       <UserNavbar />
-      <div className="main-offersPage">
+      <div className='main-offersPage'>
         <OffersFilter offers={offers} setFilteredOffers={setFilteredOffers} />
         <ul>
+
           {filteredOffers.length ?
             filteredOffers.map((offer) => {
               return <Offer key={offer._id} offer={offer} />;
@@ -40,6 +41,7 @@ const OffersPage = () => {
             offers.map((offer) => {
               return <Offer key={offer._id} offer={offer} />;
             })}
+
         </ul>
       </div>
     </>

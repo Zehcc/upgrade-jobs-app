@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { API } from "../../shared/services/api";
 
-const Candidature = ({ id }) => {
+const Candidature = ({ candidature }) => {
   const [offer, setOffer] = useState();
   useEffect(() => {
-    API.get(`/offers/${id}`).then((response) => {
+    API.get(`/offers/${candidature.id}`).then((response) => {
       setOffer(response.data);
     });
   }, []);
@@ -22,6 +22,7 @@ const Candidature = ({ id }) => {
               <h4>{offer.title}</h4>
               <p>{offer.company.name}</p>
               <p>{offer.company.info.location}</p>
+              <p>{candidature.state}</p>
             </div>
           </li>
         </Link>
