@@ -29,11 +29,14 @@ const ProfileProvider = ({ children }) => {
         web: "",
         employees: "",
       },
+      offers: [],
     }
   );
 
   return (
-    <ProfileContext.Provider value={{ userProfile, setUserProfile, companyProfile, setCompanyProfile }}>
+    <ProfileContext.Provider
+      value={{ userProfile, setUserProfile, companyProfile, setCompanyProfile }}
+    >
       {children}
     </ProfileContext.Provider>
   );

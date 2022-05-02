@@ -8,6 +8,7 @@
     border-radius: 50%;
   }
 }
+
 .profile-form-container {
   display: flex;
   justify-content: center;
@@ -29,5 +30,12 @@
     color: white;
     border: none;
     height: 30px;
+  }
+  .change-image {
+    border: none;
+    background-color: white;
+    color: #6e54fd;
+    font-size: 0.9rem;
+    font-weight: 500;
   }
 }
