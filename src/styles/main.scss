@@ -21,8 +21,9 @@
 @import "../components/ButtonLogout/_buttonLogout.scss";
 @import "../components/DetailedOffer/_detailedOffer.scss";
 @import "../components/DetailedCompanyOffer/_detailedCompanyOffer.scss";
+@import "../components/Candidate/candidate";
 * {
-  font-family: 'Poppins', 'Open Sans', sans-serif;
+  font-family: "Poppins", "Open Sans", sans-serif;
   margin: 0;
   padding: 0;
 }

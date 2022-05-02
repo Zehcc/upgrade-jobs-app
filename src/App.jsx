@@ -22,6 +22,7 @@ import DetailedOfferPage from "./pages/DetailedOfferPage/DetailedOfferPage";
 import HomePage from "./pages/HomePage/HomePage";
 import DetailedCandidaturePage from "./pages/DetailedCandidaturePage/DetailedCandidaturePage";
 import DetailedCompanyOffer from "./components/DetailedCompanyOffer/DetailedCompanyOffer";
+import CandidatePage from "./pages/CandidatePage/CandidatePage";
 
 function App() {
   return (
@@ -60,7 +61,14 @@ function App() {
                 path='detailedCandidature/:id'
                 element={<DetailedCandidaturePage />}
               />
-              <Route path='detailedCompanyOffer/:id' element={<DetailedCompanyOffer />} />
+              <Route
+                path='detailedCompanyOffer/:id'
+                element={<DetailedCompanyOffer />}
+              />
+              <Route
+                path='candidate/:userID/:offerID'
+                element={<CandidatePage />}
+              ></Route>
             </Routes>
           </Router>
         </ProfileProvider>
