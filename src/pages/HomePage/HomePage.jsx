@@ -1,4 +1,4 @@
-import {React} from 'react';
+import React from 'react';
 import UserGuide from '../../components/UserGuide/UserGuide';
 
 export default function App() {

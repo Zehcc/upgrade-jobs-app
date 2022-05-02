@@ -55,7 +55,7 @@ const DetailedOffer = () => {
         <p>{detailedOffer.description}</p>
       </div>
       {!exists ? (
-        <button onClick={sendInscription}>Inscribirme</button>
+        <button className="button" onClick={sendInscription}>Inscribirme</button>
       ) : (
         <p>Ya inscrito</p>
       )}

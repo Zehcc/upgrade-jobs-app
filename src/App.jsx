@@ -21,7 +21,7 @@ import CandidaturesPage from "./pages/Candidatures/CandidaturesPage";
 import DetailedOfferPage from "./pages/DetailedOfferPage/DetailedOfferPage";
 import HomePage from "./pages/HomePage/HomePage";
 import DetailedCandidaturePage from "./pages/DetailedCandidaturePage/DetailedCandidaturePage";
-
+import DetailedCompanyOffer from "./components/DetailedCompanyOffer/DetailedCompanyOffer";
 
 function App() {
   return (
@@ -60,7 +60,7 @@ function App() {
                 path='detailedCandidature/:id'
                 element={<DetailedCandidaturePage />}
               />
-
+              <Route path='detailedCompanyOffer/:id' element={<DetailedCompanyOffer />} />
             </Routes>
           </Router>
         </ProfileProvider>
