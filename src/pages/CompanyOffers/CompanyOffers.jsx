@@ -41,7 +41,8 @@ const CompanyOffers = () => {
       {offers.length && (
         <ul className='company-offers-list'>
           {offers.map((offer) => {
-            return <CompanyOffer key={offer._id} offer={offer} />;
+            return <Link to={`/detailedCompanyOffer/${offer._id}`}> <CompanyOffer key={offer._id} offer={offer} />
+            </Link>;
           })}
         </ul>
       )}
