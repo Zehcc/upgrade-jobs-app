@@ -1,12 +1,12 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
-import { useProfileContext } from '../../shared/contexts/ProfileContext';
-import { API } from '../../shared/services/api';
+import {useForm} from 'react-hook-form';
+import {Link, useNavigate} from 'react-router-dom';
+import {useProfileContext} from '../../shared/contexts/ProfileContext';
+import {API} from '../../shared/services/api';
 
 const CreateOfferPage = () => {
-  const { companyProfile } = useProfileContext();
-  const { register, handleSubmit } = useForm();
+  const {companyProfile} = useProfileContext();
+  const {register, handleSubmit} = useForm();
   let navigate = useNavigate();
   const onSubmit = (data) => {
     API.post('/offers', data).then((response) => {
@@ -27,44 +27,48 @@ const CreateOfferPage = () => {
           type='text'
           name='title'
           placeholder='Título de la oferta'
-          {...register('title', { require: true })}
+          className='create-offer-input'
+          {...register('title', {require: true})}
         />
         <input
           type='text'
           name='location'
           placeholder='Localización de la oferta'
           className='create-offer-input'
-          {...register('location', { require: true })}
+          {...register('location', {require: true})}
         />
         <input
           type='text'
           name='category'
           placeholder='Categoría'
           className='create-offer-input'
-          {...register('category', { require: true })}
+          {...register('category', {require: true})}
         />
         <input
           type='number'
           name='vacants'
           placeholder='Numero de vacantes'
           className='create-offer-input'
-          {...register('vacants', { require: true })}
+          {...register('vacants', {require: true})}
         />
         <textarea
           className='description'
           type='text'
           name='description'
           placeholder='Descripción'
-          {...register('description', { require: true })}
+          {...register('description', {require: true})}
         />
         <input
           className='hidden'
           type='text'
           name='company'
           value={companyProfile.id}
-          {...register('company', { require: true })}
+          {...register('company', {require: true})}
         />
         <button>Crear oferta</button>
+        <Link to='/companyOffers'>
+          <button className='back-button'>Volver</button>
+        </Link>
       </form>
     </div>
   );
