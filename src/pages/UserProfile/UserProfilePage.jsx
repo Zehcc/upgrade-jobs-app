@@ -7,15 +7,22 @@ import { API } from "../../shared/services/api";
 const UserProfilePage = () => {
   const { register, handleSubmit } = useForm();
   const { userProfile, setUserProfile } = useProfileContext();
+  const formData = new FormData();
+  formData.append("cv", userProfile.cv[0]);
+  const header = {
+    "content-type": "multipart/form-data",
+  }
   const onSubmit = (data) => {
-    API.patch(`/users/${userProfile.id}`, data).then(
+    API.patch(`/users/${userProfile.id}`, data, formData, header).then(
       setUserProfile({
         id: userProfile.id,
         name: data.name,
         email: data.email,
         img: data.img,
         cv: data.cv,
-      })
+
+      }),
+
     );
   };
 
@@ -53,7 +60,7 @@ const UserProfilePage = () => {
           />
           <label>CV</label>
           <input
-            type='text'
+            type='file'
             name='cv'
             placeholder='Sube tu cv.pdf'
             defaultValue={userProfile.cv}
