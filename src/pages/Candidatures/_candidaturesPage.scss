@@ -1,0 +1,16 @@
+.empty{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 5rem;
+    .empty-image{
+        width: 400px;
+        img{
+            width: 100%;
+            height: auto;
+        }
+    }
+
+}

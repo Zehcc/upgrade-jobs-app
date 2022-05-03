@@ -32,83 +32,89 @@ const GuideHome = () => {
   return (
     <>
       {data < 0 && (
-        <div>
-          <h2>¿Qué estás buscando?</h2>
-          <div>
-            <button onClick={setUser}>Estoy buscando trabajo</button>
-            <button onClick={setCompany}>Estoy buscando candidatos</button>
+        <div className="main-container">
+          <div className='logo-container-guide'>
+            <i className='bx bx-meteor active' />
+            <h2 className="logo-title">UpgradeJobs</h2>
+          </div>
+          <h2 className="main-title">¿Qué estás buscando?</h2>
+          <div className="button-container">
+            <button className="main-button" onClick={setUser}><b>Trabajo</b></button>
+            <button className="main-button" onClick={setCompany}><b>Candidatos</b></button>
           </div>
         </div>
       )}
-      <div className='guide'>
-        {data === 0 && (
-          <img
-            className='guide__image'
-            src='/assets/Resume.png'
-            alt='profile'
-          />
-        )}
-        {data === 1 && (
-          <img
-            className='guide__image'
-            src='/assets/Jobhunt.png'
-            alt='profile'
-          />
-        )}
-        {data === 2 && (
-          <img
-            className='guide__image'
-            src='/assets/contact-companies.png'
-            alt='profile'
-          />
-        )}
-        {guide === "user" && (
-          <>
-            <div className='guide__content'>
-              {dataUser[data].title && <h3>{dataUser[data].title}</h3>}
-              <p>{dataUser[data].text}</p>
-            </div>
-            <div className='guide__buttons'>
-              {data < 2 && (
-                <button className='guide-btn' onClick={next}>
-                  Siguiente
-                </button>
-              )}
-              {data === 2 && (
-                <button
-                  className='guide-btn green'
-                  onClick={() => toRegister("user")}
-                >
-                  Comenzar
-                </button>
-              )}
-            </div>
-          </>
-        )}
-        {guide === "company" && (
-          <>
-            <div className='guide__content'>
-              {dataCompany[data].title && <h3>{dataCompany[data].title}</h3>}
-              <p>{dataCompany[data].text}</p>
-            </div>
-            <div className='guide__buttons'>
-              {data < 2 && (
-                <button className='guide-btn' onClick={next}>
-                  Siguiente
-                </button>
-              )}
-              {data === 2 && (
-                <button
-                  className='guide-btn green'
-                  onClick={() => toRegister("company")}
-                >
-                  Comenzar
-                </button>
-              )}
-            </div>
-          </>
-        )}
-      </div>
+      {data >= 0 &&
+        <div className='guide'>
+          {data === 0 && (
+            <img
+              className='guide__image'
+              src='/assets/Resume.png'
+              alt='profile'
+            />
+          )}
+          {data === 1 && (
+            <img
+              className='guide__image'
+              src='/assets/Jobhunt.png'
+              alt='profile'
+            />
+          )}
+          {data === 2 && (
+            <img
+              className='guide__image'
+              src='/assets/contact-companies.png'
+              alt='profile'
+            />
+          )}
+          {guide === "user" && (
+            <>
+              <div className='guide__content'>
+                {dataUser[data].title && <h3>{dataUser[data].title}</h3>}
+                <p>{dataUser[data].text}</p>
+              </div>
+              <div className='guide__buttons'>
+                {data < 2 && (
+                  <button className='guide-btn' onClick={next}>
+                    Siguiente
+                  </button>
+                )}
+                {data === 2 && (
+                  <button
+                    className='guide-btn green'
+                    onClick={() => toRegister("user")}
+                  >
+                    Comenzar
+                  </button>
+                )}
+              </div>
+            </>
+          )}
+          {guide === "company" && (
+            <>
+              <div className='guide__content'>
+                {dataCompany[data].title && <h3>{dataCompany[data].title}</h3>}
+                <p>{dataCompany[data].text}</p>
+              </div>
+              <div className='guide__buttons'>
+                {data < 2 && (
+                  <button className='guide-btn' onClick={next}>
+                    Siguiente
+                  </button>
+                )}
+                {data === 2 && (
+                  <button
+                    className='guide-btn green'
+                    onClick={() => toRegister("company")}
+                  >
+                    Comenzar
+                  </button>
+                )}
+              </div>
+            </>
+          )}
+        </div>
+      }
     </>
   );
 };
