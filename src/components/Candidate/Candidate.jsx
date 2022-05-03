@@ -1,7 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { API } from "../../shared/services/api";
 
 const Candidate = ({ candidate, offer }) => {
+  let navigate = useNavigate();
   const changeState = (state) => {
     let candidature = candidate.candidatures.find(
       (candidature) => candidature.id === offer._id
@@ -17,9 +19,7 @@ const Candidate = ({ candidate, offer }) => {
       candidatures: [candidature, ...oldCandidatures],
     };
     API.patch(`users/${candidate._id}`, updatedCandidatures).then(
-      (response) => {
-        console.log(response.data);
-      }
+      navigate(`/detailedCompanyOffer/${offer._id}`)
     );
   };
 
@@ -27,6 +27,9 @@ const Candidate = ({ candidate, offer }) => {
     <div className='candidate-container'>
       <img src={candidate.img} alt={candidate.id} />
       <h2>{candidate.name}</h2>
+      <a href={candidate.cv} target='_blank' rel='noopener noreferrer'>
+        Ver cv candidato
+      </a>
       <button onClick={() => changeState("Sigues en el proceso")}>
         Sigues en el proceso
       </button>

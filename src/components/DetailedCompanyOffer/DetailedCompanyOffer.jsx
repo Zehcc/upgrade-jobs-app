@@ -44,8 +44,11 @@ const DetailedCompanyOffer = () => {
             {detailedOffer.candidates &&
               detailedOffer.candidates.map((candidate) => {
                 return (
-                  <Link to={`/candidate/${candidate._id}/${id}`}>
-                    <li className='candidates-container' key={candidate._id}>
+                  <Link
+                    key={candidate._id}
+                    to={`/candidate/${candidate._id}/${id}`}
+                  >
+                    <li className='candidates-container'>
                       <div className='candidates-img-container'>
                         <img src={candidate.img} alt={candidate.name} />
                       </div>

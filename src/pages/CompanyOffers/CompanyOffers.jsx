@@ -36,13 +36,16 @@ const CompanyOffers = () => {
     <div className='company-offers-page'>
       <CompanyNavbar />
       <Link to='/createOffer'>
-        <button className="new">Nueva oferta</button>
+        <button className='new'>Nueva oferta</button>
       </Link>
       {offers.length && (
         <ul className='company-offers-list'>
           {offers.map((offer) => {
-            return <Link to={`/detailedCompanyOffer/${offer._id}`}> <CompanyOffer key={offer._id} offer={offer} />
-            </Link>;
+            return (
+              <Link key={offer._id} to={`/detailedCompanyOffer/${offer._id}`}>
+                <CompanyOffer offer={offer} />
+              </Link>
+            );
           })}
         </ul>
       )}
