@@ -1,26 +1,26 @@
-import { upload } from "@testing-library/user-event/dist/upload";
-import axios from "axios";
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import UserNavbar from "../../shared/components/UserNavbar/UserNavbar";
-import { useProfileContext } from "../../shared/contexts/ProfileContext";
-import { API } from "../../shared/services/api";
+import {upload} from '@testing-library/user-event/dist/upload';
+import axios from 'axios';
+import React, {useState} from 'react';
+import {useForm} from 'react-hook-form';
+import {useNavigate} from 'react-router-dom';
+import UserNavbar from '../../shared/components/UserNavbar/UserNavbar';
+import {useProfileContext} from '../../shared/contexts/ProfileContext';
+import {API} from '../../shared/services/api';
 
 const UserProfilePage = () => {
   let navigate = useNavigate();
-  const { register, handleSubmit } = useForm();
-  const { userProfile, setUserProfile } = useProfileContext();
+  const {register, handleSubmit} = useForm();
+  const {userProfile, setUserProfile} = useProfileContext();
   const [image, setImage] = useState(userProfile.img);
   const [cv, setCV] = useState(userProfile.cv);
   const [showIMG, setShowIMG] = useState(false);
   const [showCV, setShowCV] = useState(false);
 
   const changeShow = (input) => {
-    if (input === "img") {
+    if (input === 'img') {
       setShowIMG(!showIMG);
     }
-    if (input === "cv") {
+    if (input === 'cv') {
       setShowCV(!showCV);
     }
   };
@@ -28,28 +28,24 @@ const UserProfilePage = () => {
   const uploadImage = async (e) => {
     const files = e.target.files;
     const data = new FormData();
-    data.append("file", files[0]);
-    data.append("upload_preset", "zehcimages");
-    axios
-      .post("https://api.cloudinary.com/v1_1/dzrcd1gpb/image/upload", data)
-      .then((response) => {
-        setImage(response.data.secure_url);
-        changeShow("img");
-      });
+    data.append('file', files[0]);
+    data.append('upload_preset', 'zehcimages');
+    axios.post('https://api.cloudinary.com/v1_1/dzrcd1gpb/image/upload', data).then((response) => {
+      setImage(response.data.secure_url);
+      changeShow('img');
+    });
   };
 
   const uploadCV = async (e) => {
     const files = e.target.files;
     const data = new FormData();
-    data.append("file", files[0]);
-    data.append("upload_preset", "zehcimages");
-    axios
-      .post("https://api.cloudinary.com/v1_1/dzrcd1gpb/image/upload", data)
-      .then((response) => {
-        const cvURL = response.data.secure_url.replace(".pdf", ".jpg");
-        setCV(cvURL);
-        changeShow("cv");
-      });
+    data.append('file', files[0]);
+    data.append('upload_preset', 'zehcimages');
+    axios.post('https://api.cloudinary.com/v1_1/dzrcd1gpb/image/upload', data).then((response) => {
+      const cvURL = response.data.secure_url.replace('.pdf', '.jpg');
+      setCV(cvURL);
+      changeShow('cv');
+    });
   };
 
   const onSubmit = (data) => {
@@ -69,13 +65,13 @@ const UserProfilePage = () => {
   return (
     <>
       <UserNavbar />
-      <div className='profile-img-container'>
-        <img src={image} alt={userProfile.id} />
-      </div>
-      <div className='profile-form-container'>
-        <form onSubmit={handleSubmit(onSubmit)}>
+      <div className='profile-page'>
+        <div className='profile-logo-container'>
+          <img src={image} alt={userProfile.id} />
+        </div>
+        <form className='login-form-container' onSubmit={handleSubmit(onSubmit)}>
           {!showIMG ? (
-            <button className='change-image' onClick={() => changeShow("img")}>
+            <button className='change-image' onClick={() => changeShow('img')}>
               Cambiar imagen
             </button>
           ) : (
@@ -85,8 +81,8 @@ const UserProfilePage = () => {
             </>
           )}
           {!showCV ? (
-            <button className='change-image' onClick={() => changeShow("cv")}>
-              Cambiar cv
+            <button className='change-image' onClick={() => changeShow('cv')}>
+              Subir cv
             </button>
           ) : (
             <>
@@ -101,7 +97,7 @@ const UserProfilePage = () => {
             name='name'
             placeholder='Escribe tu nombre'
             defaultValue={userProfile.name}
-            {...register("name", { required: true })}
+            {...register('name', {required: true})}
           />
           <label>Email</label>
           <input
@@ -109,7 +105,7 @@ const UserProfilePage = () => {
             name='email'
             placeholder='Escribe tu email'
             defaultValue={userProfile.email}
-            {...register("email", { required: true })}
+            {...register('email', {required: true})}
           />
           {/* <label>CV</label>
           <input

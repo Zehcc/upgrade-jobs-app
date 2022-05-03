@@ -17,13 +17,14 @@ h4 {
   flex-direction: column;
   align-items: center;
   margin: 25px 0;
+  width: 90%;
 
   ::placeholder {
     text-align: center;
   }
 
   &-input {
-    width: 150%;
+    width: 90%;
     text-align: center;
     height: 30px;
     margin: 2px 0;
@@ -31,7 +32,7 @@ h4 {
 
   button {
     margin-top: 10px;
-    width: 150%;
+    width: 90%;
     background-color: #6e54fd;
     color: white;
     border: none;
@@ -42,10 +43,18 @@ h4 {
     display: none;
   }
 
+  .back-button {
+    border: none;
+    background-color: white;
+    color: #6e54fd;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
   .description {
     display: flex;
     flex-wrap: wrap;
-    width: 133%;
+    width: 82%;
     text-align: center;
     height: 300px;
     margin: 2px 0;
