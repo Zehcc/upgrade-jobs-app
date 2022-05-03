@@ -1,3 +1,4 @@
+import { upload } from "@testing-library/user-event/dist/upload";
 import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -11,11 +12,19 @@ const UserProfilePage = () => {
   const { register, handleSubmit } = useForm();
   const { userProfile, setUserProfile } = useProfileContext();
   const [image, setImage] = useState(userProfile.img);
-  const [show, setShow] = useState(false);
+  const [cv, setCV] = useState(userProfile.cv);
+  const [showIMG, setShowIMG] = useState(false);
+  const [showCV, setShowCV] = useState(false);
 
-  const changeShow = () => {
-    setShow(!show);
+  const changeShow = (input) => {
+    if (input === "img") {
+      setShowIMG(!showIMG);
+    }
+    if (input === "cv") {
+      setShowCV(!showCV);
+    }
   };
+
   const uploadImage = async (e) => {
     const files = e.target.files;
     const data = new FormData();
@@ -25,7 +34,21 @@ const UserProfilePage = () => {
       .post("https://api.cloudinary.com/v1_1/dzrcd1gpb/image/upload", data)
       .then((response) => {
         setImage(response.data.secure_url);
-        changeShow();
+        changeShow("img");
+      });
+  };
+
+  const uploadCV = async (e) => {
+    const files = e.target.files;
+    const data = new FormData();
+    data.append("file", files[0]);
+    data.append("upload_preset", "zehcimages");
+    axios
+      .post("https://api.cloudinary.com/v1_1/dzrcd1gpb/image/upload", data)
+      .then((response) => {
+        const cvURL = response.data.secure_url.replace(".pdf", ".jpg");
+        setCV(cvURL);
+        changeShow("cv");
       });
   };
 
@@ -35,7 +58,7 @@ const UserProfilePage = () => {
       name: data.name,
       email: data.email,
       img: image,
-      cv: data.cv,
+      cv: cv,
       candidatures: userProfile.candidatures,
     };
     API.patch(`/users/${userProfile.id}`, dataToDB)
@@ -51,8 +74,8 @@ const UserProfilePage = () => {
       </div>
       <div className='profile-form-container'>
         <form onSubmit={handleSubmit(onSubmit)}>
-          {!show ? (
-            <button className='change-image' onClick={changeShow}>
+          {!showIMG ? (
+            <button className='change-image' onClick={() => changeShow("img")}>
               Cambiar imagen
             </button>
           ) : (
@@ -61,6 +84,17 @@ const UserProfilePage = () => {
               <input type='file' name='img' onChange={uploadImage} />
             </>
           )}
+          {!showCV ? (
+            <button className='change-image' onClick={() => changeShow("cv")}>
+              Cambiar cv
+            </button>
+          ) : (
+            <>
+              <label>Selecciona tu nuevo cv</label>
+              <input type='file' name='cv' onChange={uploadCV} />
+            </>
+          )}
+
           <label>Nombre</label>
           <input
             type='text'
@@ -77,14 +111,14 @@ const UserProfilePage = () => {
             defaultValue={userProfile.email}
             {...register("email", { required: true })}
           />
-          <label>CV</label>
+          {/* <label>CV</label>
           <input
             type='text'
             name='cv'
             placeholder='Sube tu cv.pdf'
             defaultValue={userProfile.cv}
             {...register("cv", { required: false })}
-          />
+          /> */}
           <button>Guardar cambios</button>
         </form>
       </div>
