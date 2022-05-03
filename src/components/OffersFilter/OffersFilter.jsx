@@ -7,8 +7,8 @@ const OffersFilter = ({ offers, setFilteredOffers }) => {
     const onSubmit = (data) => {
         const filtered = offers.filter(offer => offer.title.toLowerCase().includes(data.search.toLowerCase())
             || offer.company.name.toLowerCase() === data.search.toLowerCase()
-            || offer.location.toLowerCase().includes(data.search.toLowerCase()));
-        // TODO CATEGORY TODO || offer.category.toLowerCase().includes(data.search.toLowerCase()));
+            || offer.location.toLowerCase().includes(data.search.toLowerCase())
+            || offer.category.toLowerCase().includes(data.search.toLowerCase()));
         console.log(filtered)
         if (filtered.length && (data.search.length)) {
             console.log(filtered)
@@ -22,8 +22,8 @@ const OffersFilter = ({ offers, setFilteredOffers }) => {
 
     return (
         <>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <input type="text" name="search" placeholder="Search" {...register("search")} />
+            <form className='main-filter' onSubmit={handleSubmit(onSubmit)}>
+                <input className='filter' type="text" name="search" placeholder="Prueba a buscar aqui" {...register("search")} />
             </form>
         </>
     )
