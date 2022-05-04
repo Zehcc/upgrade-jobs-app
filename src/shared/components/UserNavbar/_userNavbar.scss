@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  padding: 15px 2px;
+  padding: 15px 0;
   background-color: #6e54fd;
   height: 30px;
   position: sticky;
@@ -33,7 +33,7 @@
   position: absolute;
   list-style: none;
   display: none;
-  right: 70%;
+  right: 120%;
   &.show {
     text-decoration: none;
     display: block;

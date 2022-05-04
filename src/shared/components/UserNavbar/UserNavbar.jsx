@@ -16,10 +16,10 @@ const UserNavbar = () => {
   return (
     <nav className='user-navbar'>
       <Link to='/offers'>
-        <Offers size={27} className='nav-item' />
+        <Offers size={30} className='nav-item' />
       </Link>
       <Link to={`/candidatures/${userProfile.id}`}>
-        <Applications size={27} className='nav-item' />
+        <Applications size={30} className='nav-item' />
       </Link>
       <div className='dropdown'>
         <Profile size={30} className='dropbtn' type='button' onClick={handleButtonClick} />
