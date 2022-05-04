@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Candidate from "../../components/Candidate/Candidate";
 import { API } from "../../shared/services/api";
-
+import CompanyNavbar from "../../shared/components/CompanyNavbar/CompanyNavbar";
 const CandidatePage = () => {
   const { userID, offerID } = useParams();
 
@@ -19,10 +19,14 @@ const CandidatePage = () => {
   }, []);
 
   return (
-    <div>
-      <Candidate candidate={candidate} offer={offer} />
-    </div>
+    <>
+      <CompanyNavbar />
+      <div>
+        <Candidate candidate={candidate} offer={offer} />
+      </div>
+    </>
   );
+
 };
 
 export default CandidatePage;

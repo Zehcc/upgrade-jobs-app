@@ -20,23 +20,33 @@ const Candidate = ({ candidate, offer }) => {
     };
     API.patch(`users/${candidate._id}`, updatedCandidatures).then(
       navigate(`/detailedCompanyOffer/${offer._id}`)
+
     );
+    
   };
 
   return (
     <div className='candidate-container'>
-      <img src={candidate.img} alt={candidate.id} />
-      <h2>{candidate.name}</h2>
-      <a href={candidate.cv} target='_blank' rel='noopener noreferrer'>
-        Ver cv candidato
-      </a>
-      <button onClick={() => changeState("Sigues en el proceso")}>
-        Sigues en el proceso
-      </button>
-      <button onClick={() => changeState("CV no preseleccionado")}>
-        CV no preseleccionado
-      </button>
-      <button onClick={() => changeState("Descartado")}>Descartado</button>
+      <div className='candidate-img'>
+        <img src={candidate.img} alt={candidate.id} />
+      </div>
+      <div className="candidate-info">
+        <h2>{candidate.name}</h2>
+        <a href={candidate.cv} target='_blank' rel='noopener noreferrer'>
+          Ver el CV del candidato
+        </a>
+      </div>
+      <div className="candidate-buttons">
+        <button className="candidate-button" onClick={() => changeState("Sigues en el proceso")}>
+          Sigue en el proceso
+        </button>
+        <button className="candidate-button" onClick={() => changeState("CV no preseleccionado")}>
+          No preseleccionar curriculum
+        </button>
+        <button className="candidate-button" onClick={() => changeState("Descartado")}>
+          Descartar candidato
+        </button>
+      </div>
     </div>
   );
 };
