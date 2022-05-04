@@ -6,21 +6,15 @@ import { useIsAuthContext } from "../../shared/contexts/IsAuthContext";
 import { useProfileContext } from "../../shared/contexts/ProfileContext";
 
 const LoginUserForm = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
   let navigate = useNavigate();
   const { setIsAuthUser } = useIsAuthContext();
   const { setUserProfile } = useProfileContext();
   const [error, setError] = useState("");
-
   const onSubmit = (data) => {
     API.post("/users/login", data).then((response) => {
       console.log(response);
       if (response.status === 200) {
-        console.log(response);
         localStorage.setItem("token", response.data[0]);
         setIsAuthUser(response.data[0]);
         setUserProfile({
@@ -64,7 +58,6 @@ const LoginUserForm = () => {
         {error && <p className='error-message'>{error}</p>}
         <button>Entrar</button>
       </form>
-
       <div className='register-div'>
         <p>¿Aún no estas registrado?</p>
         <Link to='/home'>
