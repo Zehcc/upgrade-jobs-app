@@ -1,17 +1,14 @@
-import React, {useEffect, useState} from 'react';
-import {Link, useParams} from 'react-router-dom';
-import {useProfileContext} from '../../shared/contexts/ProfileContext';
-import {API} from '../../shared/services/api';
-import CompanyNavbar from '../../shared/components/CompanyNavbar/CompanyNavbar';
-import {useGestionContext} from '../../shared/contexts/GestionContext';
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { API } from "../../shared/services/api";
+import CompanyNavbar from "../../shared/components/CompanyNavbar/CompanyNavbar";
+import { useGestionContext } from "../../shared/contexts/GestionContext";
 
 const DetailedCompanyOffer = () => {
   const [detailedOffer, setDetailedOffer] = useState({});
-  const {companyProfile} = useProfileContext();
-  const {creationDate, updatedDate} = useGestionContext();
-  const {id} = useParams();
-  const thisOffer = companyProfile.offers.find((offer) => offer.id === id);
-
+  const { creationDate } = useGestionContext();
+  const { id } = useParams();
+  console.log(detailedOffer);
   useEffect(() => {
     API.get(`offers/${id}`).then((response) => {
       setDetailedOffer(response.data);
@@ -25,7 +22,10 @@ const DetailedCompanyOffer = () => {
         <div className='offer-header'>
           {detailedOffer.company && (
             <div className='img-container'>
-              <img src={detailedOffer.company.info.img} alt={detailedOffer.company.name} />
+              <img
+                src={detailedOffer.company.info.img}
+                alt={detailedOffer.company.name}
+              />
             </div>
           )}
           <div className='text-container'>
@@ -33,7 +33,6 @@ const DetailedCompanyOffer = () => {
             <p>{detailedOffer.location}</p>
             <p>Vacantes: {detailedOffer.vacants}</p>
             <p>{creationDate(detailedOffer.createdAt)}</p>
-            {thisOffer && <p>Estado: {thisOffer.state}</p>}
           </div>
         </div>
         <div className='offer-description'>
@@ -45,7 +44,10 @@ const DetailedCompanyOffer = () => {
             {detailedOffer.candidates &&
               detailedOffer.candidates.map((candidate) => {
                 return (
-                  <Link key={candidate._id} to={`/candidate/${candidate._id}/${id}`}>
+                  <Link
+                    key={candidate._id}
+                    to={`/candidate/${candidate._id}/${id}`}
+                  >
                     <li className='candidates-container'>
                       <div className='candidates-img-container'>
                         <img src={candidate.img} alt={candidate.name} />
@@ -53,6 +55,13 @@ const DetailedCompanyOffer = () => {
                       <div className='candidates-text-container'>
                         <h4>{candidate.name}</h4>
                         <p>{candidate.email}</p>
+
+                        {/* {candidate.candidatures.find()}
+                          {candidate.candidatures.find((item) => {
+                            if (item.id === detailedOffer._id) {
+                              console.log(item.state);
+                            }
+                          })} */}
                       </div>
                     </li>
                   </Link>
