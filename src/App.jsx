@@ -18,33 +18,36 @@ import HomePage from './pages/HomePage/HomePage';
 import DetailedCandidaturePage from './pages/DetailedCandidaturePage/DetailedCandidaturePage';
 import DetailedCompanyOffer from './components/DetailedCompanyOffer/DetailedCompanyOffer';
 import CandidatePage from './pages/CandidatePage/CandidatePage';
+import GestionProvider from './shared/contexts/GestionContext';
 
 function App() {
   return (
     <div className='App'>
       <IsAuthProvider>
         <ProfileProvider>
-          <Router>
-            <Routes>
-              <Route path='/loading' element={<LandingPage />} />
-              <Route path='/login' element={<LoginPage />} />
-              <Route path='/home' element={<HomePage />} />
-              <Route path='/registerCompany' element={<RegisterCompanyPage />} />
-              <Route path='/registerUser' element={<RegisterUserPage />} />
-              <Route path='*' element={<Navigate to='loading' />} />
-              <Route path='/offers' element={<OffersPage />} />
-              <Route path='/userProfile/:id' element={<UserProfilePage />} />
-              <Route path='/companyProfile/:id' element={<CompanyProfilePage />} />
-              <Route path='/companyOffers' element={<CompanyOffers />} />
-              <Route path='/createOffer' element={<CreateOfferPage />} />
-              <Route path='/ApplicationSent' element={<UserApplicationSent />} />
-              <Route path='/candidatures/:id' element={<CandidaturesPage />} />
-              <Route path='/detailedOffer/:id' element={<DetailedOfferPage />} />
-              <Route path='detailedCandidature/:id' element={<DetailedCandidaturePage />} />
-              <Route path='detailedCompanyOffer/:id' element={<DetailedCompanyOffer />} />
-              <Route path='candidate/:userID/:offerID' element={<CandidatePage />}></Route>
-            </Routes>
-          </Router>
+          <GestionProvider>
+            <Router>
+              <Routes>
+                <Route path='/loading' element={<LandingPage />} />
+                <Route path='/login' element={<LoginPage />} />
+                <Route path='/home' element={<HomePage />} />
+                <Route path='/registerCompany' element={<RegisterCompanyPage />} />
+                <Route path='/registerUser' element={<RegisterUserPage />} />
+                <Route path='*' element={<Navigate to='loading' />} />
+                <Route path='/offers' element={<OffersPage />} />
+                <Route path='/userProfile/:id' element={<UserProfilePage />} />
+                <Route path='/companyProfile/:id' element={<CompanyProfilePage />} />
+                <Route path='/companyOffers' element={<CompanyOffers />} />
+                <Route path='/createOffer' element={<CreateOfferPage />} />
+                <Route path='/ApplicationSent' element={<UserApplicationSent />} />
+                <Route path='/candidatures/:id' element={<CandidaturesPage />} />
+                <Route path='/detailedOffer/:id' element={<DetailedOfferPage />} />
+                <Route path='detailedCandidature/:id' element={<DetailedCandidaturePage />} />
+                <Route path='detailedCompanyOffer/:id' element={<DetailedCompanyOffer />} />
+                <Route path='candidate/:userID/:offerID' element={<CandidatePage />}></Route>
+              </Routes>
+            </Router>
+          </GestionProvider>
         </ProfileProvider>
       </IsAuthProvider>
     </div>

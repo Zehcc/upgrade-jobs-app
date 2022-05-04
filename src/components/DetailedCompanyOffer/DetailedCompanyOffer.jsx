@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { useProfileContext } from "../../shared/contexts/ProfileContext";
-import { API } from "../../shared/services/api";
-import CompanyNavbar from "../../shared/components/CompanyNavbar/CompanyNavbar";
+import React, {useEffect, useState} from 'react';
+import {Link, useParams} from 'react-router-dom';
+import {useProfileContext} from '../../shared/contexts/ProfileContext';
+import {API} from '../../shared/services/api';
+import CompanyNavbar from '../../shared/components/CompanyNavbar/CompanyNavbar';
+import {useGestionContext} from '../../shared/contexts/GestionContext';
+
 const DetailedCompanyOffer = () => {
   const [detailedOffer, setDetailedOffer] = useState({});
-  const { companyProfile } = useProfileContext();
-  const { id } = useParams();
+  const {companyProfile} = useProfileContext();
+  const {creationDate, updatedDate} = useGestionContext();
+  const {id} = useParams();
   const thisOffer = companyProfile.offers.find((offer) => offer.id === id);
 
   useEffect(() => {
@@ -22,16 +25,14 @@ const DetailedCompanyOffer = () => {
         <div className='offer-header'>
           {detailedOffer.company && (
             <div className='img-container'>
-              <img
-                src={detailedOffer.company.info.img}
-                alt={detailedOffer.company.name}
-              />
+              <img src={detailedOffer.company.info.img} alt={detailedOffer.company.name} />
             </div>
           )}
           <div className='text-container'>
             <h3>{detailedOffer.title}</h3>
             <p>{detailedOffer.location}</p>
             <p>Vacantes: {detailedOffer.vacants}</p>
+            <p>{creationDate(detailedOffer.createdAt)}</p>
             {thisOffer && <p>Estado: {thisOffer.state}</p>}
           </div>
         </div>
@@ -44,10 +45,7 @@ const DetailedCompanyOffer = () => {
             {detailedOffer.candidates &&
               detailedOffer.candidates.map((candidate) => {
                 return (
-                  <Link
-                    key={candidate._id}
-                    to={`/candidate/${candidate._id}/${id}`}
-                  >
+                  <Link key={candidate._id} to={`/candidate/${candidate._id}/${id}`}>
                     <li className='candidates-container'>
                       <div className='candidates-img-container'>
                         <img src={candidate.img} alt={candidate.name} />
