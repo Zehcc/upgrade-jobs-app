@@ -6,7 +6,6 @@ import { useGestionContext } from "../../shared/contexts/GestionContext";
 
 const DetailedCompanyOffer = () => {
   const [detailedOffer, setDetailedOffer] = useState({});
-  const [paint, setPaint] = useState("");
   const { creationDate } = useGestionContext();
   const { id } = useParams();
   useEffect(() => {
