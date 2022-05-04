@@ -15,7 +15,7 @@ const CompanyNavbar = () => {
   return (
     <nav className='company-navbar'>
       <Link to='/companyOffers'>
-        <Offers size={27} className='nav-item' />
+        <Offers size={30} className='nav-item' />
       </Link>
       <div className='dropdown'>
         <Profile size={30} className='dropbtn' type='button' onClick={handleButtonClick} />
