@@ -2,8 +2,9 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import ButtonLogout from '../../../components/ButtonLogout/ButtonLogout';
 import {useProfileContext} from '../../contexts/ProfileContext';
-import {RiSettings4Fill as Settings} from 'react-icons/ri';
-import {FaBriefcase as Briefcase, FaSearch as Search} from 'react-icons/fa';
+import {BsFillPersonFill as Profile} from 'react-icons/bs';
+import {FaBriefcase as Offers, FaSearch as Search} from 'react-icons/fa';
+import {RiBookmark3Fill as Applications} from 'react-icons/ri';
 
 const UserNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,13 +16,13 @@ const UserNavbar = () => {
   return (
     <nav className='user-navbar'>
       <Link to='/offers'>
-        <Search size={30} className='nav-item' />
+        <Offers size={27} className='nav-item' />
       </Link>
       <Link to={`/candidatures/${userProfile.id}`}>
-        <Briefcase size={30} className='nav-item' />
+        <Applications size={27} className='nav-item' />
       </Link>
       <div className='dropdown'>
-        <Settings size={40} className='dropbtn' type='button' onClick={handleButtonClick} />
+        <Profile size={30} className='dropbtn' type='button' onClick={handleButtonClick} />
         <div className={`dropdown-submenu ${isOpen ? 'show' : ''}`}>
           <ul>
             <li>
