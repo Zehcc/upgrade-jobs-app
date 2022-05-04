@@ -6,9 +6,9 @@ import { useGestionContext } from "../../shared/contexts/GestionContext";
 
 const DetailedCompanyOffer = () => {
   const [detailedOffer, setDetailedOffer] = useState({});
+  const [paint, setPaint] = useState("");
   const { creationDate } = useGestionContext();
   const { id } = useParams();
-  console.log(detailedOffer);
   useEffect(() => {
     API.get(`offers/${id}`).then((response) => {
       setDetailedOffer(response.data);
@@ -55,13 +55,11 @@ const DetailedCompanyOffer = () => {
                       <div className='candidates-text-container'>
                         <h4>{candidate.name}</h4>
                         <p>{candidate.email}</p>
-
-                        {/* {candidate.candidatures.find()}
-                          {candidate.candidatures.find((item) => {
-                            if (item.id === detailedOffer._id) {
-                              console.log(item.state);
-                            }
-                          })} */}
+                        <p>
+                          {candidate.candidatures
+                            .find((item) => item.id === detailedOffer._id)
+                            .state.replace("Sigues", "Sigue")}
+                        </p>
                       </div>
                     </li>
                   </Link>
