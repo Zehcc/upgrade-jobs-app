@@ -4,7 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { API } from "../../shared/services/api";
 
 const RegisterCompanyForm = () => {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   let navigate = useNavigate();
   const onSubmit = (data) => {
     console.log(data);
@@ -32,24 +36,62 @@ const RegisterCompanyForm = () => {
       <input
         type='text'
         name='cif'
-        placeholder='📝                           CIF'
+        placeholder='📝 CIF'
         className='register-input'
-        {...register("cif", { required: true })}
+        {...register("cif", {
+          required: {
+            value: true,
+            message: "CIF obligatorio",
+          },
+          pattern: {
+            value: /^([ABCDEFGHJKLMNPQRSUVW])(\d{7})([0-9A-J])$/,
+            message: "CIF no válido, ejemplo: B12345678",
+          },
+        })}
       />
+      {errors.cif && <p className='error-message'>{errors.cif.message}</p>}
       <input
         type='email'
         name='email'
-        placeholder='📧                         Email'
+        placeholder='📧 Email'
         className='register-input'
-        {...register("email", { required: true })}
+        {...register("email", {
+          required: {
+            value: true,
+            message: "Inserta tu email",
+          },
+          pattern: {
+            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+            message: "El formato del email no es válido",
+          },
+        })}
       />
+      {errors.email && <p className='error-message'>{errors.email.message}</p>}
       <input
         type='password'
         name='password'
-        placeholder='🔐                   Contraseña'
+        placeholder='🔐 Contraseña'
         className='register-input'
-        {...register("password", { required: true })}
+        {...register("password", {
+          required: {
+            value: true,
+            message: "Inserta una contraseña",
+          },
+          minLength: {
+            value: 8,
+            message: "Mínimo 8 caracteres",
+          },
+          pattern: {
+            value:
+              /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
+            message:
+              "Debe contener una mayúscula, una minúscula y un número/caracter especial",
+          },
+        })}
       />
+      {errors.password && (
+        <p className='error-message'>{errors.password.message}</p>
+      )}
       <button className='signup-button' type='submit'>
         Registrarse
       </button>
