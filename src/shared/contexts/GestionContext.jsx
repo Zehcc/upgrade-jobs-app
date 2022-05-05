@@ -15,7 +15,9 @@ const GestionProvider = ({children}) => {
     const days = Math.floor((todayMS - creationDateMS) / (1000 * 60 * 60 * 24));
     const hours = Math.floor((todayMS - creationDateMS) / (1000 * 60 * 60));
     const minutes = Math.floor((todayMS - creationDateMS) / (1000 * 60));
-    if (hours < 1) {
+    if (minutes < 1) {
+      return `Creada hace menos de 1 minuto`;
+    } else if (hours < 1) {
       return `Creada hace ${minutes} minutos`;
     } else if (days < 1) {
       return `Creada hace ${hours} horas`;
@@ -33,7 +35,9 @@ const GestionProvider = ({children}) => {
     const days = Math.floor((todayMS - updatedDateMS) / (1000 * 60 * 60 * 24));
     const hours = Math.floor((todayMS - updatedDateMS) / (1000 * 60 * 60));
     const minutes = Math.floor((todayMS - updatedDateMS) / (1000 * 60));
-    if (hours < 1) {
+    if (minutes < 1) {
+      return ` hace menos de 1 minuto`;
+    } else if (hours < 1) {
       return ` hace ${minutes} minutos`;
     } else if (days < 1) {
       return ` hace ${hours} horas`;
