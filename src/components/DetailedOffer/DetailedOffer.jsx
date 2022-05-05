@@ -3,6 +3,7 @@ import {useNavigate, useParams} from 'react-router-dom';
 import {useProfileContext} from '../../shared/contexts/ProfileContext';
 import {API} from '../../shared/services/api';
 import {useGestionContext} from '../../shared/contexts/GestionContext';
+import emailjs from '@emailjs/browser';
 
 const DetailedOffer = () => {
   const {userProfile} = useProfileContext();
@@ -10,6 +11,7 @@ const DetailedOffer = () => {
   let navigate = useNavigate();
   const [detailedOffer, setDetailedOffer] = useState({});
   const {id} = useParams();
+
   useEffect(() => {
     API.get(`offers/${id}`).then((response) => {
       setDetailedOffer(response.data);
@@ -30,9 +32,30 @@ const DetailedOffer = () => {
     };
     API.patch(`/offers/${detailedOffer._id}`, candidatesDB)
       .then(API.patch(`/users/${userProfile.id}`, candidaturesDB))
-      .then(navigate('/offers'));
+      .then(navigate(`/ApplicationSent/${detailedOffer._id}`));
+    sendEmail();
   };
-
+  const sendEmail = () => {
+    emailjs
+      .send(
+        'service_xlp5rgi',
+        'template_fs4o8ya',
+        {
+          name: userProfile.name,
+          offer: detailedOffer.title,
+          email: userProfile.email,
+        },
+        'prfW5GCZ4vDS2RyWh'
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
   return (
     <div className='detailed-container'>
       <div className='offer-header'>
@@ -49,7 +72,7 @@ const DetailedOffer = () => {
         </div>
       </div>
       <div className='offer-description'>
-        <p>{detailedOffer.description}</p>
+        <p className='textarea'>{detailedOffer.description}</p>
       </div>
       {!exists ? (
         <button className='button' onClick={sendInscription}>

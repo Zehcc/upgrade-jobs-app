@@ -12,6 +12,7 @@ const DetailedCandidature = () => {
   const thisCandidature = userProfile.candidatures.find(
     (candidature) => candidature.id === id
   );
+
   useEffect(() => {
     API.get(`offers/${id}`).then((response) => {
       setDetailedCandidature(response.data);
@@ -35,7 +36,7 @@ const DetailedCandidature = () => {
           {thisCandidature && <p>Estado: {thisCandidature.state}</p>}
         </div>
       </div>
-      <div className='offer-description'>
+      <div className='offer-description textarea'>
         <p>{detailedCandidature.description}</p>
       </div>
       {/* {detailedCandidature && detailedCandidature.company && (

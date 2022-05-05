@@ -1,20 +1,26 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import {Link} from 'react-router-dom';
+import {useProfileContext} from '../../shared/contexts/ProfileContext';
 
-const Offer = ({ offer }) => {
+const Offer = ({offer}) => {
+  const {userProfile} = useProfileContext();
+
   return (
-    <Link to={`/detailedOffer/${offer._id}`}>
-    <li className="offer-container">
-      <div className="offer-img-container">
-        <img src={offer.company.info.img} alt={offer.company._id} />
-      </div>
-      <div className="offer-text-container">
-        <h4>{offer.title}</h4>
-        <p>{offer.company.name}</p>
-        <p>{offer.location}</p>
-      </div>
-    </li>
-    </Link>
+    !offer.candidates.find((candidate) => candidate._id === userProfile.id) && (
+      <Link className='offer-container' to={`/detailedOffer/${offer._id}`}>
+        <div className='offer-img-container'>
+          <img src={offer.company.info.img} alt={offer.company._id} />
+        </div>
+        <div className='offer-text-container'>
+          <h4>{offer.title}</h4>
+          <p className='category'>{offer.category}</p>
+          <div className='footer-container'>
+            <p>{offer.company.name}</p>
+            <p>{offer.location}</p>
+          </div>
+        </div>
+      </Link>
+    )
   );
 };
 

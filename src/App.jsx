@@ -50,6 +50,7 @@ function App() {
                 />
                 <Route path='/companyOffers' element={<CompanyOffers />} />
                 <Route path='/createOffer' element={<CreateOfferPage />} />
+
                 <Route
                   path='/ApplicationSent'
                   element={<UserApplicationSent />}

@@ -1,8 +1,12 @@
+import axios from 'axios';
 import {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
+import {API} from '../../shared/services/api';
 
 const UserApplicationSent = () => {
   const [message, setMessage] = useState('');
+  const [offer, setOffer] = useState();
+  const {id} = useParams();
 
   const randomMessage = () => {
     let randomNumber = Math.floor(Math.random() * 4) + 1;
@@ -22,6 +26,9 @@ const UserApplicationSent = () => {
 
   useEffect(() => {
     randomMessage();
+    API.get(`/offers/${id}`).then((response) => {
+      setOffer(response.data);
+    });
   }, []);
 
   return (
@@ -30,13 +37,13 @@ const UserApplicationSent = () => {
       <div className='message-container'>
         <div className='message'>
           <h2 className='message-title'>{message}</h2>
-          <p className='message-text'>
-            Tu CV se ha enviado correctamente para la vacante de VACANTE
-          </p>
+          {offer && (
+            <p className='message-text'>
+              Tu CV se ha enviado correctamente para la vacante de {offer.title} en{' '}
+              {offer.company.name}
+            </p>
+          )}
         </div>
-        <Link className='see-offer-button' to='#'>
-          Ver Oferta
-        </Link>
         <Link className='see-all-offers' to='/offers'>
           <button className='see-all-offers_button'>Volver a todas las ofertas</button>
         </Link>

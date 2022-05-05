@@ -1,6 +1,8 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { API } from '../../shared/services/api';
+
+import {useNavigate} from 'react-router-dom';
+import {API} from '../../shared/services/api';
+import emailjs from '@emailjs/browser';
 
 const Candidate = ({ candidate, offer }) => {
   let navigate = useNavigate();
@@ -26,6 +28,30 @@ const Candidate = ({ candidate, offer }) => {
     API.patch(`users/${candidate._id}`, updatedCandidatures)
       .then(API.patch(`offers/${offer._id}`, updatedTime))
       .then(navigate(`/detailedCompanyOffer/${offer._id}`));
+
+    sendEmail();
+  };
+
+  const sendEmail = () => {
+    emailjs
+      .send(
+        'service_xlp5rgi',
+        'template_xq7adj4',
+        {
+          name: candidate.name,
+          offer: offer.title,
+          email: candidate.email,
+        },
+        'prfW5GCZ4vDS2RyWh'
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
   };
 
   return (
@@ -35,27 +61,24 @@ const Candidate = ({ candidate, offer }) => {
       </div>
       <div className='candidate-info'>
         <h2>{candidate.name}</h2>
-        <a href={candidate.cv} target='_blank' rel='noopener noreferrer'>
-          Ver el CV del candidato
+        <a className='see-cv' href={candidate.cv} target='_blank' rel='noopener noreferrer'>
+          Ver CV
         </a>
       </div>
       <div className='candidate-buttons'>
         <button
-          className='candidate-button'
+          className='candidate-button green'
           onClick={() => changeState('Sigues en el proceso')}
         >
           Sigue en el proceso
         </button>
         <button
-          className='candidate-button'
+          className='candidate-button orange'
           onClick={() => changeState('CV no preseleccionado')}
         >
           No preseleccionar curriculum
         </button>
-        <button
-          className='candidate-button'
-          onClick={() => changeState('Descartado')}
-        >
+        <button className='candidate-button red' onClick={() => changeState('Descartado')}>
           Descartar candidato
         </button>
       </div>

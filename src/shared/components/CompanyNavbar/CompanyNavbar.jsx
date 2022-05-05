@@ -20,8 +20,8 @@ const CompanyNavbar = () => {
       <div className='dropdown'>
         <Profile size={30} className='dropbtn' type='button' onClick={handleButtonClick} />
         <div className={`dropdown-submenu ${isOpen ? 'show' : ''}`}>
-          <ul>
-            <li>
+          <ul className='drop-down-lu'>
+            <li className='drop-down-li'>
               <Link to={`/companyProfile/${companyProfile.id}`}>
                 <div className='nav-item'>Perfil</div>
               </Link>

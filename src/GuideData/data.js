@@ -20,7 +20,7 @@ export const guideData = {
       text: 'Evalúa cada candidato, pudiendo ver su perfil o leer su CV',
     },
     {
-      text: 'Si algún candidato cumple tus requisitos, habla con el directamente a través de nuestro chat',
+      text: 'Si algún candidato cumple tus requisitos, habla con él directamente a través de nuestro chat',
     },
   ],
 };
@@ -93,6 +93,7 @@ export const categories = [
   'Cosmética',
   'Deportes',
   'Derecho',
+  'Desarrollo Web',
   'E-learning',
   'Entretenimiento',
   'Formación profesional y captación',
