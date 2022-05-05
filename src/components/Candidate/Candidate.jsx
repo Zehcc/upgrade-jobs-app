@@ -1,14 +1,16 @@
 import React from 'react';
-import {useNavigate} from 'react-router-dom';
-import {API} from '../../shared/services/api';
+import { useNavigate } from 'react-router-dom';
+import { API } from '../../shared/services/api';
+import emailjs from '@emailjs/browser';
 
-const Candidate = ({candidate, offer}) => {
+const Candidate = ({ candidate, offer }) => {
   let navigate = useNavigate();
   const changeState = (state) => {
     let candidature = candidate.candidatures.find((candidature) => candidature.id === offer._id);
     candidature = {
       id: candidature.id,
       state: state,
+
     };
     let oldCandidatures = candidate.candidatures.filter(
       (oldCandidature) => candidature.id !== oldCandidature.id
@@ -24,7 +26,31 @@ const Candidate = ({candidate, offer}) => {
     API.patch(`users/${candidate._id}`, updatedCandidatures)
       .then(API.patch(`offers/${offer._id}`, updatedTime))
       .then(navigate(`/detailedCompanyOffer/${offer._id}`));
+
+    sendEmail();
+
   };
+
+  const sendEmail = () => {
+
+    emailjs.send(
+      'service_xlp5rgi',
+      'template_xq7adj4',
+      {
+        name: candidate.name,
+        offer: offer.title,
+        email: candidate.email,
+
+      },
+      'prfW5GCZ4vDS2RyWh')
+      .then((result) => {
+        console.log(result.text);
+      }, (error) => {
+        console.log(error.text);
+      });
+
+  };
+
 
   return (
     <div className='candidate-container'>
