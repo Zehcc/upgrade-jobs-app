@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Offer = ({ offer }) => {
-
   return (
     <Link to={`/detailedOffer/${offer._id}`}>
     <li className="offer-container">
@@ -12,7 +11,7 @@ const Offer = ({ offer }) => {
       <div className="offer-text-container">
         <h4>{offer.title}</h4>
         <p>{offer.company.name}</p>
-        <p>{offer.company.info.location}</p>
+        <p>{offer.location}</p>
       </div>
     </li>
     </Link>
