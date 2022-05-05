@@ -50,13 +50,27 @@ const GuideHome = () => {
       )}
       {data >= 0 && (
         <div className='guide'>
-          <div className='guide-img-container'>
-            {data === 0 && <img className='guide-img' src='/assets/Resume.png' alt='profile' />}
-            {data === 1 && <img className='guide-img' src='/assets/Jobhunt.png' alt='profile' />}
-            {data === 2 && (
-              <img className='guide-img' src='/assets/contact-companies.png' alt='profile' />
-            )}
-          </div>
+          {data === 0 && (
+            <img
+              className='guide__image'
+              src='/assets/Resume.png'
+              alt='profile'
+            />
+          )}
+          {data === 1 && (
+            <img
+              className='guide__image'
+              src='/assets/Jobhunt.png'
+              alt='profile'
+            />
+          )}
+          {data === 2 && (
+            <img
+              className='guide__image'
+              src='/assets/contact-companies.png'
+              alt='profile'
+            />
+          )}
           {guide === 'user' && (
             <>
               <div className='guide__content'>
@@ -70,7 +84,10 @@ const GuideHome = () => {
                   </button>
                 )}
                 {data === 2 && (
-                  <button className='guide-btn green' onClick={() => toRegister('user')}>
+                  <button
+                    className='guide-btn green'
+                    onClick={() => toRegister('user')}
+                  >
                     Comenzar
                   </button>
                 )}
@@ -90,7 +107,10 @@ const GuideHome = () => {
                   </button>
                 )}
                 {data === 2 && (
-                  <button className='guide-btn green' onClick={() => toRegister('company')}>
+                  <button
+                    className='guide-btn green'
+                    onClick={() => toRegister('company')}
+                  >
                     Comenzar
                   </button>
                 )}

@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import Candidate from "../../components/Candidate/Candidate";
-import { API } from "../../shared/services/api";
-import CompanyNavbar from "../../shared/components/CompanyNavbar/CompanyNavbar";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import Candidate from '../../components/Candidate/Candidate';
+import { API } from '../../shared/services/api';
+import CompanyNavbar from '../../shared/components/CompanyNavbar/CompanyNavbar';
+import Chat from '../../components/Chat/Chat';
+import { useProfileContext } from '../../shared/contexts/ProfileContext';
+
 const CandidatePage = () => {
   const { userID, offerID } = useParams();
-
+  const { companyProfile } = useProfileContext();
   const [candidate, setCandidate] = useState({});
   const [offer, setOffer] = useState({});
 
@@ -23,10 +26,12 @@ const CandidatePage = () => {
       <CompanyNavbar />
       <div>
         <Candidate candidate={candidate} offer={offer} />
+        {/* {companyProfile.id && (
+          <Chat user={companyProfile.name} room={offerID + companyProfile.id} />
+        )} */}
       </div>
     </>
   );
-
 };
 
 export default CandidatePage;
