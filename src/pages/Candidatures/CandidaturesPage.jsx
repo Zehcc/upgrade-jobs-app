@@ -18,6 +18,7 @@ const CandidaturesPage = () => {
     <>
       <UserNavbar />
       <div className='main-offersPage'>
+        <p>Mis candidaturas</p>
         <ul className='offers-list'>
           {candidatures.length ? (
             candidatures.map((candidature) => {
