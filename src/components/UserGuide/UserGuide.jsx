@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
-import {useNavigate} from 'react-router-dom';
-import {guideData} from '../../GuideData/data';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { guideData } from '../../GuideData/data';
 
 const GuideHome = () => {
   let navigate = useNavigate();
-  const {dataUser, dataCompany} = guideData;
+  const { dataUser, dataCompany } = guideData;
 
   const [data, setData] = useState(-1);
   const [guide, setGuide] = useState('');
@@ -50,10 +50,26 @@ const GuideHome = () => {
       )}
       {data >= 0 && (
         <div className='guide'>
-          {data === 0 && <img className='guide__image' src='/assets/Resume.png' alt='profile' />}
-          {data === 1 && <img className='guide__image' src='/assets/Jobhunt.png' alt='profile' />}
+          {data === 0 && (
+            <img
+              className='guide__image'
+              src='/assets/Resume.png'
+              alt='profile'
+            />
+          )}
+          {data === 1 && (
+            <img
+              className='guide__image'
+              src='/assets/Jobhunt.png'
+              alt='profile'
+            />
+          )}
           {data === 2 && (
-            <img className='guide__image' src='/assets/contact-companies.png' alt='profile' />
+            <img
+              className='guide__image'
+              src='/assets/contact-companies.png'
+              alt='profile'
+            />
           )}
           {guide === 'user' && (
             <>
@@ -68,7 +84,10 @@ const GuideHome = () => {
                   </button>
                 )}
                 {data === 2 && (
-                  <button className='guide-btn green' onClick={() => toRegister('user')}>
+                  <button
+                    className='guide-btn green'
+                    onClick={() => toRegister('user')}
+                  >
                     Comenzar
                   </button>
                 )}
@@ -88,7 +107,10 @@ const GuideHome = () => {
                   </button>
                 )}
                 {data === 2 && (
-                  <button className='guide-btn green' onClick={() => toRegister('company')}>
+                  <button
+                    className='guide-btn green'
+                    onClick={() => toRegister('company')}
+                  >
                     Comenzar
                   </button>
                 )}

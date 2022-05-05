@@ -1,11 +1,13 @@
 import React from 'react';
-import {useNavigate} from 'react-router-dom';
-import {API} from '../../shared/services/api';
+import { useNavigate } from 'react-router-dom';
+import { API } from '../../shared/services/api';
 
-const Candidate = ({candidate, offer}) => {
+const Candidate = ({ candidate, offer }) => {
   let navigate = useNavigate();
   const changeState = (state) => {
-    let candidature = candidate.candidatures.find((candidature) => candidature.id === offer._id);
+    let candidature = candidate.candidatures.find(
+      (candidature) => candidature.id === offer._id
+    );
     candidature = {
       id: candidature.id,
       state: state,
@@ -38,13 +40,22 @@ const Candidate = ({candidate, offer}) => {
         </a>
       </div>
       <div className='candidate-buttons'>
-        <button className='candidate-button' onClick={() => changeState('Sigues en el proceso')}>
+        <button
+          className='candidate-button'
+          onClick={() => changeState('Sigues en el proceso')}
+        >
           Sigue en el proceso
         </button>
-        <button className='candidate-button' onClick={() => changeState('CV no preseleccionado')}>
+        <button
+          className='candidate-button'
+          onClick={() => changeState('CV no preseleccionado')}
+        >
           No preseleccionar curriculum
         </button>
-        <button className='candidate-button' onClick={() => changeState('Descartado')}>
+        <button
+          className='candidate-button'
+          onClick={() => changeState('Descartado')}
+        >
           Descartar candidato
         </button>
       </div>

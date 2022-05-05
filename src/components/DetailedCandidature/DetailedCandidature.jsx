@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { useProfileContext } from "../../shared/contexts/ProfileContext";
-import { API } from "../../shared/services/api";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useProfileContext } from '../../shared/contexts/ProfileContext';
+import { API } from '../../shared/services/api';
+import Chat from '../Chat/Chat';
 
 const DetailedCandidature = () => {
   const [detailedCandidature, setDetailedCandidature] = useState({});
+
   const { userProfile } = useProfileContext();
   const { id } = useParams();
   const thisCandidature = userProfile.candidatures.find(
@@ -36,6 +38,12 @@ const DetailedCandidature = () => {
       <div className='offer-description'>
         <p>{detailedCandidature.description}</p>
       </div>
+      {/* {detailedCandidature && detailedCandidature.company && (
+        <Chat
+          user={userProfile.name}
+          room={detailedCandidature._id + detailedCandidature.company._id}
+        />
+      )} */}
     </div>
   );
 };
