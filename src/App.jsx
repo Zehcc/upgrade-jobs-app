@@ -39,7 +39,7 @@ function App() {
                 <Route path='/companyProfile/:id' element={<CompanyProfilePage />} />
                 <Route path='/companyOffers' element={<CompanyOffers />} />
                 <Route path='/createOffer' element={<CreateOfferPage />} />
-                <Route path='/ApplicationSent' element={<UserApplicationSent />} />
+                <Route path='/ApplicationSent/:id' element={<UserApplicationSent />} />
                 <Route path='/candidatures/:id' element={<CandidaturesPage />} />
                 <Route path='/detailedOffer/:id' element={<DetailedOfferPage />} />
                 <Route path='detailedCandidature/:id' element={<DetailedCandidaturePage />} />

@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import CompanyOffer from "../../components/CompanyOffer/CompanyOffer";
-import CompanyNavbar from "../../shared/components/CompanyNavbar/CompanyNavbar";
-import { useProfileContext } from "../../shared/contexts/ProfileContext";
-import { API } from "../../shared/services/api";
+import React, {useEffect, useState} from 'react';
+import {Link} from 'react-router-dom';
+import CompanyOffer from '../../components/CompanyOffer/CompanyOffer';
+import CompanyNavbar from '../../shared/components/CompanyNavbar/CompanyNavbar';
+import {useProfileContext} from '../../shared/contexts/ProfileContext';
+import {API} from '../../shared/services/api';
 
 const CompanyOffers = () => {
-  const { companyProfile, setCompanyProfile } = useProfileContext();
+  const {companyProfile, setCompanyProfile} = useProfileContext();
   const [offers, setOffers] = useState([]);
   useEffect(() => {
     API.get(`/companies/${companyProfile.id}`)
@@ -27,22 +27,24 @@ const CompanyOffers = () => {
         });
         setOffers(response.data.offers);
       })
-      .then(
-        localStorage.setItem("companyProfile", JSON.stringify(companyProfile))
-      );
+      .then(localStorage.setItem('companyProfile', JSON.stringify(companyProfile)));
   }, []);
 
   return (
     <div className='company-offers-page'>
       <CompanyNavbar />
       <Link to='/createOffer'>
-        <button className='new'>Nueva oferta</button>
+        <button className='new-offer'>Nueva oferta</button>
       </Link>
       {offers.length && (
         <ul className='company-offers-list'>
           {offers.map((offer) => {
             return (
-              <Link key={offer._id} to={`/detailedCompanyOffer/${offer._id}`}>
+              <Link
+                className='offer-container'
+                key={offer._id}
+                to={`/detailedCompanyOffer/${offer._id}`}
+              >
                 <CompanyOffer offer={offer} />
               </Link>
             );
