@@ -4,7 +4,9 @@ import RegisterCompanyForm from '../../components/RegisterCompanyForm/RegisterCo
 const RegisterCompanyPage = () => {
   return (
     <div className='register-page'>
-      <img className='register-page-img' src='/assets/Signup.png' alt='Sign up' />
+      <div className='register-page-img-container'>
+        <img className='register-page-img' src='/assets/Signup.png' alt='Sign up' />
+      </div>
       <h4>Regístrate como empresa</h4>
       <RegisterCompanyForm />
     </div>
