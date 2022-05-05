@@ -18,7 +18,7 @@ const Candidate = ({candidate, offer}) => {
     };
 
     const updatedTime = {
-      gestionDate: new Date(),
+      gestionDate: new Date().getTime(),
       candidates: offer.candidates,
     };
     API.patch(`users/${candidate._id}`, updatedCandidatures)
