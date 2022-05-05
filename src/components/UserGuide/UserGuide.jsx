@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
-import {useNavigate} from 'react-router-dom';
-import {guideData} from '../../GuideData/data';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { guideData } from '../../GuideData/data';
 
 const GuideHome = () => {
   let navigate = useNavigate();
-  const {dataUser, dataCompany} = guideData;
+  const { dataUser, dataCompany } = guideData;
 
   const [data, setData] = useState(-1);
   const [guide, setGuide] = useState('');
@@ -50,11 +50,13 @@ const GuideHome = () => {
       )}
       {data >= 0 && (
         <div className='guide'>
-          {data === 0 && <img className='guide__image' src='/assets/Resume.png' alt='profile' />}
-          {data === 1 && <img className='guide__image' src='/assets/Jobhunt.png' alt='profile' />}
-          {data === 2 && (
-            <img className='guide__image' src='/assets/contact-companies.png' alt='profile' />
-          )}
+          <div className='guide-img-container'>
+            {data === 0 && <img className='guide-img' src='/assets/Resume.png' alt='profile' />}
+            {data === 1 && <img className='guide-img' src='/assets/Jobhunt.png' alt='profile' />}
+            {data === 2 && (
+              <img className='guide-img' src='/assets/contact-companies.png' alt='profile' />
+            )}
+          </div>
           {guide === 'user' && (
             <>
               <div className='guide__content'>
