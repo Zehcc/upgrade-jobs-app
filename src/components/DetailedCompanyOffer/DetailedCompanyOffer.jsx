@@ -32,7 +32,7 @@ const DetailedCompanyOffer = () => {
           </div>
         </div>
         <div className='offer-description'>
-          <p>{detailedOffer.description}</p>
+          <p className='textarea'>{detailedOffer.description}</p>
         </div>
         <div className='offer-candidates'>
           <h3>Candidatos</h3>
