@@ -36,10 +36,10 @@ const DetailedCompanyOffer = () => {
         </div>
         <div className='offer-candidates'>
           <h3>Candidatos</h3>
-          <ul className='candidates-ul'>
-            {detailedOffer.candidates &&
-              detailedOffer.candidates.map((candidate) => {
-                return (
+          {detailedOffer.candidates && detailedOffer.candidates.length > 0 ? (
+            detailedOffer.candidates.map((candidate) => {
+              return (
+                <ul className='candidates-ul'>
                   <Link
                     className='candidates-container'
                     key={candidate._id}
@@ -63,9 +63,12 @@ const DetailedCompanyOffer = () => {
                       </p>
                     </div>
                   </Link>
-                );
-              })}
-          </ul>
+                </ul>
+              );
+            })
+          ) : (
+            <p className='empty-candidates'>Aún no existen candidatos</p>
+          )}
         </div>
       </div>
     </>

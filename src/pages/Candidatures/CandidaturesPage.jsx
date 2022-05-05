@@ -26,7 +26,6 @@ const CandidaturesPage = () => {
             })
           ) : (
             <div className='empty'>
-              <h3>Aun no tienes ninguna candidatura</h3>
               <div className='empty-image'>
                 <img src='/assets/empty-blue.png' alt='empty' />
               </div>
