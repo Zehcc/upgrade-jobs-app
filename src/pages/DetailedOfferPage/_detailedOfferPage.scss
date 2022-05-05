@@ -8,6 +8,11 @@
 
   .offer-candidates {
     background-color: #f6f3f3be;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 10px;
+    width: 100%;
 
     h3 {
       text-align: center;
@@ -18,15 +23,17 @@
     }
 
     .candidates-ul {
-      gap: 10px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       list-style: none;
-      padding: 10px 0;
       margin: 0;
     }
+  }
+
+  .empty-candidates {
+    text-align: center;
   }
 
   .offer-header {
@@ -66,7 +73,7 @@
 
   .offer-description {
     margin: 20px 0;
-    padding: 0 25px;
+    padding: 0 20px;
     text-align: center;
   }
 }

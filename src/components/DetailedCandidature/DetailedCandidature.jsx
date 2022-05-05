@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { useProfileContext } from "../../shared/contexts/ProfileContext";
-import { API } from "../../shared/services/api";
+import React, {useEffect, useState} from 'react';
+import {useParams} from 'react-router-dom';
+import {useProfileContext} from '../../shared/contexts/ProfileContext';
+import {API} from '../../shared/services/api';
 
 const DetailedCandidature = () => {
   const [detailedCandidature, setDetailedCandidature] = useState({});
-  const { userProfile } = useProfileContext();
-  const { id } = useParams();
-  const thisCandidature = userProfile.candidatures.find(
-    (candidature) => candidature.id === id
-  );
+  const {userProfile} = useProfileContext();
+  const {id} = useParams();
+  const thisCandidature = userProfile.candidatures.find((candidature) => candidature.id === id);
   useEffect(() => {
     API.get(`offers/${id}`).then((response) => {
       setDetailedCandidature(response.data);
@@ -33,7 +31,7 @@ const DetailedCandidature = () => {
           {thisCandidature && <p>Estado: {thisCandidature.state}</p>}
         </div>
       </div>
-      <div className='offer-description'>
+      <div className='offer-description textarea'>
         <p>{detailedCandidature.description}</p>
       </div>
     </div>

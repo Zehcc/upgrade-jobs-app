@@ -39,7 +39,8 @@ const UserApplicationSent = () => {
           <h2 className='message-title'>{message}</h2>
           {offer && (
             <p className='message-text'>
-              Tu CV se ha enviado correctamente para la vacante de{offer.title}
+              Tu CV se ha enviado correctamente para la vacante de {offer.title} en{' '}
+              {offer.company.name}
             </p>
           )}
         </div>

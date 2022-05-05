@@ -72,7 +72,7 @@ const DetailedOffer = () => {
         </div>
       </div>
       <div className='offer-description'>
-        <p>{detailedOffer.description}</p>
+        <p className='textarea'>{detailedOffer.description}</p>
       </div>
       {!exists ? (
         <button className='button' onClick={sendInscription}>
