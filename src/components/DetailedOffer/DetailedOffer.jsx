@@ -32,10 +32,8 @@ const DetailedOffer = () => {
     };
     API.patch(`/offers/${detailedOffer._id}`, candidatesDB)
       .then(API.patch(`/users/${userProfile.id}`, candidaturesDB))
-      .then(navigate('/offers'));
-
+      .then(navigate(`/ApplicationSent/${detailedOffer._id}`));
     sendEmail();
-
   };
   const sendEmail = () => {
 
