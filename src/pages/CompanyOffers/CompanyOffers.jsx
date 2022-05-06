@@ -36,7 +36,7 @@ const CompanyOffers = () => {
       <Link to='/createOffer'>
         <button className='new-offer'>Nueva oferta</button>
       </Link>
-      {offers.length && (
+      {offers && (
         <ul className='company-offers-list'>
           {offers.map((offer) => {
             return (
