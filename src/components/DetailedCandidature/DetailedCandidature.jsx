@@ -47,7 +47,6 @@ const DetailedCandidature = () => {
           user={userProfile.name}
           room={detailedCandidature._id + detailedCandidature.company._id}
           socket={socket}
-          type='user'
         />
       )}
     </div>
