@@ -9,13 +9,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    margin: 15px 0 -20px 0;
-    max-height: 300px;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    margin: 30px 0 -20px 0;
+    border-radius: 50%;
+    border: 4px solid #21c0af;
 
     img {
-      width: 200px;
-      border-radius: 25px;
+      width: 100%;
     }
   }
 
