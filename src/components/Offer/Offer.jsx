@@ -4,7 +4,6 @@ import {useProfileContext} from '../../shared/contexts/ProfileContext';
 
 const Offer = ({offer}) => {
   const {userProfile} = useProfileContext();
-  console.log(offer.company);
 
   return (
     !offer.candidates.find((candidate) => candidate._id === userProfile.id) &&
