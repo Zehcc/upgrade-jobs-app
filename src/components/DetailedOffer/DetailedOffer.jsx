@@ -1,30 +1,32 @@
-import React, {useEffect, useState} from 'react';
-import {useNavigate, useParams} from 'react-router-dom';
-import {useProfileContext} from '../../shared/contexts/ProfileContext';
-import {API} from '../../shared/services/api';
-import {useGestionContext} from '../../shared/contexts/GestionContext';
-import emailjs from '@emailjs/browser';
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useProfileContext } from "../../shared/contexts/ProfileContext";
+import { API } from "../../shared/services/api";
+import { useGestionContext } from "../../shared/contexts/GestionContext";
+import emailjs from "@emailjs/browser";
 
 const DetailedOffer = () => {
-  const {userProfile} = useProfileContext();
-  const {creationDate} = useGestionContext();
+  const { userProfile } = useProfileContext();
+  const { creationDate } = useGestionContext();
   let navigate = useNavigate();
   const [detailedOffer, setDetailedOffer] = useState({});
-  const {id} = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
     API.get(`offers/${id}`).then((response) => {
       setDetailedOffer(response.data);
     });
   }, [id]);
-  const exists = userProfile.candidatures.find((candidature) => candidature.id === id);
+  const exists = userProfile.candidatures.find(
+    (candidature) => candidature.id === id
+  );
   const sendInscription = () => {
     const updatedCandidates = [userProfile.id, ...detailedOffer.candidates];
     const candidatesDB = {
       candidates: updatedCandidates,
     };
     const updatedCandidatures = [
-      {id: detailedOffer._id, state: 'Inscrito'},
+      { id: detailedOffer._id, state: "Inscrito" },
       ...userProfile.candidatures,
     ];
     const candidaturesDB = {
@@ -38,14 +40,14 @@ const DetailedOffer = () => {
   const sendEmail = () => {
     emailjs
       .send(
-        'service_xlp5rgi',
-        'template_fs4o8ya',
+        "service_xlp5rgi",
+        "template_fs4o8ya",
         {
           name: userProfile.name,
           offer: detailedOffer.title,
           email: userProfile.email,
         },
-        'prfW5GCZ4vDS2RyWh'
+        "prfW5GCZ4vDS2RyWh"
       )
       .then(
         (result) => {
@@ -61,7 +63,10 @@ const DetailedOffer = () => {
       <div className='offer-header'>
         {detailedOffer.company && (
           <div className='img-container'>
-            <img src={detailedOffer.company.info.img} alt={detailedOffer.company.name} />
+            <img
+              src={detailedOffer.company.info.img}
+              alt={detailedOffer.company.name}
+            />
           </div>
         )}
         <div className='text-container'>
@@ -72,7 +77,12 @@ const DetailedOffer = () => {
         </div>
       </div>
       <div className='offer-description'>
-        <p className='textarea'>{detailedOffer.description}</p>
+        <textarea
+          readOnly={true}
+          className='textarea'
+          type='textarea'
+          value={detailedOffer.description}
+        />
       </div>
       {!exists ? (
         <button className='button' onClick={sendInscription}>
