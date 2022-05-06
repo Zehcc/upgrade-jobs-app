@@ -45,7 +45,7 @@ const DetailedCandidature = () => {
       {detailedCandidature && detailedCandidature.company && (
         <Chat
           user={userProfile.name}
-          room={detailedCandidature._id + detailedCandidature.company._id}
+          room={detailedCandidature._id + userProfile.id}
           socket={socket}
         />
       )}
