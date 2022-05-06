@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import Candidate from '../../components/Candidate/Candidate';
-import { API } from '../../shared/services/api';
-import CompanyNavbar from '../../shared/components/CompanyNavbar/CompanyNavbar';
-import Chat from '../../components/Chat/Chat';
-import { useProfileContext } from '../../shared/contexts/ProfileContext';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import Candidate from "../../components/Candidate/Candidate";
+import { API } from "../../shared/services/api";
+import CompanyNavbar from "../../shared/components/CompanyNavbar/CompanyNavbar";
+import Chat from "../../components/Chat/Chat";
+import { useProfileContext } from "../../shared/contexts/ProfileContext";
+import { io } from "socket.io-client";
+
+const socket = io.connect("http://localhost:3001");
 
 const CandidatePage = () => {
   const { userID, offerID } = useParams();
@@ -24,11 +27,15 @@ const CandidatePage = () => {
   return (
     <>
       <CompanyNavbar />
-      <div>
+      <div className='candidate-page'>
         <Candidate candidate={candidate} offer={offer} />
-        {/* {companyProfile.id && (
-          <Chat user={companyProfile.name} room={offerID + companyProfile.id} />
-        )} */}
+        {companyProfile.id && (
+          <Chat
+            user={companyProfile.name}
+            room={offerID + companyProfile.id}
+            socket={socket}
+          />
+        )}
       </div>
     </>
   );

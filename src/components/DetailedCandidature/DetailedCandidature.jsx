@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { useProfileContext } from '../../shared/contexts/ProfileContext';
-import { API } from '../../shared/services/api';
-import Chat from '../Chat/Chat';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { io } from "socket.io-client";
+import { useProfileContext } from "../../shared/contexts/ProfileContext";
+import { API } from "../../shared/services/api";
+import Chat from "../Chat/Chat";
+
+const socket = io.connect("http://localhost:3001");
 
 const DetailedCandidature = () => {
   const [detailedCandidature, setDetailedCandidature] = useState({});
@@ -39,12 +42,14 @@ const DetailedCandidature = () => {
       <div className='offer-description textarea'>
         <p>{detailedCandidature.description}</p>
       </div>
-      {/* {detailedCandidature && detailedCandidature.company && (
+      {detailedCandidature && detailedCandidature.company && (
         <Chat
           user={userProfile.name}
           room={detailedCandidature._id + detailedCandidature.company._id}
+          socket={socket}
+          type='user'
         />
-      )} */}
+      )}
     </div>
   );
 };
