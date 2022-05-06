@@ -1,15 +1,15 @@
 import axios from 'axios';
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import React, {useState} from 'react';
+import {useForm} from 'react-hook-form';
+import {useNavigate} from 'react-router-dom';
 import UserNavbar from '../../shared/components/UserNavbar/UserNavbar';
-import { useProfileContext } from '../../shared/contexts/ProfileContext';
-import { API } from '../../shared/services/api';
+import {useProfileContext} from '../../shared/contexts/ProfileContext';
+import {API} from '../../shared/services/api';
 
 const UserProfilePage = () => {
   let navigate = useNavigate();
-  const { register, handleSubmit } = useForm();
-  const { userProfile, setUserProfile } = useProfileContext();
+  const {register, handleSubmit} = useForm();
+  const {userProfile, setUserProfile} = useProfileContext();
   const [image, setImage] = useState(userProfile.img);
   const [cv, setCV] = useState(userProfile.cv);
   const [showIMG, setShowIMG] = useState(false);
@@ -96,7 +96,7 @@ const UserProfilePage = () => {
             name='name'
             placeholder='Escribe tu nombre'
             defaultValue={userProfile.name}
-            {...register('name', { required: true })}
+            {...register('name', {required: true})}
           />
           <label>Email</label>
           <input
@@ -104,7 +104,7 @@ const UserProfilePage = () => {
             name='email'
             placeholder='Escribe tu email'
             defaultValue={userProfile.email}
-            {...register('email', { required: true })}
+            {...register('email', {required: true})}
           />
           {/* <label>CV</label>
           <input
