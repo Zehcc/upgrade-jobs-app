@@ -9,6 +9,10 @@
   gap: 10px;
   background-color: white;
 
+  @include tablet {
+    max-width: 600px;
+  }
+
   .candidates-img-container {
     width: 20%;
     display: flex;

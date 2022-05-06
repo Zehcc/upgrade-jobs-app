@@ -17,24 +17,27 @@ const LoginUserPage = () => {
           <img className='img-container-company' src='/assets/company-login.png' alt='Img' />
         )}
       </div>
-      <div className='button-type-container'>
-        {userType === 'user' ? (
-          <p>
-            ¿Eres una empresa?{' '}
-            <button className='choose-type-btn' onClick={() => chooseType('company')}>
-              Haz click aquí
-            </button>{' '}
-          </p>
-        ) : (
-          <p>
-            ¿Eres un usuario?{' '}
-            <button className='choose-type-btn' onClick={() => chooseType('user')}>
-              Haz click aquí
-            </button>{' '}
-          </p>
-        )}
+      <div className='desktop'>
+        <div className='button-type-container'>
+          {userType === 'user' ? (
+            <p>
+              ¿Eres una empresa?{' '}
+              <button className='choose-type-btn' onClick={() => chooseType('company')}>
+                Haz click aquí
+              </button>{' '}
+            </p>
+          ) : (
+            <p>
+              ¿Eres un usuario?{' '}
+              <button className='choose-type-btn' onClick={() => chooseType('user')}>
+                Haz click aquí
+              </button>{' '}
+            </p>
+          )}
+        </div>
+
+        {userType === 'user' ? <LoginUserForm /> : <LoginCompanyForm />}
       </div>
-      {userType === 'user' ? <LoginUserForm /> : <LoginCompanyForm />}
     </div>
   );
 };
