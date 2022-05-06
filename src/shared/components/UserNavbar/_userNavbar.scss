@@ -10,6 +10,11 @@
   top: 0px;
   width: 100%;
 
+  @include tablet {
+    justify-content: center;
+    gap: 200px;
+  }
+
   .nav-item {
     color: white;
     cursor: pointer;
@@ -19,6 +24,7 @@
 .dropdown {
   position: relative;
   display: inline-block;
+  cursor: pointer;
 
   .img-container {
     width: 40px;

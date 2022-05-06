@@ -34,6 +34,15 @@
   }
 }
 
+.desktop {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 500px;
+}
+
 .login-form-container {
   display: flex;
   flex-direction: column;
@@ -101,5 +110,11 @@ input[type='file'] {
     background-color: #6e54fd;
     transition: 2s;
     width: 100%;
+  }
+}
+
+@include tablet {
+  .login-container {
+    flex-direction: row;
   }
 }

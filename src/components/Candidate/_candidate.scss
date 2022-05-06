@@ -7,9 +7,10 @@
   align-items: center;
 
   .candidate-img {
-    width: 300px;
+    width: 200px;
     max-height: 350px;
     overflow: hidden;
+
     img {
       width: 100%;
     }
@@ -48,7 +49,6 @@
       margin: 0 10px;
       height: 45px;
       border: none;
-      border-radius: 5px;
       background-color: #6e54fd;
       color: #222222;
       font-size: 0.95rem;
@@ -64,6 +64,7 @@
 
     .orange {
       background-color: rgb(252, 187, 68);
+      line-height: 1.2;
     }
   }
 }

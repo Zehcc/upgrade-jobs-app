@@ -4,12 +4,10 @@ import {useNavigate} from 'react-router-dom';
 import {API} from '../../shared/services/api';
 import emailjs from '@emailjs/browser';
 
-const Candidate = ({ candidate, offer }) => {
+const Candidate = ({candidate, offer}) => {
   let navigate = useNavigate();
   const changeState = (state) => {
-    let candidature = candidate.candidatures.find(
-      (candidature) => candidature.id === offer._id
-    );
+    let candidature = candidate.candidatures.find((candidature) => candidature.id === offer._id);
     candidature = {
       id: candidature.id,
       state: state,
@@ -61,9 +59,11 @@ const Candidate = ({ candidate, offer }) => {
       </div>
       <div className='candidate-info'>
         <h2>{candidate.name}</h2>
-        <a className='see-cv' href={candidate.cv} target='_blank' rel='noopener noreferrer'>
-          Ver CV
-        </a>
+        {candidate.cv && (
+          <a className='see-cv' href={candidate.cv} target='_blank' rel='noopener noreferrer'>
+            Ver CV
+          </a>
+        )}
       </div>
       <div className='candidate-buttons'>
         <button
