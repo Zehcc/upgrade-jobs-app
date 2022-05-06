@@ -29,10 +29,10 @@ const CandidatePage = () => {
       <CompanyNavbar />
       <div className='candidate-page'>
         <Candidate candidate={candidate} offer={offer} />
-        {companyProfile.id && (
+        {candidate._id && (
           <Chat
             user={companyProfile.name}
-            room={offerID + companyProfile.id}
+            room={offerID + candidate._id}
             socket={socket}
           />
         )}
