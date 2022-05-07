@@ -67,7 +67,7 @@ const RegisterUserForm = () => {
             value: true,
             message: "Inserta una contraseña",
           },
-          /*  minLength: {
+          minLength: {
             value: 8,
             message: "Mínimo 8 caracteres",
           },
@@ -76,7 +76,7 @@ const RegisterUserForm = () => {
               /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
             message:
               "Debe contener una mayúscula, una minúscula y un número/caracter especial",
-          }, */
+          },
         })}
       />
       {errors.password && (

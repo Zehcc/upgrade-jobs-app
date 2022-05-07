@@ -1,14 +1,13 @@
-import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
-import ButtonLogout from '../../../components/ButtonLogout/ButtonLogout';
-import {useProfileContext} from '../../contexts/ProfileContext';
-import {BsFillPersonFill as Profile} from 'react-icons/bs';
-import {FaBriefcase as Offers, FaSearch as Search} from 'react-icons/fa';
-import {RiBookmark3Fill as Applications} from 'react-icons/ri';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import ButtonLogout from "../../../components/ButtonLogout/ButtonLogout";
+import { useProfileContext } from "../../contexts/ProfileContext";
+import { FaBriefcase as Offers } from "react-icons/fa";
+import { RiBookmark3Fill as Applications } from "react-icons/ri";
 
 const UserNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const {userProfile} = useProfileContext();
+  const { userProfile } = useProfileContext();
 
   const handleButtonClick = () => {
     setIsOpen(!isOpen);
@@ -23,7 +22,6 @@ const UserNavbar = () => {
         <Applications size={30} className='nav-item' />
       </Link>
       <div className='dropdown'>
-        {/* <Profile size={30} className='dropbtn' type='button' onClick={handleButtonClick} /> */}
         <div className='img-container'>
           <img
             src={userProfile.img}
@@ -33,7 +31,7 @@ const UserNavbar = () => {
             onClick={handleButtonClick}
           />
         </div>
-        <div className={`dropdown-submenu ${isOpen ? 'show' : ''}`}>
+        <div className={`dropdown-submenu ${isOpen ? "show" : ""}`}>
           <ul>
             <li>
               <Link to={`/userProfile/${userProfile.id}`}>
