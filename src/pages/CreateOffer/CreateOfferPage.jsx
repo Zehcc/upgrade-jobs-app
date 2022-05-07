@@ -35,7 +35,7 @@ const CreateOfferPage = () => {
           placeholder='Título de la oferta'
           className='create-offer-input'
           {...register('title', {
-            required: { value: true, message: 'Campo obligatorio' },
+            required: { value: true, message: 'Título obligatorio' },
           })}
         />
         {errors.title && (
@@ -45,13 +45,13 @@ const CreateOfferPage = () => {
           className='create-offer-input'
           name='location'
           {...register('location', {
-            required: { value: true, message: 'Campo obligatorio' },
+            required: { value: true, message: 'Localización obligatoria' },
           })}
         >
           <option value='' selected>
             Elige una localización
           </option>
-          {categories.map((category, index) => (
+          {cities.map((category, index) => (
             <option key={index} value={category}>
               {category}
             </option>
@@ -64,7 +64,7 @@ const CreateOfferPage = () => {
           className='create-offer-input'
           name='category'
           {...register('category', {
-            required: { value: true, message: 'Campo obligatorio' },
+            required: { value: true, message: 'Categoría obligatoria' },
           })}
         >
           <option value='' selected>
@@ -85,7 +85,10 @@ const CreateOfferPage = () => {
           placeholder='Numero de vacantes'
           className='create-offer-input'
           {...register('vacants', {
-            required: { value: true, message: 'Campo obligatorio' },
+            required: {
+              value: true,
+              message: 'Número de vacantes obligatoria',
+            },
           })}
         />
         {errors.vacants && (
@@ -97,7 +100,7 @@ const CreateOfferPage = () => {
           name='description'
           placeholder='Descripción'
           {...register('description', {
-            required: { value: true, message: 'Campo obligatorio' },
+            required: { value: true, message: 'Descripción obligatoria' },
           })}
         />
         {errors.description && (
@@ -110,7 +113,6 @@ const CreateOfferPage = () => {
           value={companyProfile.id}
           {...register('company', { require: true })}
         />
-
         <button>Crear oferta</button>
         <Link to='/companyOffers'>
           <button className='back-button'>Volver</button>
