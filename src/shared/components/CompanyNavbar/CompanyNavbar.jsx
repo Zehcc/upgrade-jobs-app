@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useProfileContext } from "../../contexts/ProfileContext";
 import ButtonLogout from "../../../components/ButtonLogout/ButtonLogout";
-import { BsFillPersonFill as Profile } from "react-icons/bs";
-import { FaBriefcase as Offers, FaSearch as Search } from "react-icons/fa";
-import { RiBookmark3Fill as Applications } from "react-icons/ri";
+import { FaBriefcase as Offers } from "react-icons/fa";
 
 const CompanyNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);

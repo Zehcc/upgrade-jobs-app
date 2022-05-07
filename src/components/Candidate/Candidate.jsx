@@ -1,13 +1,14 @@
-import React from 'react';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { API } from "../../shared/services/api";
+import emailjs from "@emailjs/browser";
 
-import {useNavigate} from 'react-router-dom';
-import {API} from '../../shared/services/api';
-import emailjs from '@emailjs/browser';
-
-const Candidate = ({candidate, offer}) => {
+const Candidate = ({ candidate, offer }) => {
   let navigate = useNavigate();
   const changeState = (state) => {
-    let candidature = candidate.candidatures.find((candidature) => candidature.id === offer._id);
+    let candidature = candidate.candidatures.find(
+      (candidature) => candidature.id === offer._id
+    );
     candidature = {
       id: candidature.id,
       state: state,
@@ -33,14 +34,14 @@ const Candidate = ({candidate, offer}) => {
   const sendEmail = () => {
     emailjs
       .send(
-        'service_xlp5rgi',
-        'template_xq7adj4',
+        "service_xlp5rgi",
+        "template_xq7adj4",
         {
           name: candidate.name,
           offer: offer.title,
           email: candidate.email,
         },
-        'prfW5GCZ4vDS2RyWh'
+        "prfW5GCZ4vDS2RyWh"
       )
       .then(
         (result) => {
@@ -60,7 +61,12 @@ const Candidate = ({candidate, offer}) => {
       <div className='candidate-info'>
         <h2>{candidate.name}</h2>
         {candidate.cv && (
-          <a className='see-cv' href={candidate.cv} target='_blank' rel='noopener noreferrer'>
+          <a
+            className='see-cv'
+            href={candidate.cv}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
             Ver CV
           </a>
         )}
@@ -68,17 +74,20 @@ const Candidate = ({candidate, offer}) => {
       <div className='candidate-buttons'>
         <button
           className='candidate-button green'
-          onClick={() => changeState('Sigues en el proceso')}
+          onClick={() => changeState("Sigues en el proceso")}
         >
           Sigue en el proceso
         </button>
         <button
           className='candidate-button orange'
-          onClick={() => changeState('CV no preseleccionado')}
+          onClick={() => changeState("CV no preseleccionado")}
         >
           No preseleccionar curriculum
         </button>
-        <button className='candidate-button red' onClick={() => changeState('Descartado')}>
+        <button
+          className='candidate-button red'
+          onClick={() => changeState("Descartado")}
+        >
           Descartar candidato
         </button>
       </div>
