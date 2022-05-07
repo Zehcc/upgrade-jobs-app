@@ -1,8 +1,8 @@
-import React from 'react';
-import {useForm} from 'react-hook-form';
+import React from "react";
+import { useForm } from "react-hook-form";
 
-const OffersFilter = ({offers, setFilteredOffers}) => {
-  const {register, handleSubmit} = useForm();
+const OffersFilter = ({ offers, setFilteredOffers }) => {
+  const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
     const filtered = offers.filter(
@@ -12,13 +12,17 @@ const OffersFilter = ({offers, setFilteredOffers}) => {
         offer.location.toLowerCase().includes(data.search.toLowerCase()) ||
         offer.category.toLowerCase().includes(data.search.toLowerCase())
     );
-    console.log(filtered);
     if (filtered.length && data.search.length) {
-      console.log(filtered);
       setFilteredOffers(filtered);
+      reset({
+        search: "",
+      });
     } else {
       setFilteredOffers([]);
-      alert('No offers found');
+      reset({
+        search: "",
+      });
+      alert("No offers found");
     }
   };
 
@@ -30,7 +34,7 @@ const OffersFilter = ({offers, setFilteredOffers}) => {
           type='text'
           name='search'
           placeholder='Busca por compañía, categoría, ciudad...'
-          {...register('search')}
+          {...register("search")}
         />
       </form>
     </>

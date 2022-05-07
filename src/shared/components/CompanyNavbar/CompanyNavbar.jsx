@@ -1,14 +1,14 @@
-import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
-import {useProfileContext} from '../../contexts/ProfileContext';
-import ButtonLogout from '../../../components/ButtonLogout/ButtonLogout';
-import {BsFillPersonFill as Profile} from 'react-icons/bs';
-import {FaBriefcase as Offers, FaSearch as Search} from 'react-icons/fa';
-import {RiBookmark3Fill as Applications} from 'react-icons/ri';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useProfileContext } from "../../contexts/ProfileContext";
+import ButtonLogout from "../../../components/ButtonLogout/ButtonLogout";
+import { BsFillPersonFill as Profile } from "react-icons/bs";
+import { FaBriefcase as Offers, FaSearch as Search } from "react-icons/fa";
+import { RiBookmark3Fill as Applications } from "react-icons/ri";
 
 const CompanyNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const {companyProfile} = useProfileContext();
+  const { companyProfile } = useProfileContext();
   const handleButtonClick = () => {
     setIsOpen(!isOpen);
   };
@@ -19,7 +19,7 @@ const CompanyNavbar = () => {
         <Offers size={30} className='nav-item' />
       </Link>
       <div className='dropdown'>
-        <div class='img-container'>
+        <div className='img-container'>
           <img
             src={companyProfile.info.img}
             alt='company pic'
@@ -27,7 +27,7 @@ const CompanyNavbar = () => {
             onClick={handleButtonClick}
           />
         </div>
-        <div className={`dropdown-submenu ${isOpen ? 'show' : ''}`}>
+        <div className={`dropdown-submenu ${isOpen ? "show" : ""}`}>
           <ul className='drop-down-lu'>
             <li className='drop-down-li'>
               <Link to={`/companyProfile/${companyProfile.id}`}>
