@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { API } from "../../shared/services/api";
-import CompanyNavbar from "../../shared/components/CompanyNavbar/CompanyNavbar";
-import { useGestionContext } from "../../shared/contexts/GestionContext";
+import React, { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { API } from '../../shared/services/api';
+import CompanyNavbar from '../../shared/components/CompanyNavbar/CompanyNavbar';
+import { useGestionContext } from '../../shared/contexts/GestionContext';
 
 const DetailedCompanyOffer = () => {
   const [detailedOffer, setDetailedOffer] = useState({});
@@ -62,7 +62,11 @@ const DetailedCompanyOffer = () => {
                     </div>
                     <div className='candidates-text-container'>
                       <h4>{candidate.name}</h4>
-                      <p>{candidate.email}</p>
+                      {candidate.email.length > 25 ? (
+                        <p>{candidate.email.substr(0, 25)}...</p>
+                      ) : (
+                        <p>{candidate.email}</p>
+                      )}
                       <p
                         className={candidate.candidatures
                           .find((item) => item.id === detailedOffer._id)
@@ -71,7 +75,7 @@ const DetailedCompanyOffer = () => {
                       >
                         {candidate.candidatures
                           .find((item) => item.id === detailedOffer._id)
-                          .state.replace("Sigues", "Sigue")}
+                          .state.replace('Sigues', 'Sigue')}
                       </p>
                     </div>
                   </Link>
