@@ -31,7 +31,7 @@ const CandidatePage = () => {
         <Candidate candidate={candidate} offer={offer} />
         {candidate._id && (
           <Chat
-            user={companyProfile.name}
+            user={companyProfile.email}
             room={offerID + candidate._id}
             socket={socket}
           />
