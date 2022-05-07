@@ -1,8 +1,8 @@
-import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
-import { useProfileContext } from "../../shared/contexts/ProfileContext";
-import { API } from "../../shared/services/api";
-import { cities, categories } from "../../GuideData/data";
+import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
+import { useProfileContext } from '../../shared/contexts/ProfileContext';
+import { API } from '../../shared/services/api';
+import { cities, categories } from '../../GuideData/data';
 
 const CreateOfferPage = () => {
   const { companyProfile } = useProfileContext();
@@ -13,14 +13,14 @@ const CreateOfferPage = () => {
   } = useForm();
   let navigate = useNavigate();
   const onSubmit = (data) => {
-    API.post("/offers", data).then((response) => {
+    API.post('/offers', data).then((response) => {
       API.get(`companies/${companyProfile.id}`).then((res) => {
         const updatedOffers = [...res.data.offers, response.data._id];
         const offer = {
           offers: updatedOffers,
         };
         API.patch(`/companies/${companyProfile.id}`, offer).then(
-          navigate("/companyOffers")
+          navigate('/companyOffers')
         );
       });
     });
@@ -34,54 +34,58 @@ const CreateOfferPage = () => {
           name='title'
           placeholder='Título de la oferta'
           className='create-offer-input'
-          {...register("title", {
-            required: { value: true, message: "Campo obligatorio" },
+          {...register('title', {
+            required: { value: true, message: 'Campo obligatorio' },
           })}
         />
         {errors.title && (
           <p className='error-message'>{errors.title.message}</p>
         )}
-        <input
-          list='cities'
-          name='location'
+        <select
           className='create-offer-input'
-          placeholder='Localización'
-          {...register("location", {
-            required: { value: true, message: "Campo obligatorio" },
+          name='location'
+          {...register('location', {
+            required: { value: true, message: 'Campo obligatorio' },
           })}
-        />
+        >
+          <option value='' selected>
+            Elige una localización
+          </option>
+          {categories.map((category, index) => (
+            <option key={index} value={category}>
+              {category}
+            </option>
+          ))}
+        </select>
         {errors.location && (
           <p className='error-message'>{errors.location.message}</p>
         )}
-        <datalist id='cities'>
-          {cities.map((city, index) => (
-            <option key={index} value={city}></option>
-          ))}
-        </datalist>
-        <input
-          list='categories'
-          name='category'
-          placeholder='Categoría'
+        <select
           className='create-offer-input'
-          {...register("category", {
-            required: { value: true, message: "Campo obligatorio" },
+          name='category'
+          {...register('category', {
+            required: { value: true, message: 'Campo obligatorio' },
           })}
-        />
+        >
+          <option value='' selected>
+            Elige una categoría
+          </option>
+          {categories.map((category, index) => (
+            <option key={index} value={category}>
+              {category}
+            </option>
+          ))}
+        </select>
         {errors.category && (
           <p className='error-message'>{errors.category.message}</p>
         )}
-        <datalist id='categories'>
-          {categories.map((category, index) => (
-            <option key={index} value={category}></option>
-          ))}
-        </datalist>
         <input
           type='number'
           name='vacants'
           placeholder='Numero de vacantes'
           className='create-offer-input'
-          {...register("vacants", {
-            required: { value: true, message: "Campo obligatorio" },
+          {...register('vacants', {
+            required: { value: true, message: 'Campo obligatorio' },
           })}
         />
         {errors.vacants && (
@@ -92,8 +96,8 @@ const CreateOfferPage = () => {
           type='text'
           name='description'
           placeholder='Descripción'
-          {...register("description", {
-            required: { value: true, message: "Campo obligatorio" },
+          {...register('description', {
+            required: { value: true, message: 'Campo obligatorio' },
           })}
         />
         {errors.description && (
@@ -104,8 +108,9 @@ const CreateOfferPage = () => {
           type='text'
           name='company'
           value={companyProfile.id}
-          {...register("company", { require: true })}
+          {...register('company', { require: true })}
         />
+
         <button>Crear oferta</button>
         <Link to='/companyOffers'>
           <button className='back-button'>Volver</button>
