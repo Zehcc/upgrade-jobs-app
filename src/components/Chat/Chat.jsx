@@ -1,23 +1,21 @@
-import React, { useEffect, useState } from "react";
-import ScrollToBottom from "react-scroll-to-bottom";
-import { API } from "../../shared/services/api";
+import React, { useEffect, useState } from 'react';
+import ScrollToBottom from 'react-scroll-to-bottom';
+import { API } from '../../shared/services/api';
 
 const Chat = ({ user, room, socket }) => {
-  const [currentMessage, setCurrentMessage] = useState("");
+  const [currentMessage, setCurrentMessage] = useState('');
   const [messageList, setMessageList] = useState([]);
   const [hide, setHide] = useState(true);
-  const [exist, setExist] = useState(false);
-  const [id, setID] = useState("");
 
   const sendMessage = async () => {
-    if (currentMessage !== "") {
+    if (currentMessage !== '') {
       const messageData = {
         room: room,
         author: user,
         text: currentMessage,
         time:
           new Date(Date.now()).getHours() +
-          ":" +
+          ':' +
           new Date(Date.now()).getMinutes(),
       };
       const chatDB = {
@@ -25,22 +23,19 @@ const Chat = ({ user, room, socket }) => {
         messages: [...messageList, messageData],
       };
 
-      await socket.emit("send_message", messageData);
-      setMessageList((list) => [...list, messageData]);
-      console.log(exist, "pre");
-      if (!exist) {
-        API.post(`/chats`, chatDB).then((res) => {
-          console.log("post");
-          setID(res.data._id);
-          setExist(true);
-        });
-      } else if (exist) {
-        API.patch(`/chats/${id}`, chatDB).then((res) => {
-          console.log(res, "patch");
-        });
-      }
+      await socket.emit('send_message', messageData);
 
-      setCurrentMessage("");
+      setMessageList((list) => [...list, messageData]);
+
+      API.get(`/chats/${room}`).then((res) => {
+        if (!res.data) {
+          API.post(`/chats`, chatDB);
+        } else if (res.data) {
+          API.patch(`/chats/${res.data._id}`, chatDB);
+        }
+      });
+
+      setCurrentMessage('');
     }
   };
   const showChat = () => {
@@ -48,27 +43,25 @@ const Chat = ({ user, room, socket }) => {
   };
   const joinRoom = () => {
     if (user && room) {
-      socket.emit("join_room", room);
+      socket.emit('join_room', room);
     }
   };
 
   useEffect(() => {
     joinRoom();
-    socket.on("receive", (data) => {
+    socket.on('receive', (data) => {
       setMessageList((list) => [...list, data]);
     });
     API.get(`/chats/${room}`).then((res) => {
       if (res.data) {
         setMessageList(res.data.messages);
-        setID(res.data._id);
-        setExist(true);
       }
     });
   }, []);
 
   return (
     <>
-      {messageList.length === 0 && user.includes("@") ? (
+      {messageList.length === 0 && user.includes('@') ? (
         <button className='show-btn' onClick={showChat}>
           Abrir chat
         </button>
@@ -77,7 +70,6 @@ const Chat = ({ user, room, socket }) => {
           className='show-btn'
           onClick={() => {
             showChat();
-            setExist(true);
           }}
         >
           Abrir chat
@@ -99,7 +91,7 @@ const Chat = ({ user, room, socket }) => {
                   <div
                     key={index}
                     className='message'
-                    id={user === messageContent.author ? "you" : "other"}
+                    id={user === messageContent.author ? 'you' : 'other'}
                   >
                     <div>
                       <div className='message-content'>
@@ -122,7 +114,7 @@ const Chat = ({ user, room, socket }) => {
                 setCurrentMessage(event.target.value);
               }}
               onKeyPress={(event) => {
-                event.key === "Enter" && sendMessage();
+                event.key === 'Enter' && sendMessage();
               }}
             />
             <button onClick={sendMessage}>&#9658;</button>
