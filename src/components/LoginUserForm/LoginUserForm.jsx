@@ -15,7 +15,7 @@ const LoginUserForm = () => {
     API.post("/users/login", data).then((response) => {
       console.log(response);
       if (response.status === 200) {
-        localStorage.setItem("token", response.data[0]);
+        localStorage.setItem("userToken", response.data[0]);
         setIsAuthUser(response.data[0]);
         setUserProfile({
           id: response.data[1]._id,
