@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { useProfileContext } from "../../shared/contexts/ProfileContext";
-import { API } from "../../shared/services/api";
-import { useGestionContext } from "../../shared/contexts/GestionContext";
-import emailjs from "@emailjs/browser";
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useProfileContext } from '../../shared/contexts/ProfileContext';
+import { API } from '../../shared/services/api';
+import { useGestionContext } from '../../shared/contexts/GestionContext';
+import emailjs from '@emailjs/browser';
 
 const DetailedOffer = () => {
   const { userProfile } = useProfileContext();
@@ -26,7 +26,7 @@ const DetailedOffer = () => {
       candidates: updatedCandidates,
     };
     const updatedCandidatures = [
-      { id: detailedOffer._id, state: "Inscrito" },
+      { id: detailedOffer._id, state: 'Inscrito' },
       ...userProfile.candidatures,
     ];
     const candidaturesDB = {
@@ -38,25 +38,16 @@ const DetailedOffer = () => {
     sendEmail();
   };
   const sendEmail = () => {
-    emailjs
-      .send(
-        "service_xlp5rgi",
-        "template_fs4o8ya",
-        {
-          name: userProfile.name,
-          offer: detailedOffer.title,
-          email: userProfile.email,
-        },
-        "prfW5GCZ4vDS2RyWh"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
+    emailjs.send(
+      'service_xlp5rgi',
+      'template_fs4o8ya',
+      {
+        name: userProfile.name,
+        offer: detailedOffer.title,
+        email: userProfile.email,
+      },
+      'prfW5GCZ4vDS2RyWh'
+    );
   };
   return (
     <div className='detailed-container'>

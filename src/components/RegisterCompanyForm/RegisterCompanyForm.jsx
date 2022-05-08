@@ -1,7 +1,7 @@
-import React from "react";
-import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
-import { API } from "../../shared/services/api";
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
+import { API } from '../../shared/services/api';
 
 const RegisterCompanyForm = () => {
   const {
@@ -11,24 +11,22 @@ const RegisterCompanyForm = () => {
   } = useForm();
   let navigate = useNavigate();
   const onSubmit = (data) => {
-    console.log(data);
     const companyToDB = {
-      id: "",
-      name: "",
+      id: '',
+      name: '',
       email: data.email,
       password: data.password,
       cif: data.cif,
       info: {
-        description: "",
-        img: "https://res.cloudinary.com/dd3vgq4ks/image/upload/v1650619369/Assets-upgradejobs/user-gf5a686eee_1280_aowjo4.png",
-        location: "",
-        web: "",
-        employees: "",
+        description: '',
+        img: 'https://res.cloudinary.com/dd3vgq4ks/image/upload/v1650619369/Assets-upgradejobs/user-gf5a686eee_1280_aowjo4.png',
+        location: '',
+        web: '',
+        employees: '',
       },
     };
-    API.post("companies/register", companyToDB).then((response) => {
-      console.log(response.data);
-      navigate("/login");
+    API.post('companies/register', companyToDB).then((response) => {
+      navigate('/login');
     });
   };
   return (
@@ -38,14 +36,14 @@ const RegisterCompanyForm = () => {
         name='cif'
         placeholder='📝 CIF'
         className='register-input'
-        {...register("cif", {
+        {...register('cif', {
           required: {
             value: true,
-            message: "CIF obligatorio",
+            message: 'CIF obligatorio',
           },
           pattern: {
             value: /^([ABCDEFGHJKLMNPQRSUVW])(\d{7})([0-9A-J])$/,
-            message: "CIF no válido, ejemplo: B12345678",
+            message: 'CIF no válido, ejemplo: B12345678',
           },
         })}
       />
@@ -55,14 +53,14 @@ const RegisterCompanyForm = () => {
         name='email'
         placeholder='📧 Email'
         className='register-input'
-        {...register("email", {
+        {...register('email', {
           required: {
             value: true,
-            message: "Inserta tu email",
+            message: 'Inserta tu email',
           },
           pattern: {
             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-            message: "El formato del email no es válido",
+            message: 'El formato del email no es válido',
           },
         })}
       />
@@ -72,20 +70,20 @@ const RegisterCompanyForm = () => {
         name='password'
         placeholder='🔐 Contraseña'
         className='register-input'
-        {...register("password", {
+        {...register('password', {
           required: {
             value: true,
-            message: "Inserta una contraseña",
+            message: 'Inserta una contraseña',
           },
           minLength: {
             value: 8,
-            message: "Mínimo 8 caracteres",
+            message: 'Mínimo 8 caracteres',
           },
           pattern: {
             value:
               /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
             message:
-              "Debe contener una mayúscula, una minúscula y un número/caracter especial",
+              'Debe contener una mayúscula, una minúscula y un número/caracter especial',
           },
         })}
       />
