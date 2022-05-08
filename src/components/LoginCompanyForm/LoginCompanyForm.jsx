@@ -15,7 +15,9 @@ const LoginCompanyForm = () => {
   const onSubmit = (data) => {
     API.post('/companies/login', data).then((response) => {
       if (response.status === 200) {
-        localStorage.setItem('token', response.data[0]);
+
+        localStorage.setItem("companyToken", response.data[0]);
+
         setIsAuthCompany(response.data[0]);
         setCompanyProfile({
           id: response.data[1]._id,

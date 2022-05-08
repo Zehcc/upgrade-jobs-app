@@ -5,9 +5,7 @@ import { useNavigate } from 'react-router-dom'
 const ButtonLogout = () => {
     let navigate = useNavigate();
     const logOut = () => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('userProfile');
-        localStorage.removeItem('companyProfile');
+        localStorage.clear()
         navigate('/login');
     }
     return (
