@@ -14,7 +14,8 @@ const LoginUserForm = () => {
   const onSubmit = (data) => {
     API.post('/users/login', data).then((response) => {
       if (response.status === 200) {
-        localStorage.setItem('token', response.data[0]);
+        localStorage.setItem('userToken', response.data[0]);
+
         setIsAuthUser(response.data[0]);
         setUserProfile({
           id: response.data[1]._id,
@@ -58,7 +59,7 @@ const LoginUserForm = () => {
         <button>Entrar</button>
       </form>
       <div className='register-div'>
-        <p>¿Aún no estas registrado?</p>
+        <p>¿Aún no estás registrado?</p>
         <Link to='/home'>
           <button>Registrarse</button>
         </Link>

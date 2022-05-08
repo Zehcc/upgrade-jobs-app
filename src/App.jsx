@@ -1,4 +1,4 @@
-import {Navigate, Route, BrowserRouter as Router, Routes} from 'react-router-dom';
+import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import LandingPage from './pages/LandingPage/LandingPage';
 import RegisterCompanyPage from './pages/RegisterCompany/RegisterCompanyPage';
 import RegisterUserPage from './pages/RegisterUser/RegisterUserPage';
@@ -19,6 +19,8 @@ import DetailedCandidaturePage from './pages/DetailedCandidaturePage/DetailedCan
 import DetailedCompanyOffer from './components/DetailedCompanyOffer/DetailedCompanyOffer';
 import CandidatePage from './pages/CandidatePage/CandidatePage';
 import GestionProvider from './shared/contexts/GestionContext';
+import RequireUserAuth from './shared/components/RequireAuth/RequireUserAuth';
+import RequireCompanyAuth from './shared/components/RequireAuth/RequireCompanyAuth';
 
 function App() {
   return (
@@ -34,18 +36,18 @@ function App() {
                 <Route path='/registerCompany' element={<RegisterCompanyPage />} />
                 <Route path='/registerUser' element={<RegisterUserPage />} />
                 <Route path='*' element={<Navigate to='loading' />} />
-                <Route path='/offers' element={<OffersPage />} />
-                <Route path='/userProfile/:id' element={<UserProfilePage />} />
-                <Route path='/companyProfile/:id' element={<CompanyProfilePage />} />
-                <Route path='/companyOffers' element={<CompanyOffers />} />
-                <Route path='/createOffer' element={<CreateOfferPage />} />
-
-                <Route path='/ApplicationSent/:id' element={<UserApplicationSent />} />
-                <Route path='/candidatures/:id' element={<CandidaturesPage />} />
-                <Route path='/detailedOffer/:id' element={<DetailedOfferPage />} />
-                <Route path='detailedCandidature/:id' element={<DetailedCandidaturePage />} />
-                <Route path='detailedCompanyOffer/:id' element={<DetailedCompanyOffer />} />
-                <Route path='candidate/:userID/:offerID' element={<CandidatePage />}></Route>
+                <Route path='/offers' element={<RequireUserAuth><OffersPage /></RequireUserAuth>} />
+                <Route path='/userProfile/:id' element={<RequireUserAuth><UserProfilePage /></RequireUserAuth>} />
+                <Route path='/companyProfile/:id' element={<RequireCompanyAuth><CompanyProfilePage /></RequireCompanyAuth>} />
+                <Route path='/companyOffers' element={<RequireCompanyAuth><CompanyOffers /></RequireCompanyAuth>} />
+                <Route path='/createOffer' element={<RequireCompanyAuth><CreateOfferPage /></RequireCompanyAuth>} />
+                <Route path='/ApplicationSent/:id' element={<RequireUserAuth><UserApplicationSent /></RequireUserAuth>} />
+                <Route path='/candidatures/:id' element={<RequireUserAuth><CandidaturesPage /></RequireUserAuth>} />
+                <Route path='/detailedOffer/:id' element={<RequireUserAuth><DetailedOfferPage /></RequireUserAuth>} />
+                <Route path='detailedCandidature/:id' element={<RequireUserAuth><DetailedCandidaturePage /></RequireUserAuth>} />
+                <Route path='detailedCompanyOffer/:id' element={<RequireCompanyAuth><DetailedCompanyOffer /></RequireCompanyAuth>} />
+                <Route path='candidate/:userID/:offerID' element={<RequireCompanyAuth><CandidatePage /></RequireCompanyAuth>}>
+                </Route>
               </Routes>
             </Router>
           </GestionProvider>
