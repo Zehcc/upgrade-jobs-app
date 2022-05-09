@@ -8,8 +8,11 @@ import Chat from "../Chat/Chat";
 //const socket = io.connect("https://upgrade-jobs-chat.vercel.app");
 const socket = io.connect("https://upgrade-jobs-chat.vercel.app", {
   withCredentials: true,
-  extraHeaders: {
-    "my-custom-header": "abcd"
+  Headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+
   }
 });
 const DetailedCandidature = () => {
