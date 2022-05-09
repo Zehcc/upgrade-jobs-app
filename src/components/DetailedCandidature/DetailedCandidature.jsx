@@ -6,7 +6,7 @@ import { API } from "../../shared/services/api";
 import Chat from "../Chat/Chat";
 
 //const socket = io.connect("https://upgrade-jobs-chat.vercel.app");
-const socket = io.connect("https://upgrade-jobs-chat.vercel.app", {
+const socket = io("https://upgrade-jobs-chat.vercel.app", {
   withCredentials: true,
   Headers: {
     'Accept': 'application/json',
