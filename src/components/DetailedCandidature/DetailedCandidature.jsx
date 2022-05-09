@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { io } from 'socket.io-client';
-import { useProfileContext } from '../../shared/contexts/ProfileContext';
-import { API } from '../../shared/services/api';
-import Chat from '../Chat/Chat';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { io } from "socket.io-client";
+import { useProfileContext } from "../../shared/contexts/ProfileContext";
+import { API } from "../../shared/services/api";
+import Chat from "../Chat/Chat";
 
 const ioHeaders = {
-  'Access-Control-Allow-Origin': '*',
+  "Access-Control-Allow-Origin": "*",
 };
-const socket = io.connect('http://localhost:3001', ioHeaders);
+const socket = io.connect("localhost:3001", ioHeaders);
 /* const socket = io.connect({
   baseURL: 'http://localhost:3001',
   headers: {

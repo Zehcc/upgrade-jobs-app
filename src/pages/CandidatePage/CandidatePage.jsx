@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import Candidate from '../../components/Candidate/Candidate';
-import { API } from '../../shared/services/api';
-import CompanyNavbar from '../../shared/components/CompanyNavbar/CompanyNavbar';
-import Chat from '../../components/Chat/Chat';
-import { useProfileContext } from '../../shared/contexts/ProfileContext';
-import { io } from 'socket.io-client';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import Candidate from "../../components/Candidate/Candidate";
+import { API } from "../../shared/services/api";
+import CompanyNavbar from "../../shared/components/CompanyNavbar/CompanyNavbar";
+import Chat from "../../components/Chat/Chat";
+import { useProfileContext } from "../../shared/contexts/ProfileContext";
+import { io } from "socket.io-client";
 
 const ioHeaders = {
-  'Access-Control-Allow-Origin': '*',
+  "Access-Control-Allow-Origin": "*",
 };
-const socket = io.connect('http://localhost:3001', ioHeaders);
+const socket = io.connect("localhost:3001", ioHeaders);
+
+console.log(socket);
 /* const socket = io.connect({
   baseURL: 'https://upgradejobs-back.vercel.app/',
   headers: {
