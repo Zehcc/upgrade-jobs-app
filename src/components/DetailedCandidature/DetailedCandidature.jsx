@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { io } from "socket.io-client";
-import { useProfileContext } from "../../shared/contexts/ProfileContext";
-import { API } from "../../shared/services/api";
-import Chat from "../Chat/Chat";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { io } from 'socket.io-client';
+import { useProfileContext } from '../../shared/contexts/ProfileContext';
+import { API } from '../../shared/services/api';
+import Chat from '../Chat/Chat';
 
-//const socket = io.connect("https://upgrade-jobs-chat.vercel.app");
-const socket = io("https://upgrade-jobs-chat.vercel.app", {
+const socket = io.connect('http://localhost:3001');
+/* const socket = io("https://upgrade-jobs-chat.vercel.app", {
   withCredentials: true,
   Headers: {
     'Accept': 'application/json',
@@ -14,7 +14,7 @@ const socket = io("https://upgrade-jobs-chat.vercel.app", {
     'Access-Control-Allow-Origin': '*',
 
   }
-});
+}); */
 const DetailedCandidature = () => {
   const [detailedCandidature, setDetailedCandidature] = useState({});
 
