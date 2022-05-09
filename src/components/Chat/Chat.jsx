@@ -1,22 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import ScrollToBottom from 'react-scroll-to-bottom';
-import { API } from '../../shared/services/api';
+import React, { useEffect, useState } from "react";
+import ScrollToBottom from "react-scroll-to-bottom";
+import { io } from "socket.io-client";
+import { API } from "../../shared/services/api";
 
-const Chat = ({ user, room, socket }) => {
-  const [currentMessage, setCurrentMessage] = useState('');
+const socket = io.connect("localhost:3001");
+
+const Chat = ({ user, room }) => {
+  const [currentMessage, setCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
   const [hide, setHide] = useState(true);
-  console.log(socket);
 
   const sendMessage = async () => {
-    if (currentMessage !== '') {
+    if (currentMessage !== "") {
       const messageData = {
         room: room,
         author: user,
         text: currentMessage,
         time:
           new Date(Date.now()).getHours() +
-          ':' +
+          ":" +
           new Date(Date.now()).getMinutes(),
       };
       const chatDB = {
@@ -24,7 +26,7 @@ const Chat = ({ user, room, socket }) => {
         messages: [...messageList, messageData],
       };
 
-      await socket.emit('send_message', messageData);
+      await socket.emit("send_message", messageData);
 
       setMessageList((list) => [...list, messageData]);
 
@@ -36,7 +38,7 @@ const Chat = ({ user, room, socket }) => {
         }
       });
 
-      setCurrentMessage('');
+      setCurrentMessage("");
     }
   };
   const showChat = () => {
@@ -44,13 +46,13 @@ const Chat = ({ user, room, socket }) => {
   };
   const joinRoom = () => {
     if (user && room) {
-      socket.emit('join_room', room);
+      socket.emit("join_room", room);
     }
   };
 
   useEffect(() => {
     joinRoom();
-    socket.on('receive', (data) => {
+    socket.on("receive", (data) => {
       setMessageList((list) => [...list, data]);
     });
     API.get(`/chats/${room}`).then((res) => {
@@ -62,7 +64,7 @@ const Chat = ({ user, room, socket }) => {
 
   return (
     <>
-      {messageList.length === 0 && user.includes('@') ? (
+      {messageList.length === 0 && user.includes("@") ? (
         <button className='show-btn' onClick={showChat}>
           Abrir chat
         </button>
@@ -92,7 +94,7 @@ const Chat = ({ user, room, socket }) => {
                   <div
                     key={index}
                     className='message'
-                    id={user === messageContent.author ? 'you' : 'other'}
+                    id={user === messageContent.author ? "you" : "other"}
                   >
                     <div>
                       <div className='message-content'>
@@ -115,7 +117,7 @@ const Chat = ({ user, room, socket }) => {
                 setCurrentMessage(event.target.value);
               }}
               onKeyPress={(event) => {
-                event.key === 'Enter' && sendMessage();
+                event.key === "Enter" && sendMessage();
               }}
             />
             <button onClick={sendMessage}>&#9658;</button>

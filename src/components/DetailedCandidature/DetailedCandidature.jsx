@@ -1,24 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { io } from "socket.io-client";
 import { useProfileContext } from "../../shared/contexts/ProfileContext";
 import { API } from "../../shared/services/api";
 import Chat from "../Chat/Chat";
 
-const ioHeaders = {
-  "Access-Control-Allow-Origin": "*",
-};
-const socket = io.connect("localhost:3001", ioHeaders);
-/* const socket = io.connect({
-  baseURL: 'http://localhost:3001',
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-  },
-}); */
-
 const DetailedCandidature = () => {
   const [detailedCandidature, setDetailedCandidature] = useState({});
-
   const { userProfile } = useProfileContext();
   const { id } = useParams();
   const thisCandidature = userProfile.candidatures.find(
@@ -55,7 +42,6 @@ const DetailedCandidature = () => {
         <Chat
           user={userProfile.name}
           room={detailedCandidature._id + userProfile.id}
-          socket={socket}
         />
       )}
     </div>
