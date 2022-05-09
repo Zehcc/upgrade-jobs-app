@@ -5,16 +5,13 @@ import { useProfileContext } from '../../shared/contexts/ProfileContext';
 import { API } from '../../shared/services/api';
 import Chat from '../Chat/Chat';
 
-const socket = io.connect('http://localhost:3001');
-/* const socket = io("https://upgrade-jobs-chat.vercel.app", {
-  withCredentials: true,
-  Headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json',
+/* const socket = io.connect('http://localhost:3001'); */
+const socket = io.connect({
+  baseURL: 'https://upgradejobs-back.vercel.app/',
+  headers: {
     'Access-Control-Allow-Origin': '*',
-
-  }
-}); */
+  },
+});
 const DetailedCandidature = () => {
   const [detailedCandidature, setDetailedCandidature] = useState({});
 
