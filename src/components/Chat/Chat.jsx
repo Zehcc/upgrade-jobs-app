@@ -6,6 +6,7 @@ const Chat = ({ user, room, socket }) => {
   const [currentMessage, setCurrentMessage] = useState('');
   const [messageList, setMessageList] = useState([]);
   const [hide, setHide] = useState(true);
+  console.log(socket);
 
   const sendMessage = async () => {
     if (currentMessage !== '') {

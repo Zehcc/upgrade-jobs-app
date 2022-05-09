@@ -7,13 +7,17 @@ import Chat from '../../components/Chat/Chat';
 import { useProfileContext } from '../../shared/contexts/ProfileContext';
 import { io } from 'socket.io-client';
 
-/* const socket = io.connect('http://localhost:3001'); */
-const socket = io.connect({
+const ioHeaders = {
+  'Access-Control-Allow-Origin': '*',
+};
+const socket = io.connect('http://localhost:3001', ioHeaders);
+/* const socket = io.connect({
   baseURL: 'https://upgradejobs-back.vercel.app/',
   headers: {
     'Access-Control-Allow-Origin': '*',
   },
-});
+}); */
+
 const CandidatePage = () => {
   const { userID, offerID } = useParams();
   const { companyProfile } = useProfileContext();
