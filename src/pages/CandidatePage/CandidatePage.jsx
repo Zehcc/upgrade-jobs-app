@@ -7,7 +7,7 @@ import Chat from "../../components/Chat/Chat";
 import { useProfileContext } from "../../shared/contexts/ProfileContext";
 import { io } from "socket.io-client";
 
-const socket = io.connect("http://localhost:3001");
+const socket = io.connect("https://upgrade-jobs-chat.vercel.app/");
 
 const CandidatePage = () => {
   const { userID, offerID } = useParams();

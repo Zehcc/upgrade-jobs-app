@@ -5,7 +5,7 @@ import { useProfileContext } from "../../shared/contexts/ProfileContext";
 import { API } from "../../shared/services/api";
 import Chat from "../Chat/Chat";
 
-const socket = io.connect("http://localhost:3001");
+const socket = io.connect("https://upgrade-jobs-chat.vercel.app/");
 
 const DetailedCandidature = () => {
   const [detailedCandidature, setDetailedCandidature] = useState({});
