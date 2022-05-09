@@ -1,23 +1,21 @@
-import {useForm} from 'react-hook-form';
-import React, {useState} from 'react';
-import {Link, useNavigate} from 'react-router-dom';
-import {API} from '../../shared/services/api';
-import {useIsAuthContext} from '../../shared/contexts/IsAuthContext';
-import {useProfileContext} from '../../shared/contexts/ProfileContext';
+import { useForm } from 'react-hook-form';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { API } from '../../shared/services/api';
+import { useIsAuthContext } from '../../shared/contexts/IsAuthContext';
+import { useProfileContext } from '../../shared/contexts/ProfileContext';
 
 const LoginUserForm = () => {
-  const {register, handleSubmit} = useForm();
+  const { register, handleSubmit } = useForm();
   let navigate = useNavigate();
-  const {setIsAuthUser} = useIsAuthContext();
-  const {setUserProfile} = useProfileContext();
+  const { setIsAuthUser } = useIsAuthContext();
+  const { setUserProfile } = useProfileContext();
   const [error, setError] = useState('');
   const onSubmit = (data) => {
     API.post('/users/login', data).then((response) => {
       console.log(response);
       if (response.status === 200) {
-
-        localStorage.setItem("userToken", response.data[0]);
-
+        localStorage.setItem('token', response.data[0]);
         setIsAuthUser(response.data[0]);
         setUserProfile({
           id: response.data[1]._id,
@@ -55,7 +53,7 @@ const LoginUserForm = () => {
           type='password'
           name='password'
           placeholder='🔐 Contraseña'
-          {...register('password', {required: true})}
+          {...register('password', { required: true })}
         />
         {error && <p className='error-message'>{error}</p>}
         <button>Entrar</button>
