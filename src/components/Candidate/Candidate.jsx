@@ -1,7 +1,7 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { API } from "../../shared/services/api";
-import emailjs from "@emailjs/browser";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { API } from '../../shared/services/api';
+import emailjs from '@emailjs/browser';
 
 const Candidate = ({ candidate, offer }) => {
   let navigate = useNavigate();
@@ -32,25 +32,16 @@ const Candidate = ({ candidate, offer }) => {
   };
 
   const sendEmail = () => {
-    emailjs
-      .send(
-        "service_xlp5rgi",
-        "template_xq7adj4",
-        {
-          name: candidate.name,
-          offer: offer.title,
-          email: candidate.email,
-        },
-        "prfW5GCZ4vDS2RyWh"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
+    emailjs.send(
+      'service_xlp5rgi',
+      'template_xq7adj4',
+      {
+        name: candidate.name,
+        offer: offer.title,
+        email: candidate.email,
+      },
+      'prfW5GCZ4vDS2RyWh'
+    );
   };
 
   return (
@@ -74,19 +65,19 @@ const Candidate = ({ candidate, offer }) => {
       <div className='candidate-buttons'>
         <button
           className='candidate-button green'
-          onClick={() => changeState("Sigues en el proceso")}
+          onClick={() => changeState('Sigues en el proceso')}
         >
           Sigue en el proceso
         </button>
         <button
           className='candidate-button orange'
-          onClick={() => changeState("CV no preseleccionado")}
+          onClick={() => changeState('CV no preseleccionado')}
         >
           No preseleccionar curriculum
         </button>
         <button
           className='candidate-button red'
-          onClick={() => changeState("Descartado")}
+          onClick={() => changeState('Descartado')}
         >
           Descartar candidato
         </button>
